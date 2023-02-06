@@ -1,30 +1,30 @@
 //
-//  VMosaicGrid.swift
+//  HMosaicGrid.swift
 //  MosaicGrid
 //
-//  Created by Nayanda Haberty on 4/2/23.
+//  Created by Nayanda Haberty on 6/2/23.
 //
 
 import SwiftUI
 
-public struct VMosaicGrid<Content>: View where Content: View {
+public struct HMosaicGrid<Content>: View where Content: View {
     
     let hSpacing: CGFloat
     let vSpacing: CGFloat
-    let hGridCount: Int
+    let vGridCount: Int
     
     let content: (MosaicGridSizeContext) -> Content
     
-    init(hGridCount: Int, hSpacing: CGFloat = .zero, vSpacing: CGFloat = .zero, @ViewBuilder content: @escaping (MosaicGridSizeContext) -> Content) {
+    init(vGridCount: Int, hSpacing: CGFloat = .zero, vSpacing: CGFloat = .zero, @ViewBuilder content: @escaping (MosaicGridSizeContext) -> Content) {
         self.content = content
-        self.hGridCount = hGridCount
+        self.vGridCount = vGridCount
         self.hSpacing = hSpacing
         self.vSpacing = vSpacing
     }
     
-    init(hGridCount: Int, spacing: CGFloat, @ViewBuilder content: @escaping (MosaicGridSizeContext) -> Content) {
+    init(vGridCount: Int, spacing: CGFloat, @ViewBuilder content: @escaping (MosaicGridSizeContext) -> Content) {
         self.init(
-            hGridCount: hGridCount,
+            vGridCount: vGridCount,
             hSpacing: spacing,
             vSpacing: spacing,
             content: content
@@ -33,12 +33,12 @@ public struct VMosaicGrid<Content>: View where Content: View {
     
     public var body: some View {
         GeometryReader { geometry in
-            VMosaicGridLayout(gridHCount: hGridCount, hSpacing: hSpacing, vSpacing: vSpacing) {
+            HMosaicGridLayout(gridVCount: vGridCount, hSpacing: hSpacing, vSpacing: vSpacing) {
                 content(
                     MosaicGridSizeContext(
                         geometry: geometry,
-                        orientation: .vertical,
-                        gridCount: hGridCount,
+                        orientation: .horizontal,
+                        gridCount: vGridCount,
                         hSpacing: hSpacing,
                         vSpacing: vSpacing
                     )
@@ -48,13 +48,13 @@ public struct VMosaicGrid<Content>: View where Content: View {
     }
 }
 
-struct VMosaicGrid_Previews: PreviewProvider {
+struct HMosaicGrid_Previews: PreviewProvider {
     static var previews: some View {
-        ScrollView {
-            VMosaicGrid(hGridCount: 5, spacing: 10) { gridSize in
+//        ScrollView {
+            HMosaicGrid(vGridCount: 5, spacing: 10) { gridSize in
                 Rectangle()
                     .foregroundColor(.red)
-                    .frame(size: gridSize[h: 2])
+                    .frame(size: gridSize)
                 Rectangle()
                     .foregroundColor(.orange)
                     .frame(size: gridSize[w: 2])
@@ -84,6 +84,6 @@ struct VMosaicGrid_Previews: PreviewProvider {
                     .frame(size: gridSize[w: 3])
             }
             .padding()
-        }
+//        }
     }
 }
