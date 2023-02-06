@@ -1,0 +1,22 @@
+{
+  "name": "MosaicGrid",
+  "version": "0.1.0",
+  "summary": "A short description of MosaicGrid.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/hainayanda/MosaicGrid",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "hainayanda": "hainayanda@outlook.com"
+  },
+  "source": {
+    "git": "https://github.com/hainayanda/MosaicGrid.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "16.0"
+  },
+  "source_files": "MosaicGrid/Classes/**/*"
+}

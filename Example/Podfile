@@ -1,0 +1,14 @@
+use_frameworks!
+
+platform :ios, '16.0'
+
+target 'MosaicGrid_Example' do
+  pod 'MosaicGrid', :path => '../'
+
+  target 'MosaicGrid_Tests' do
+    inherit! :search_paths
+
+    pod 'Quick', '~> 6.1.0'
+    pod 'Nimble', '~> 11.2.1'
+  end
+end

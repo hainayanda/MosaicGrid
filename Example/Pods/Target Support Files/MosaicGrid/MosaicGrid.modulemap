@@ -1,0 +1,6 @@
+framework module MosaicGrid {
+  umbrella header "MosaicGrid-umbrella.h"
+
+  export *
+  module * { export * }
+}
