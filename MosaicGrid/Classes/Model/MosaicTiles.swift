@@ -16,9 +16,3 @@ struct MosaicGridSize {
     let width: Int
     let height: Int
 }
-
-extension View {
-    public func mosaicTiles(w width: Int = 1, h height: Int = 1) -> some View {
-        return layoutValue(key: MosaicTiles.self, value: MosaicGridSize(width: width, height: height))
-    }
-}

@@ -68,40 +68,42 @@ struct MosaicGrid<Content>: View where Content: View {
     }
 }
 
+// MARK: Preview
+
 struct MosaicGrid_Previews: PreviewProvider {
     static var previews: some View {
         ScrollView(.vertical) {
             MosaicGrid(orientation: .vertical, spacing: 10, gridSizing: .constantSize(CGSize(width: 50, height: 50))) {
                 Rectangle()
                     .foregroundColor(.red)
-                    .mosaicTiles(w: 2, h: 2)
+                    .tileSized(w: 2, h: 2)
                 Rectangle()
                     .foregroundColor(.orange)
-                    .mosaicTiles(w: 2)
+                    .tileSized(w: 2)
                 Rectangle()
                     .foregroundColor(.yellow)
-                    .mosaicTiles(h: 3)
+                    .tileSized(h: 3)
                 Rectangle()
                     .foregroundColor(.green)
-                    .mosaicTiles()
+                    .tileSized()
                 Rectangle()
                     .foregroundColor(.cyan)
-                    .mosaicTiles(w: 3, h: 2)
+                    .tileSized(w: 3, h: 2)
                 Rectangle()
                     .foregroundColor(.blue)
-                    .mosaicTiles()
+                    .tileSized()
                 Rectangle()
                     .foregroundColor(.purple)
-                    .mosaicTiles(w: 2, h: 3)
+                    .tileSized(w: 2, h: 3)
                 Rectangle()
                     .foregroundColor(.pink)
-                    .mosaicTiles(w: 2)
+                    .tileSized(w: 2)
                 Rectangle()
                     .foregroundColor(.red)
-                    .mosaicTiles(h: 2)
+                    .tileSized(h: 2)
                 Rectangle()
                     .foregroundColor(.orange)
-                    .mosaicTiles(h: 3)
+                    .tileSized(h: 3)
             }
             .padding()
         }

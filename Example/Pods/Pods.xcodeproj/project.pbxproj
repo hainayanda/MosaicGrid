@@ -16,7 +16,7 @@
 		091270F9C247DCC6C9E8E19D3BAC308C /* ExampleHooks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C90859C73E63505E1046C4F37AF30BB /* ExampleHooks.swift */; };
 		0B6579D7859261B5C81EAF7CFB43570F /* CwlMachBadInstructionHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = CCD5A7EBA8A7DFDE0C4D8F86E2613406 /* CwlMachBadInstructionHandler.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0CFAC8188FF639566089292BA033BCC6 /* QCKDSL.m in Sources */ = {isa = PBXBuildFile; fileRef = DE450D4AAE5435BDAA8D24E25181AD4B /* QCKDSL.m */; };
-		0DBC88F18861551D5B6014E04EBCF062 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C540154DA4428E9CF25EB4EED8921B /* Array+Extensions.swift */; };
+		0DBC88F18861551D5B6014E04EBCF062 /* Sequence+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C540154DA4428E9CF25EB4EED8921B /* Sequence+Extensions.swift */; };
 		0FB6ACA2B7FFDABB7894B482ACED2B90 /* BeWithin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E3D2F280A89CFDB9404251B17F4582E /* BeWithin.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		1028F48E9E7BF0EB9727032D17890EEE /* SatisfyAnyOf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3BFB6A8A712FC45D14E1A7A438A22A /* SatisfyAnyOf.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		131C35513129A6D3BBFA5F8CE53F8775 /* Equal+Tuple.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A14C3AF1D8417E92A5281C9D010C436 /* Equal+Tuple.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
@@ -52,6 +52,8 @@
 		3ADE06A62992353000C96BED /* MosaicGridSizing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADE06A52992353000C96BED /* MosaicGridSizing.swift */; };
 		3ADE06A82992553600C96BED /* MosaicGridSpacing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADE06A72992553600C96BED /* MosaicGridSpacing.swift */; };
 		3ADE06AA2992646600C96BED /* MosaicSizedGridLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADE06A92992646600C96BED /* MosaicSizedGridLayout.swift */; };
+		3ADE06AE29927DFD00C96BED /* Mutable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADE06AD29927DFD00C96BED /* Mutable.swift */; };
+		3ADE06B029927E2200C96BED /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADE06AF29927E2200C96BED /* View+Extensions.swift */; };
 		3CA95C5B6C4504C871B22A001EC95C17 /* CwlDarwinDefinitions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B17B8D48C6B1ED85E618AE6A688ECD5 /* CwlDarwinDefinitions.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		3E1858594C50CDEEC2DAAB858142E38F /* ExampleMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FDE507AB2D4E765BA05E0714FD37A31 /* ExampleMetadata.swift */; };
 		40365D053A950B56801C4BDF7548211F /* AssertionRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0A625767571CF254481EE7839A5C88 /* AssertionRecorder.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
@@ -93,7 +95,7 @@
 		7FE4E3FEA1BAF412E8A88B943A2D45D3 /* QCKDSL.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B77A0A969AA94CC8F375A03E941C472 /* QCKDSL.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		80C6B0FF0B0BAE8432CB1A3BDA70D054 /* Contain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A07F6905F9A96F4BEC80489437C33F3 /* Contain.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		81302DDD0067E053885ED7C4B25ABAA8 /* MosaicGrid-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A2C988677F066C932FAC6F6E0EA2A07 /* MosaicGrid-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8275412323A8559574FA9DC9D8B8929E /* MosaicGridLayoutItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003AC009178BDACB3D2E5324BDCF29A9 /* MosaicGridLayoutItem.swift */; };
+		8275412323A8559574FA9DC9D8B8929E /* MosaicTileLayoutItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003AC009178BDACB3D2E5324BDCF29A9 /* MosaicTileLayoutItem.swift */; };
 		82AA0113ECB7E2339A35BB5B506C641B /* QuickTestObservation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED34935EEB358E68905375A247D1BE1 /* QuickTestObservation.swift */; };
 		85D1459F3753CDB1EA19BA31DB4A950B /* QuickSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D93D8F1A8887058F127D2A61C24E239 /* QuickSpec.m */; };
 		8706B82F1255D74092A9AA69CB8319BB /* CwlCatchException.h in Headers */ = {isa = PBXBuildFile; fileRef = 05041D1FB1310731DEE3F9D7279C7017 /* CwlCatchException.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -184,9 +186,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		003AC009178BDACB3D2E5324BDCF29A9 /* MosaicGridLayoutItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MosaicGridLayoutItem.swift; sourceTree = "<group>"; };
+		003AC009178BDACB3D2E5324BDCF29A9 /* MosaicTileLayoutItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MosaicTileLayoutItem.swift; sourceTree = "<group>"; };
 		0165F4868FB5867E8B99BA823BFAAE53 /* EndWith.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = EndWith.swift; path = Sources/Nimble/Matchers/EndWith.swift; sourceTree = "<group>"; };
-		02C540154DA4428E9CF25EB4EED8921B /* Array+Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
+		02C540154DA4428E9CF25EB4EED8921B /* Sequence+Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "Sequence+Extensions.swift"; sourceTree = "<group>"; };
 		02CAD25A0D8BD926BF668280E9D9AE7F /* World.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = World.swift; path = Sources/Quick/World.swift; sourceTree = "<group>"; };
 		04492F9A5A3484206042D81BDDDEEA8D /* BeLessThan.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeLessThan.swift; path = Sources/Nimble/Matchers/BeLessThan.swift; sourceTree = "<group>"; };
 		049F32D0A26B33DF7DF6B46FC32F219F /* QuickConfiguration.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = QuickConfiguration.swift; path = Sources/Quick/Configuration/QuickConfiguration.swift; sourceTree = "<group>"; };
@@ -231,6 +233,8 @@
 		3ADE06A52992353000C96BED /* MosaicGridSizing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MosaicGridSizing.swift; sourceTree = "<group>"; };
 		3ADE06A72992553600C96BED /* MosaicGridSpacing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MosaicGridSpacing.swift; sourceTree = "<group>"; };
 		3ADE06A92992646600C96BED /* MosaicSizedGridLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MosaicSizedGridLayout.swift; sourceTree = "<group>"; };
+		3ADE06AD29927DFD00C96BED /* Mutable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mutable.swift; sourceTree = "<group>"; };
+		3ADE06AF29927E2200C96BED /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
 		3C79C4A4FB61ABC51B63FFE0972242DE /* NSBundle+CurrentTestBundle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "NSBundle+CurrentTestBundle.swift"; path = "Sources/Quick/NSBundle+CurrentTestBundle.swift"; sourceTree = "<group>"; };
 		3D7D12BBF0DB67D5F0F0E6C0D25F7B6E /* AdapterProtocols.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AdapterProtocols.swift; path = Sources/Nimble/Adapters/AdapterProtocols.swift; sourceTree = "<group>"; };
 		3FAFC79C4D6566AE414AC2A3EE6A33E9 /* MosaicGrid-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MosaicGrid-dummy.m"; sourceTree = "<group>"; };
@@ -537,8 +541,9 @@
 		3AC6D7212990EBE300DDB605 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				02C540154DA4428E9CF25EB4EED8921B /* Array+Extensions.swift */,
+				02C540154DA4428E9CF25EB4EED8921B /* Sequence+Extensions.swift */,
 				3AC6D7342991FAE800DDB605 /* ProposedViewSize+Extensions.swift */,
+				3ADE06AF29927E2200C96BED /* View+Extensions.swift */,
 			);
 			name = Extensions;
 			path = MosaicGrid/Classes/Extensions;
@@ -549,11 +554,12 @@
 			children = (
 				3AC6D7252990ECF200DDB605 /* MappedGridlayoutItem.swift */,
 				3AC6D7272990ED0A00DDB605 /* MosaicGridCoordinate.swift */,
-				003AC009178BDACB3D2E5324BDCF29A9 /* MosaicGridLayoutItem.swift */,
+				003AC009178BDACB3D2E5324BDCF29A9 /* MosaicTileLayoutItem.swift */,
 				3ADE06A52992353000C96BED /* MosaicGridSizing.swift */,
 				3AC6D73A299226AE00DDB605 /* MosaicTiles.swift */,
 				272B5532DBB9A8B47EB39C0E6F056D17 /* MutableLogicalMatrix.swift */,
 				3ADE06A72992553600C96BED /* MosaicGridSpacing.swift */,
+				3ADE06AD29927DFD00C96BED /* Mutable.swift */,
 			);
 			name = Model;
 			path = MosaicGrid/Classes/Model;
@@ -996,12 +1002,14 @@
 				3ADE06AA2992646600C96BED /* MosaicSizedGridLayout.swift in Sources */,
 				3AC6D73B299226AE00DDB605 /* MosaicTiles.swift in Sources */,
 				3ADE06A62992353000C96BED /* MosaicGridSizing.swift in Sources */,
-				0DBC88F18861551D5B6014E04EBCF062 /* Array+Extensions.swift in Sources */,
+				0DBC88F18861551D5B6014E04EBCF062 /* Sequence+Extensions.swift in Sources */,
 				3AC6D7312991F8B300DDB605 /* MosaicRatioGridLayout.swift in Sources */,
+				3ADE06AE29927DFD00C96BED /* Mutable.swift in Sources */,
+				3ADE06B029927E2200C96BED /* View+Extensions.swift in Sources */,
 				3ADE06A82992553600C96BED /* MosaicGridSpacing.swift in Sources */,
 				3AC6D7262990ECF200DDB605 /* MappedGridlayoutItem.swift in Sources */,
 				B47ECA3A2FE983173CFDB3DBBF4F7846 /* MosaicGrid-dummy.m in Sources */,
-				8275412323A8559574FA9DC9D8B8929E /* MosaicGridLayoutItem.swift in Sources */,
+				8275412323A8559574FA9DC9D8B8929E /* MosaicTileLayoutItem.swift in Sources */,
 				3AC6D72C2990ED8000DDB605 /* HMosaicGrid.swift in Sources */,
 				A4BB0FC89D913963DB1206044918005F /* MutableLogicalMatrix.swift in Sources */,
 				D5B1DC73C3A1D9D99B0277123EC2C705 /* MosaicGridLayout.swift in Sources */,

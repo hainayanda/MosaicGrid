@@ -8,20 +8,9 @@
 import Foundation
 import SwiftUI
 
-@propertyWrapper
-class Mutable<Property> {
-    
-    var wrappedValue: Property
-    
-    init(wrappedValue: Property) {
-        self.wrappedValue = wrappedValue
-    }
-    
-}
-
 struct MosaicSizedGridLayout: MosaicGridLayout {
     
-    typealias Cache = [MappedMosaicGridLayoutItem]
+    typealias Cache = [MappedMosaicTileLayoutItem]
     
     let orientation: Axis.Set
     let tileSize: CGSize

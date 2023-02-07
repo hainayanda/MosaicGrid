@@ -1,5 +1,5 @@
 //
-//  MosaicGridLayoutItem.swift
+//  MosaicTileLayoutItem.swift
 //  MosaicGrid
 //
 //  Created by Nayanda Haberty on 4/2/23.
@@ -8,13 +8,13 @@
 import Foundation
 import SwiftUI
 
-struct MosaicGridLayoutItem {
+struct MosaicTileLayoutItem {
     let view: LayoutSubview
     let sizeThatFits: CGSize
     let mosaicSize: MosaicGridSize
     let spacing: MosaicGridSpacing
     let gridSize: CGSize
-    var idealSize: CGSize { mosaicSize.idealSize(for: gridSize, with: spacing) }
+    var tileSize: CGSize { mosaicSize.tileSize(for: gridSize, with: spacing) }
     
     init(view: LayoutSubview, sizeThatFits: CGSize, gridSize: CGSize, mosaicSize: MosaicGridSize, spacing: MosaicGridSpacing) {
         self.view = view
@@ -34,8 +34,8 @@ struct MosaicGridLayoutItem {
         self.mosaicSize = sizeThatFits.mosaicGridSize(using: gridSize, spacing: spacing)
     }
     
-    func maxedH(at height: Int) -> MosaicGridLayoutItem {
-        MosaicGridLayoutItem(
+    func maxedH(at height: Int) -> MosaicTileLayoutItem {
+        MosaicTileLayoutItem(
             view: view,
             sizeThatFits: sizeThatFits,
             gridSize: gridSize,
@@ -44,8 +44,8 @@ struct MosaicGridLayoutItem {
         )
     }
     
-    func maxedW(at width: Int) -> MosaicGridLayoutItem {
-        MosaicGridLayoutItem(
+    func maxedW(at width: Int) -> MosaicTileLayoutItem {
+        MosaicTileLayoutItem(
             view: view,
             sizeThatFits: sizeThatFits,
             gridSize: gridSize,
@@ -54,7 +54,7 @@ struct MosaicGridLayoutItem {
         )
     }
     
-    func maxed(_ axis: Axis.Set, at max: Int) -> MosaicGridLayoutItem {
+    func maxed(_ axis: Axis.Set, at max: Int) -> MosaicTileLayoutItem {
         switch axis {
         case .vertical:
             return maxedH(at: max)
@@ -92,7 +92,7 @@ private extension MosaicGridSize {
             return ProposedViewSize(width: proposalWidth, height: proposalHeight)
         }
     
-    func idealSize(for gridSize: CGSize, with spacing: MosaicGridSpacing) -> CGSize {
+    func tileSize(for gridSize: CGSize, with spacing: MosaicGridSpacing) -> CGSize {
         let sizeWidth = (CGFloat(width) * gridSize.width) + (CGFloat(width - 1) * spacing.horizontal)
         let sizeHeight = (CGFloat(height) * gridSize.height) + (CGFloat(height - 1) * spacing.vertical)
         return CGSize(width: sizeWidth, height: sizeHeight)

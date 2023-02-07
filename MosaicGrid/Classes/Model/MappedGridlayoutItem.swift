@@ -7,12 +7,18 @@
 
 import Foundation
 
-struct MappedMosaicGridLayoutItem {
+@dynamicMemberLookup
+struct MappedMosaicTileLayoutItem {
     let coordinate: MosaicGridCoordinate
-    let item: MosaicGridLayoutItem
+    let layoutItem: MosaicTileLayoutItem
     
-    var maxX: Int { coordinate.x + item.mosaicSize.width - 1 }
-    var maxY: Int { coordinate.y + item.mosaicSize.height - 1 }
+    var maxX: Int { coordinate.x + layoutItem.mosaicSize.width - 1 }
+    var maxY: Int { coordinate.y + layoutItem.mosaicSize.height - 1 }
     var minX: Int { coordinate.x }
     var minY: Int { coordinate.y }
+    
+    public subscript<Property>(
+        dynamicMember keyPath: KeyPath<MosaicTileLayoutItem, Property>) -> Property {
+            layoutItem[keyPath: keyPath]
+        }
 }
