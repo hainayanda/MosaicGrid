@@ -14,19 +14,17 @@ struct MosaicRatioGridLayout: MosaicGridLayout {
     
     let crossOrientationCount: Int
     let orientation: Axis.Set
-    let hSpacing: CGFloat
-    let vSpacing: CGFloat
+    let spacing: MosaicGridSpacing
     let aspectRatio: Double
     
-    init(orientation: Axis.Set, crossGridCount: Int, aspectRatio: Double = 1, hSpacing: CGFloat = .zero, vSpacing: CGFloat = .zero) {
+    init(orientation: Axis.Set, crossGridCount: Int, aspectRatio: Double = 1, spacing: MosaicGridSpacing = .zero) {
         self.orientation = orientation
         self.crossOrientationCount = crossGridCount
-        self.hSpacing = hSpacing
-        self.vSpacing = vSpacing
+        self.spacing = spacing
         self.aspectRatio = aspectRatio
     }
     
-    func gridSize(basedOn proposal: ProposedViewSize) -> CGSize {
+    func tilesSize(basedOn proposal: ProposedViewSize) -> CGSize {
         guard let proposedDimension = proposal.axisDimension(for: crossOrientation) else { return .zero }
         let usedDimension = proposedDimension - (crossAxisSpacing * CGFloat(crossOrientationCount - 1))
         let calculatedGridDimension = usedDimension / CGFloat(crossOrientationCount)

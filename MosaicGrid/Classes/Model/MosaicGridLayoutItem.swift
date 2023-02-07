@@ -10,32 +10,66 @@ import SwiftUI
 
 struct MosaicGridLayoutItem {
     let view: LayoutSubview
-    let hGridCount: Int
-    let vGridCount: Int
+    let sizeThatFits: CGSize
+    let mosaicSize: MosaicGridSize
+    let spacing: MosaicGridSpacing
+    let gridSize: CGSize
+    var idealSize: CGSize { mosaicSize.idealSize(for: gridSize, with: spacing) }
     
-    init(view: LayoutSubview, hGridCount: Int, vGridCount: Int) {
+    init(view: LayoutSubview, sizeThatFits: CGSize, gridSize: CGSize, mosaicSize: MosaicGridSize, spacing: MosaicGridSpacing) {
         self.view = view
-        self.hGridCount = hGridCount
-        self.vGridCount = vGridCount
+        self.sizeThatFits = sizeThatFits
+        self.mosaicSize = mosaicSize
+        self.spacing = spacing
+        self.gridSize = gridSize
     }
     
-    init(view: LayoutSubview, proposal: ProposedViewSize, gridSize: CGSize, hSpacing: CGFloat, vSpacing: CGFloat) {
+    init(view: LayoutSubview, proposal: ProposedViewSize, gridSize: CGSize, spacing: MosaicGridSpacing) {
         self.view = view
-        let mosaicSizeProposal = view[MosaicTiles.self]?
-            .proposalSize(from: proposal, gridSize: gridSize, hSpacing: hSpacing, vSpacing: vSpacing)
-        ?? ProposedViewSize(width: nil, height: nil)
-        let mosaicGridSize = view.sizeThatFits(mosaicSizeProposal)
-            .mosaicGridSize(using: gridSize, hSpacing: hSpacing, vSpacing: vSpacing)
-        hGridCount = mosaicGridSize.width
-        vGridCount = mosaicGridSize.height
+        self.spacing = spacing
+        self.gridSize = gridSize
+        let tilesSize = view[MosaicTiles.self]
+        let mosaicSizeProposal = tilesSize?.proposalSize(from: proposal, gridSize: gridSize, spacing: spacing) ?? .unspecified
+        self.sizeThatFits = view.sizeThatFits(mosaicSizeProposal)
+        self.mosaicSize = sizeThatFits.mosaicGridSize(using: gridSize, spacing: spacing)
+    }
+    
+    func maxedH(at height: Int) -> MosaicGridLayoutItem {
+        MosaicGridLayoutItem(
+            view: view,
+            sizeThatFits: sizeThatFits,
+            gridSize: gridSize,
+            mosaicSize: MosaicGridSize(width: mosaicSize.width, height: min(mosaicSize.height, height)),
+            spacing: spacing
+        )
+    }
+    
+    func maxedW(at width: Int) -> MosaicGridLayoutItem {
+        MosaicGridLayoutItem(
+            view: view,
+            sizeThatFits: sizeThatFits,
+            gridSize: gridSize,
+            mosaicSize: MosaicGridSize(width: min(mosaicSize.width, width), height: mosaicSize.height),
+            spacing: spacing
+        )
+    }
+    
+    func maxed(_ axis: Axis.Set, at max: Int) -> MosaicGridLayoutItem {
+        switch axis {
+        case .vertical:
+            return maxedH(at: max)
+        default:
+            return maxedW(at: max)
+        }
     }
 }
 
 private extension CGSize {
-    func mosaicGridSize(using gridSize: CGSize, hSpacing: CGFloat, vSpacing: CGFloat) -> MosaicGridSize {
+    
+    func mosaicGridSize(using gridSize: CGSize, spacing: MosaicGridSpacing) -> MosaicGridSize {
         MosaicGridSize(
-            width: calculateGridCount(for: width, gridDimension: gridSize.width, spacing: hSpacing),
-            height: calculateGridCount(for: height, gridDimension: gridSize.height, spacing: vSpacing)
+            width: calculateGridCount(for: width, gridDimension: gridSize.width, spacing: spacing.horizontal),
+            height: calculateGridCount(for: height, gridDimension: gridSize.height, spacing: spacing.vertical)
         )
     }
     
@@ -52,10 +86,15 @@ private extension MosaicGridSize {
     func proposalSize(
         from containerProposal: ProposedViewSize,
         gridSize: CGSize,
-        hSpacing: CGFloat,
-        vSpacing: CGFloat) -> ProposedViewSize {
-            let proposalWidth: CGFloat = (CGFloat(width) * gridSize.width) + (CGFloat(width - 1) * hSpacing)
-            let proposalHeight: CGFloat = (CGFloat(height) * gridSize.height) + (CGFloat(height - 1) * vSpacing)
+        spacing: MosaicGridSpacing) -> ProposedViewSize {
+            let proposalWidth: CGFloat = (CGFloat(width) * gridSize.width) + (CGFloat(width - 1) * spacing.horizontal)
+            let proposalHeight: CGFloat = (CGFloat(height) * gridSize.height) + (CGFloat(height - 1) * spacing.vertical)
             return ProposedViewSize(width: proposalWidth, height: proposalHeight)
         }
+    
+    func idealSize(for gridSize: CGSize, with spacing: MosaicGridSpacing) -> CGSize {
+        let sizeWidth = (CGFloat(width) * gridSize.width) + (CGFloat(width - 1) * spacing.horizontal)
+        let sizeHeight = (CGFloat(height) * gridSize.height) + (CGFloat(height - 1) * spacing.vertical)
+        return CGSize(width: sizeWidth, height: sizeHeight)
+    }
 }

@@ -1,5 +1,5 @@
 //
-//  MosaicConstantGridLayout.swift
+//  MosaicAxisDimensionGridLayout.swift
 //  MosaicGrid
 //
 //  Created by Nayanda Haberty on 7/2/23.
@@ -8,25 +8,23 @@
 import Foundation
 import SwiftUI
 
-struct MosaicConstantGridLayout: MosaicGridLayout {
+struct MosaicAxisDimensionGridLayout: MosaicGridLayout {
     
     typealias Cache = [MappedMosaicGridLayoutItem]
     
     let crossOrientationCount: Int
     let orientation: Axis.Set
-    let hSpacing: CGFloat
-    let vSpacing: CGFloat
+    let spacing: MosaicGridSpacing
     let gridAxisDimension: CGFloat
     
-    init(orientation: Axis.Set, crossGridCount: Int, gridAxisDimension: CGFloat, hSpacing: CGFloat = .zero, vSpacing: CGFloat = .zero) {
+    init(orientation: Axis.Set, crossGridCount: Int, gridAxisDimension: CGFloat, spacing: MosaicGridSpacing = .zero) {
         self.orientation = orientation
         self.crossOrientationCount = crossGridCount
-        self.hSpacing = hSpacing
-        self.vSpacing = vSpacing
+        self.spacing = spacing
         self.gridAxisDimension = gridAxisDimension
     }
     
-    func gridSize(basedOn proposal: ProposedViewSize) -> CGSize {
+    func tilesSize(basedOn proposal: ProposedViewSize) -> CGSize {
         guard let proposedDimension = proposal.axisDimension(for: crossOrientation) else { return .zero }
         let usedDimension = proposedDimension - (crossAxisSpacing * CGFloat(crossOrientationCount - 1))
         let calculatedGridDimension = usedDimension / CGFloat(crossOrientationCount)

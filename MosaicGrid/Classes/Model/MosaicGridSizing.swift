@@ -9,8 +9,7 @@ import Foundation
 import SwiftUI
 
 enum MosaicGridSizing {
-    case aspectRatio(Double)
-    case constantAxis(CGFloat)
-    
-    static var `default`: MosaicGridSizing { .aspectRatio(1) }
+    case aspectRatio(Double, crossGridCount: Int)
+    case constantAxis(CGFloat, crossGridCount: Int)
+    case constantSize(CGSize)
 }

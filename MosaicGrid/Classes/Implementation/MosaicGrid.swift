@@ -9,69 +9,59 @@ import SwiftUI
 
 struct MosaicGrid<Content>: View where Content: View {
     let orientation: Axis.Set
-    let hSpacing: CGFloat
-    let vSpacing: CGFloat
-    let crossGridCount: Int
+    let spacing: MosaicGridSpacing
     let gridSizing: MosaicGridSizing
     let content: () -> Content
     
     init(
         orientation: Axis.Set,
-        hSpacing: CGFloat,
-        vSpacing: CGFloat,
-        crossGridCount: Int,
+        spacing: MosaicGridSpacing,
         gridSizing: MosaicGridSizing,
         @ViewBuilder content: @escaping () -> Content) {
             self.orientation = orientation
-            self.hSpacing = hSpacing
-            self.vSpacing = vSpacing
-            self.crossGridCount = crossGridCount
-            self.gridSizing = gridSizing
-            self.content = content
-        }
-    
-    init(
-        orientation: Axis.Set,
-        spacing: CGFloat,
-        crossGridCount: Int,
-        gridSizing: MosaicGridSizing,
-        @ViewBuilder content: @escaping () -> Content) {
-            self.orientation = orientation
-            self.hSpacing = spacing
-            self.vSpacing = spacing
-            self.crossGridCount = crossGridCount
+            self.spacing = spacing
             self.gridSizing = gridSizing
             self.content = content
         }
     
     var body: some View {
         switch gridSizing {
-        case .aspectRatio(let ratio):
-            mosaicRatioGridLayout(aspectRatio: ratio)
-        case .constantAxis(let dimension):
-            mosaicConstantGridLayout(axisDimension: dimension)
+        case .aspectRatio(let ratio, let crossGridCount):
+            mosaicRatioGridLayout(aspectRatio: ratio, crossGridCount: crossGridCount)
+        case .constantAxis(let dimension, let crossGridCount):
+            mosaicAxisDimensionGridLayout(axisDimension: dimension, crossGridCount: crossGridCount)
+        case .constantSize(let size):
+            mosaicSizedGridLayout(tileSize: size, minimumSpacing: spacing)
         }
     }
     
-    func mosaicRatioGridLayout(aspectRatio: Double) -> some View {
+    func mosaicRatioGridLayout(aspectRatio: Double, crossGridCount: Int) -> some View {
         MosaicRatioGridLayout(
             orientation: orientation,
             crossGridCount: crossGridCount,
             aspectRatio: aspectRatio,
-            hSpacing: hSpacing,
-            vSpacing: vSpacing
+            spacing: spacing
         ) {
             content()
         }
     }
     
-    func mosaicConstantGridLayout(axisDimension: CGFloat) -> some View {
-        MosaicConstantGridLayout(
+    func mosaicAxisDimensionGridLayout(axisDimension: CGFloat, crossGridCount: Int) -> some View {
+        MosaicAxisDimensionGridLayout(
             orientation: orientation,
             crossGridCount: crossGridCount,
             gridAxisDimension: axisDimension,
-            hSpacing: hSpacing,
-            vSpacing: vSpacing
+            spacing: spacing
+        ) {
+            content()
+        }
+    }
+    
+    func mosaicSizedGridLayout(tileSize: CGSize, minimumSpacing: MosaicGridSpacing) -> some View {
+        MosaicSizedGridLayout(
+            orientation: orientation,
+            tileSize: tileSize,
+            minimumSpacing: minimumSpacing
         ) {
             content()
         }
@@ -81,7 +71,7 @@ struct MosaicGrid<Content>: View where Content: View {
 struct MosaicGrid_Previews: PreviewProvider {
     static var previews: some View {
         ScrollView(.vertical) {
-            MosaicGrid(orientation: .vertical, spacing: 10, crossGridCount: 3, gridSizing: .default) {
+            MosaicGrid(orientation: .vertical, spacing: 10, gridSizing: .constantSize(CGSize(width: 50, height: 50))) {
                 Rectangle()
                     .foregroundColor(.red)
                     .mosaicTiles(w: 2, h: 2)

@@ -11,44 +11,29 @@ public struct VMosaicGrid<Content>: View where Content: View {
     
     let mosaicGrid: MosaicGrid<Content>
     
-    public init(hGridCount: Int, hSpacing: CGFloat = .zero, vSpacing: CGFloat = .zero, gridAspectRatio: Double = 1, @ViewBuilder content: @escaping () -> Content) {
-        self.mosaicGrid = MosaicGrid(
-            orientation: .vertical,
-            hSpacing: hSpacing,
-            vSpacing: vSpacing,
-            crossGridCount: hGridCount,
-            gridSizing: .aspectRatio(gridAspectRatio),
-            content: content
-        )
-    }
-    
-    public init(hGridCount: Int, spacing: CGFloat = .zero, gridAspectRatio: Double = 1, @ViewBuilder content: @escaping () -> Content) {
+    public init(hGridCount: Int, spacing: MosaicGridSpacing = .zero, gridAspectRatio: Double = 1, @ViewBuilder content: @escaping () -> Content) {
         self.mosaicGrid = MosaicGrid(
             orientation: .vertical,
             spacing: spacing,
-            crossGridCount: hGridCount,
-            gridSizing: .aspectRatio(gridAspectRatio),
+            gridSizing: .aspectRatio(gridAspectRatio, crossGridCount: hGridCount),
             content: content
         )
     }
     
-    public init(hGridCount: Int, hSpacing: CGFloat = .zero, vSpacing: CGFloat = .zero, gridHeight: CGFloat, @ViewBuilder content: @escaping () -> Content) {
-        self.mosaicGrid = MosaicGrid(
-            orientation: .vertical,
-            hSpacing: hSpacing,
-            vSpacing: vSpacing,
-            crossGridCount: hGridCount,
-            gridSizing: .constantAxis(gridHeight),
-            content: content
-        )
-    }
-    
-    public init(hGridCount: Int, spacing: CGFloat = .zero, gridHeight: CGFloat, @ViewBuilder content: @escaping () -> Content) {
+    public init(hGridCount: Int, spacing: MosaicGridSpacing = .zero, gridHeight: CGFloat, @ViewBuilder content: @escaping () -> Content) {
         self.mosaicGrid = MosaicGrid(
             orientation: .vertical,
             spacing: spacing,
-            crossGridCount: hGridCount,
-            gridSizing: .constantAxis(gridHeight),
+            gridSizing: .constantAxis(gridHeight, crossGridCount: hGridCount),
+            content: content
+        )
+    }
+    
+    public init(tileSize: CGSize, minimumSpacing: MosaicGridSpacing = .zero, @ViewBuilder content: @escaping () -> Content) {
+        self.mosaicGrid = MosaicGrid(
+            orientation: .vertical,
+            spacing: minimumSpacing,
+            gridSizing: .constantSize(tileSize),
             content: content
         )
     }
