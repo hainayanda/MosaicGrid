@@ -15,15 +15,13 @@ protocol MosaicGridLayout: Layout {
     var vSpacing: CGFloat { get }
     var crossOrientationCount: Int { get }
     var orientation: Axis.Set { get }
-
+    
     func gridSize(basedOn proposal: ProposedViewSize) -> CGSize
 }
 
 // MARK:  MosaicGridLayout + Extensions
 
-extension MosaicGridLayout where Cache == [MappedMosaicGridLayoutItem] {
-    
-    // MARK: Calculated Properties
+extension MosaicGridLayout {
     
     var crossOrientation: Axis.Set {
         orientation == .vertical ? .horizontal: .vertical
@@ -36,6 +34,13 @@ extension MosaicGridLayout where Cache == [MappedMosaicGridLayoutItem] {
     var crossAxisSpacing: CGFloat {
         orientation == .vertical ? hSpacing: vSpacing
     }
+    
+    func gridSize(basedOn geometry: GeometryProxy) -> CGSize {
+        gridSize(basedOn: ProposedViewSize(geometry.size))
+    }
+}
+
+extension MosaicGridLayout where Cache == [MappedMosaicGridLayoutItem] {
     
     // MARK: Default Layout Implementation
     
@@ -87,15 +92,6 @@ extension MosaicGridLayout where Cache == [MappedMosaicGridLayoutItem] {
         }
     }
     
-    // MARK: Default Methods
-    
-    func gridSize(basedOn proposal: ProposedViewSize) -> CGSize {
-        guard let proposedDimension = proposal.axisDimension(for: crossOrientation) else { return .zero }
-        let usedDimension = proposedDimension - (crossAxisSpacing * CGFloat(crossOrientationCount - 1))
-        let singleGridDimension = usedDimension / CGFloat(crossOrientationCount)
-        return CGSize(width: singleGridDimension, height: singleGridDimension)
-    }
-    
     // MARK: Private Methods
     
     private func makeMatrix() -> MutableLogicalMatrix {
@@ -104,22 +100,22 @@ extension MosaicGridLayout where Cache == [MappedMosaicGridLayoutItem] {
     
     private func nextCoordinate(for item: MosaicGridLayoutItem, lastCoordinate: MosaicGridCoordinate) -> MosaicGridCoordinate {
         guard item.hGridCount <= crossOrientationCount else { fatalError("width should be less or equal to gridHCount") }
-
+        
         let lastCrossAxis = lastCoordinate.value(of: crossOrientation)
         let lastAxis = lastCoordinate.value(of: orientation)
         let crossAxisCount = item.gridCount(of: crossOrientation)
         
-        let goingDown = lastCrossAxis + crossAxisCount >= crossOrientationCount
-
-        let crossAxis = goingDown ? 0: lastCrossAxis + 1
-        let axis = goingDown ? lastAxis + 1: lastAxis
-
+        let shifting = lastCrossAxis + crossAxisCount >= crossOrientationCount
+        
+        let crossAxis = shifting ? 0: lastCrossAxis + 1
+        let axis = shifting ? lastAxis + 1: lastAxis
+        
         if crossAxis + crossAxisCount > crossOrientationCount {
             return orientation == .vertical ? MosaicGridCoordinate(x: 0, y: axis + 1): MosaicGridCoordinate(x: axis + 1, y: 0)
         }
         return orientation == .vertical ? MosaicGridCoordinate(x: max(crossAxis, 0), y: max(axis, 0)): MosaicGridCoordinate(x: max(axis, 0), y: max(crossAxis, 0))
     }
-
+    
     private func coordinateToFill(for item: MosaicGridLayoutItem, coordinate: MosaicGridCoordinate) -> [MosaicGridCoordinate] {
         let x = coordinate.x
         let y = coordinate.y
@@ -147,9 +143,7 @@ extension MosaicGridLayout where Cache == [MappedMosaicGridLayoutItem] {
                 
                 var isSafe = true
                 for coordinate in toFills {
-                    guard let isFilled = modelMatrix[coordinate.x, coordinate.y] else {
-                        break
-                    }
+                    let isFilled = modelMatrix[coordinate.x, coordinate.y] ?? false
                     guard !isFilled else {
                         isSafe = false
                         break
@@ -161,7 +155,9 @@ extension MosaicGridLayout where Cache == [MappedMosaicGridLayoutItem] {
                     modelMatrix[coordinate.x, coordinate.y] = true
                 }
                 let mapped = MappedMosaicGridLayoutItem(coordinate: coordinate, item: item)
-                currentCoordinate = MosaicGridCoordinate(x: mapped.maxX, y: mapped.minY)
+                currentCoordinate = orientation == .vertical
+                ? MosaicGridCoordinate(x: mapped.maxX, y: mapped.minY)
+                : MosaicGridCoordinate(x: mapped.minX, y: mapped.maxY)
                 return mapped
             }
         }
@@ -212,14 +208,8 @@ private extension MosaicGridCoordinate {
             self.y = crossAxis
         }
     }
-
+    
     func value(of axis: Axis.Set) -> Int {
         axis == .vertical ? y: x
-    }
-}
-
-private extension ProposedViewSize {
-    func axisDimension(for axis: Axis.Set) -> CGFloat? {
-        axis == .vertical ? height: width
     }
 }

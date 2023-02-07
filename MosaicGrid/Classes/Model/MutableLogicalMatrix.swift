@@ -60,7 +60,7 @@ class HMutableLogicalMatrix: MutableLogicalMatrix {
             return columnArray[safe: row] ?? nil
         }
         set {
-            guard row < height else { fatalError() }
+            guard row < height else { fatalError("Row should be less than matrix height") }
             if column >= twoDArray.count {
                 let numberOfArrayNeeded = column - twoDArray.count + 1
                 let newArrays: [[Bool]] = (0 ..< numberOfArrayNeeded).map { _ in

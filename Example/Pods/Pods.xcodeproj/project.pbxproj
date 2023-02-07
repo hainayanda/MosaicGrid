@@ -41,13 +41,15 @@
 		38171F67EADE7FED58570342E0AF091D /* BeginWith.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946F79252D97B67192B7C0B55A6820A3 /* BeginWith.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		393593D793EA0004B5060275B7A60C0C /* MatchError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F289DDBD801176E0B316A2721C3F06 /* MatchError.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		3A430D87298E227800CBDA81 /* VMosaicGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A430D86298E227800CBDA81 /* VMosaicGrid.swift */; };
-		3A430D89298EC77B00CBDA81 /* MosaicGridSizeContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A430D88298EC77B00CBDA81 /* MosaicGridSizeContext.swift */; };
-		3AC6D71E2990EBB500DDB605 /* VMosaicGridLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC6D71D2990EBB500DDB605 /* VMosaicGridLayout.swift */; };
-		3AC6D7202990EBBF00DDB605 /* HMosaicGridLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC6D71F2990EBBF00DDB605 /* HMosaicGridLayout.swift */; };
-		3AC6D7232990EC0100DDB605 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC6D7222990EC0100DDB605 /* View+Extensions.swift */; };
 		3AC6D7262990ECF200DDB605 /* MappedGridlayoutItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC6D7252990ECF200DDB605 /* MappedGridlayoutItem.swift */; };
 		3AC6D7282990ED0A00DDB605 /* MosaicGridCoordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC6D7272990ED0A00DDB605 /* MosaicGridCoordinate.swift */; };
 		3AC6D72C2990ED8000DDB605 /* HMosaicGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC6D72B2990ED8000DDB605 /* HMosaicGrid.swift */; };
+		3AC6D7312991F8B300DDB605 /* MosaicRatioGridLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC6D7302991F8B300DDB605 /* MosaicRatioGridLayout.swift */; };
+		3AC6D7332991FAC100DDB605 /* MosaicConstantGridLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC6D7322991FAC100DDB605 /* MosaicConstantGridLayout.swift */; };
+		3AC6D7352991FAE800DDB605 /* ProposedViewSize+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC6D7342991FAE800DDB605 /* ProposedViewSize+Extensions.swift */; };
+		3AC6D7372991FBB300DDB605 /* MosaicGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC6D7362991FBB300DDB605 /* MosaicGrid.swift */; };
+		3AC6D73B299226AE00DDB605 /* MosaicTiles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC6D73A299226AE00DDB605 /* MosaicTiles.swift */; };
+		3ADE06A62992353000C96BED /* MosaicGridSizing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADE06A52992353000C96BED /* MosaicGridSizing.swift */; };
 		3CA95C5B6C4504C871B22A001EC95C17 /* CwlDarwinDefinitions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B17B8D48C6B1ED85E618AE6A688ECD5 /* CwlDarwinDefinitions.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		3E1858594C50CDEEC2DAAB858142E38F /* ExampleMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FDE507AB2D4E765BA05E0714FD37A31 /* ExampleMetadata.swift */; };
 		40365D053A950B56801C4BDF7548211F /* AssertionRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0A625767571CF254481EE7839A5C88 /* AssertionRecorder.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
@@ -215,14 +217,16 @@
 		2A14C3AF1D8417E92A5281C9D010C436 /* Equal+Tuple.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Equal+Tuple.swift"; path = "Sources/Nimble/Matchers/Equal+Tuple.swift"; sourceTree = "<group>"; };
 		2C8B8B216F5ECE5BCA8333868480C594 /* ThrowError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ThrowError.swift; path = Sources/Nimble/Matchers/ThrowError.swift; sourceTree = "<group>"; };
 		3A1A886521F268DFDD6A1CA91A55C0C0 /* ExampleGroup.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExampleGroup.swift; path = Sources/Quick/ExampleGroup.swift; sourceTree = "<group>"; };
-		3A430D86298E227800CBDA81 /* VMosaicGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VMosaicGrid.swift; path = MosaicGrid/Classes/VMosaicGrid.swift; sourceTree = "<group>"; };
-		3A430D88298EC77B00CBDA81 /* MosaicGridSizeContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MosaicGridSizeContext.swift; sourceTree = "<group>"; };
-		3AC6D71D2990EBB500DDB605 /* VMosaicGridLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VMosaicGridLayout.swift; sourceTree = "<group>"; };
-		3AC6D71F2990EBBF00DDB605 /* HMosaicGridLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HMosaicGridLayout.swift; sourceTree = "<group>"; };
-		3AC6D7222990EC0100DDB605 /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
+		3A430D86298E227800CBDA81 /* VMosaicGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VMosaicGrid.swift; sourceTree = "<group>"; };
 		3AC6D7252990ECF200DDB605 /* MappedGridlayoutItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MappedGridlayoutItem.swift; sourceTree = "<group>"; };
 		3AC6D7272990ED0A00DDB605 /* MosaicGridCoordinate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MosaicGridCoordinate.swift; sourceTree = "<group>"; };
-		3AC6D72B2990ED8000DDB605 /* HMosaicGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HMosaicGrid.swift; path = MosaicGrid/Classes/HMosaicGrid.swift; sourceTree = "<group>"; };
+		3AC6D72B2990ED8000DDB605 /* HMosaicGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HMosaicGrid.swift; sourceTree = "<group>"; };
+		3AC6D7302991F8B300DDB605 /* MosaicRatioGridLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MosaicRatioGridLayout.swift; sourceTree = "<group>"; };
+		3AC6D7322991FAC100DDB605 /* MosaicConstantGridLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MosaicConstantGridLayout.swift; sourceTree = "<group>"; };
+		3AC6D7342991FAE800DDB605 /* ProposedViewSize+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProposedViewSize+Extensions.swift"; sourceTree = "<group>"; };
+		3AC6D7362991FBB300DDB605 /* MosaicGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MosaicGrid.swift; sourceTree = "<group>"; };
+		3AC6D73A299226AE00DDB605 /* MosaicTiles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MosaicTiles.swift; sourceTree = "<group>"; };
+		3ADE06A52992353000C96BED /* MosaicGridSizing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MosaicGridSizing.swift; sourceTree = "<group>"; };
 		3C79C4A4FB61ABC51B63FFE0972242DE /* NSBundle+CurrentTestBundle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "NSBundle+CurrentTestBundle.swift"; path = "Sources/Quick/NSBundle+CurrentTestBundle.swift"; sourceTree = "<group>"; };
 		3D7D12BBF0DB67D5F0F0E6C0D25F7B6E /* AdapterProtocols.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AdapterProtocols.swift; path = Sources/Nimble/Adapters/AdapterProtocols.swift; sourceTree = "<group>"; };
 		3FAFC79C4D6566AE414AC2A3EE6A33E9 /* MosaicGrid-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MosaicGrid-dummy.m"; sourceTree = "<group>"; };
@@ -517,9 +521,9 @@
 		3AC6D71C2990EB5300DDB605 /* Layout */ = {
 			isa = PBXGroup;
 			children = (
-				3AC6D71F2990EBBF00DDB605 /* HMosaicGridLayout.swift */,
+				3AC6D7322991FAC100DDB605 /* MosaicConstantGridLayout.swift */,
 				B068A50E1A015A8A9D9F80AC7174B6A8 /* MosaicGridLayout.swift */,
-				3AC6D71D2990EBB500DDB605 /* VMosaicGridLayout.swift */,
+				3AC6D7302991F8B300DDB605 /* MosaicRatioGridLayout.swift */,
 			);
 			name = Layout;
 			path = MosaicGrid/Classes/Layout;
@@ -529,7 +533,7 @@
 			isa = PBXGroup;
 			children = (
 				02C540154DA4428E9CF25EB4EED8921B /* Array+Extensions.swift */,
-				3AC6D7222990EC0100DDB605 /* View+Extensions.swift */,
+				3AC6D7342991FAE800DDB605 /* ProposedViewSize+Extensions.swift */,
 			);
 			name = Extensions;
 			path = MosaicGrid/Classes/Extensions;
@@ -541,11 +545,23 @@
 				3AC6D7252990ECF200DDB605 /* MappedGridlayoutItem.swift */,
 				3AC6D7272990ED0A00DDB605 /* MosaicGridCoordinate.swift */,
 				003AC009178BDACB3D2E5324BDCF29A9 /* MosaicGridLayoutItem.swift */,
-				3A430D88298EC77B00CBDA81 /* MosaicGridSizeContext.swift */,
+				3ADE06A52992353000C96BED /* MosaicGridSizing.swift */,
+				3AC6D73A299226AE00DDB605 /* MosaicTiles.swift */,
 				272B5532DBB9A8B47EB39C0E6F056D17 /* MutableLogicalMatrix.swift */,
 			);
 			name = Model;
 			path = MosaicGrid/Classes/Model;
+			sourceTree = "<group>";
+		};
+		3AC6D72D2991F70700DDB605 /* Implementation */ = {
+			isa = PBXGroup;
+			children = (
+				3AC6D72B2990ED8000DDB605 /* HMosaicGrid.swift */,
+				3AC6D7362991FBB300DDB605 /* MosaicGrid.swift */,
+				3A430D86298E227800CBDA81 /* VMosaicGrid.swift */,
+			);
+			name = Implementation;
+			path = MosaicGrid/Classes/Implementation;
 			sourceTree = "<group>";
 		};
 		44EE9F153ED714393996AA39E224070C /* Quick */ = {
@@ -691,8 +707,7 @@
 		BAFE4A8C9AAFB64A64C798A1E66211D4 /* MosaicGrid */ = {
 			isa = PBXGroup;
 			children = (
-				3AC6D72B2990ED8000DDB605 /* HMosaicGrid.swift */,
-				3A430D86298E227800CBDA81 /* VMosaicGrid.swift */,
+				3AC6D72D2991F70700DDB605 /* Implementation */,
 				3AC6D7212990EBE300DDB605 /* Extensions */,
 				3AC6D71C2990EB5300DDB605 /* Layout */,
 				3AC6D7242990EC3200DDB605 /* Model */,
@@ -967,14 +982,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3AC6D7202990EBBF00DDB605 /* HMosaicGridLayout.swift in Sources */,
 				3A430D87298E227800CBDA81 /* VMosaicGrid.swift in Sources */,
-				3AC6D7232990EC0100DDB605 /* View+Extensions.swift in Sources */,
+				3AC6D7352991FAE800DDB605 /* ProposedViewSize+Extensions.swift in Sources */,
+				3AC6D7332991FAC100DDB605 /* MosaicConstantGridLayout.swift in Sources */,
 				3AC6D7282990ED0A00DDB605 /* MosaicGridCoordinate.swift in Sources */,
-				3A430D89298EC77B00CBDA81 /* MosaicGridSizeContext.swift in Sources */,
+				3AC6D7372991FBB300DDB605 /* MosaicGrid.swift in Sources */,
+				3AC6D73B299226AE00DDB605 /* MosaicTiles.swift in Sources */,
+				3ADE06A62992353000C96BED /* MosaicGridSizing.swift in Sources */,
 				0DBC88F18861551D5B6014E04EBCF062 /* Array+Extensions.swift in Sources */,
+				3AC6D7312991F8B300DDB605 /* MosaicRatioGridLayout.swift in Sources */,
 				3AC6D7262990ECF200DDB605 /* MappedGridlayoutItem.swift in Sources */,
-				3AC6D71E2990EBB500DDB605 /* VMosaicGridLayout.swift in Sources */,
 				B47ECA3A2FE983173CFDB3DBBF4F7846 /* MosaicGrid-dummy.m in Sources */,
 				8275412323A8559574FA9DC9D8B8929E /* MosaicGridLayoutItem.swift in Sources */,
 				3AC6D72C2990ED8000DDB605 /* HMosaicGrid.swift in Sources */,
