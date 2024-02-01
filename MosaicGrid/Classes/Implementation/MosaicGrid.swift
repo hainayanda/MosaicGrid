@@ -11,7 +11,7 @@ struct MosaicGrid<Content>: View where Content: View {
     let orientation: Axis.Set
     let spacing: MosaicGridSpacing
     let gridSizing: MosaicGridSizing
-    let content: () -> Content
+    private let content: () -> Content
     
     init(
         orientation: Axis.Set,

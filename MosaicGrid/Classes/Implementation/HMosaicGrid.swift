@@ -10,7 +10,7 @@ import SwiftUI
 /// Horizontal Mosaic Grid View.
 public struct HMosaicGrid<Content>: View where Content: View {
     
-    let mosaicGrid: MosaicGrid<Content>
+    private let underlyingMosaicGrid: MosaicGrid<Content>
     
     /// Initialize Horizontal Mosaic Grid View.
     /// It will divide the height of the view with `vGridCount` to get the height of single grid.
@@ -23,7 +23,7 @@ public struct HMosaicGrid<Content>: View where Content: View {
     ///   - gridAspectRatio: Aspect ratio of each grid
     ///   - content: View that will be used as this Mosaic Grid Content
     public init(vGridCount: Int, spacing: MosaicGridSpacing = .zero, gridAspectRatio: Double = 1, @ViewBuilder content: @escaping () -> Content) {
-        self.mosaicGrid = MosaicGrid(
+        self.underlyingMosaicGrid = MosaicGrid(
             orientation: .horizontal,
             spacing: spacing,
             gridSizing: .aspectRatio(gridAspectRatio, crossGridCount: vGridCount),
@@ -42,7 +42,7 @@ public struct HMosaicGrid<Content>: View where Content: View {
     ///   - gridWidth: Width of each grid
     ///   - content: View that will be used as this Mosaic Grid Content
     public init(vGridCount: Int, spacing: MosaicGridSpacing = .zero, gridWidth: CGFloat, @ViewBuilder content: @escaping () -> Content) {
-        self.mosaicGrid = MosaicGrid(
+        self.underlyingMosaicGrid = MosaicGrid(
             orientation: .horizontal,
             spacing: spacing,
             gridSizing: .constantAxis(gridWidth, crossGridCount: vGridCount),
@@ -59,7 +59,7 @@ public struct HMosaicGrid<Content>: View where Content: View {
     ///   - minimumSpacing: Minimum spacing on each grid. The default is zero.
     ///   - content: iew that will be used as this Mosaic Grid Content
     public init(gridSize: CGSize, minimumSpacing: MosaicGridSpacing = .zero, @ViewBuilder content: @escaping () -> Content) {
-        self.mosaicGrid = MosaicGrid(
+        self.underlyingMosaicGrid = MosaicGrid(
             orientation: .horizontal,
             spacing: minimumSpacing,
             gridSizing: .constantSize(gridSize),
@@ -68,7 +68,7 @@ public struct HMosaicGrid<Content>: View where Content: View {
     }
     
     public var body: some View {
-        mosaicGrid
+        underlyingMosaicGrid
     }
 }
 
