@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 /// Horizontal and vertical spacing for Mosaic Grid
-public struct MosaicGridSpacing {
+public struct MosaicGridSpacing: Equatable {
     /// Horizontal spacing
     public let horizontal: CGFloat
     

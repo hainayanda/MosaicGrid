@@ -10,7 +10,7 @@ import SwiftUI
 
 struct MosaicAxisDimensionGridLayout: MosaicGridLayout {
     
-    typealias Cache = [MappedMosaicTileLayoutItem]
+    typealias Cache = MosaicGridLayoutCache
     
     let crossOrientationCount: Int
     let orientation: Axis.Set

@@ -31,13 +31,20 @@ extension MosaicGridLayout {
     }
 }
 
+struct MosaicGridLayoutCache {
+    let proposal: ProposedViewSize
+    let mapped: [MappedMosaicTileLayoutItem]
+    
+    static var empty: MosaicGridLayoutCache { .init(proposal: .unspecified, mapped: [])}
+}
+
 // MARK: Default Implementation
 
-extension MosaicGridLayout where Cache == [MappedMosaicTileLayoutItem] {
+extension MosaicGridLayout where Cache == MosaicGridLayoutCache {
     
-    @inlinable func makeCache(subviews: Subviews) -> [MappedMosaicTileLayoutItem] { [] }
+    @inlinable func makeCache(subviews: Subviews) -> MosaicGridLayoutCache { .empty }
     
-    func sizeThatFits(proposal: ProposedViewSize, subviews: Subviews, cache: inout [MappedMosaicTileLayoutItem]) -> CGSize {
+    func sizeThatFits(proposal: ProposedViewSize, subviews: Subviews, cache: inout MosaicGridLayoutCache) -> CGSize {
         let gridSize = tilesSize(basedOn: proposal)
         guard gridSize.width > .zero, gridSize.height > .zero else {
             log(.info, "Calculated grid size is invalid. Widht is \(gridSize.width) and height is \(gridSize.height). Will use zero instead.")
@@ -51,21 +58,32 @@ extension MosaicGridLayout where Cache == [MappedMosaicTileLayoutItem] {
             )
             .maxed(crossOrientation, at: crossOrientationCount)
         }
-        let mappedItems = mapItems(items)
-        cache = mappedItems.mapped
+        
+        // only used cache if the proposal size is the same as cache.
+        let mappedCache: [MappedMosaicTileLayoutItem] = cache.proposal == proposal ? cache.mapped: []
+        
+        // get valid items in cache
+        let itemsCachePairs = unmappedItemsWithValidCache(for: items, in: mappedCache)
+        
+        // map items but skip the already mapped items in cache
+        let mappedItems = mapItems(cache: itemsCachePairs.cache, itemsCachePairs.unmappedItems)
+        
+        // store the new mapped items in cache
+        cache = .init(proposal: proposal, mapped: mappedItems.mapped)
+        
         let width: CGFloat = (gridSize.width * CGFloat(mappedItems.column)) + (spacing.horizontal * CGFloat(mappedItems.column - 1))
         let height: CGFloat = (gridSize.height * CGFloat(mappedItems.rows)) + (spacing.vertical * CGFloat(mappedItems.rows - 1))
         return CGSize(width: width, height: height)
     }
     
-    func placeSubviews(in bounds: CGRect, proposal: ProposedViewSize, subviews: Subviews, cache: inout [MappedMosaicTileLayoutItem]) {
+    func placeSubviews(in bounds: CGRect, proposal: ProposedViewSize, subviews: Subviews, cache: inout MosaicGridLayoutCache) {
         let gridSize = tilesSize(basedOn: proposal)
         guard gridSize.width > .zero, gridSize.height > .zero else {
             log(.info, "Calculated grid size is invalid. Widht is \(gridSize.width) and height is \(gridSize.height). Will not place a subview")
             return
         }
         let origin = bounds.origin
-        cache.forEach { item in
+        cache.mapped.forEach { item in
             let idealSize = item.tileSize
             let innerX = CGFloat(item.minX) * (gridSize.width + spacing.horizontal)
             let innerY = CGFloat(item.minY) * (gridSize.height + spacing.vertical)
@@ -82,6 +100,21 @@ extension MosaicGridLayout where Cache == [MappedMosaicTileLayoutItem] {
     }
     
     // MARK: Private Methods
+    
+    private func unmappedItemsWithValidCache(
+        for items: [MosaicTileLayoutItem], in cache: [MappedMosaicTileLayoutItem]
+    ) -> (cache: [MappedMosaicTileLayoutItem], unmappedItems: [MosaicTileLayoutItem]) {
+        var mutableItems = items
+        var validCache: [MappedMosaicTileLayoutItem] = []
+        for mapped in cache {
+            guard let item = mutableItems.first, mapped.layoutItem == item else {
+                return (validCache, mutableItems)
+            }
+            mutableItems.removeFirst()
+            validCache.append(mapped)
+        }
+        return (validCache, mutableItems)
+    }
     
     private func makeMutableMatrix() -> MutableLogicalMatrix {
         orientation == .vertical
@@ -109,30 +142,37 @@ extension MosaicGridLayout where Cache == [MappedMosaicTileLayoutItem] {
         : MosaicGridCoordinate(x: max(axis, 0), y: max(crossAxis, 0))
     }
     
-    private func mapItems(_ items: [MosaicTileLayoutItem]) -> (mapped: [MappedMosaicTileLayoutItem], rows: Int, column: Int) {
-        let modelMatrix = makeMutableMatrix()
-        var currentCoordinate: MosaicGridCoordinate = MosaicGridCoordinate(x: -1, y: -1)
-        let mapped: [MappedMosaicTileLayoutItem] = items.map { item in
+    private func mapItems(cache: [MappedMosaicTileLayoutItem], _ items: [MosaicTileLayoutItem]) -> (mapped: [MappedMosaicTileLayoutItem], rows: Int, column: Int) {
+        var mutableMatrix: MutableLogicalMatrix
+        var currentCoordinate: MosaicGridCoordinate
+        if let lastCache = cache.last {
+            mutableMatrix = lastCache.lastMatrix
+            currentCoordinate = lastCache.coordinate
+        } else {
+            mutableMatrix = makeMutableMatrix()
+            currentCoordinate = MosaicGridCoordinate(x: -1, y: -1)
+        }
+        let results: [MappedMosaicTileLayoutItem] = items.map { item in
             while true {
                 let coordinate = nextCoordinate(for: item, lastCoordinate: currentCoordinate)
                 currentCoordinate = coordinate
                 
                 let toFills = item.mapToGridCoordinate(startFrom: coordinate)
                 
-                guard toFills.isValid(in: modelMatrix) else { continue }
+                guard toFills.isValid(in: mutableMatrix) else { continue }
                 
                 toFills.forEach { coordinate in
-                    modelMatrix[coordinate.x, coordinate.y] = true
+                    mutableMatrix[coordinate.x, coordinate.y] = true
                 }
                 
-                let mapped = MappedMosaicTileLayoutItem(coordinate: coordinate, layoutItem: item)
+                let mapped = MappedMosaicTileLayoutItem(coordinate: coordinate, layoutItem: item, lastMatrix: mutableMatrix)
                 currentCoordinate = orientation == .vertical
                 ? MosaicGridCoordinate(x: mapped.maxX, y: mapped.minY)
                 : MosaicGridCoordinate(x: mapped.minX, y: mapped.maxY)
                 return mapped
             }
         }
-        return (mapped, modelMatrix.height, modelMatrix.width)
+        return (cache + results, mutableMatrix.height, mutableMatrix.width)
     }
 }
 

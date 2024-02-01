@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-struct MosaicTileLayoutItem {
+struct MosaicTileLayoutItem: Equatable {
     let view: LayoutSubview
     let sizeThatFits: CGSize
     let mosaicSize: MosaicGridSize

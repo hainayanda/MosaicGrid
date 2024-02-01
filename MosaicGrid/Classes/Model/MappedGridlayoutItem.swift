@@ -11,6 +11,7 @@ import Foundation
 struct MappedMosaicTileLayoutItem {
     let coordinate: MosaicGridCoordinate
     let layoutItem: MosaicTileLayoutItem
+    let lastMatrix: MutableLogicalMatrix
     
     @inlinable var maxX: Int { coordinate.x + layoutItem.mosaicSize.width - 1 }
     @inlinable var maxY: Int { coordinate.y + layoutItem.mosaicSize.height - 1 }

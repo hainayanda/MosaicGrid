@@ -78,7 +78,7 @@ struct VMosaicGrid_Previews: PreviewProvider {
     static var previews: some View {
         ScrollView(.vertical) {
             VMosaicGrid(hGridCount: 3, spacing: 10) {
-                ForEach(0..<10) { _ in
+                ForEach(0..<50) { _ in
                     Rectangle()
                         .foregroundColor(.red)
                         .tileSized(w: 2, h: 2)

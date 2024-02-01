@@ -10,7 +10,7 @@ import SwiftUI
 
 struct MosaicSizedGridLayout: MosaicGridLayout {
     
-    typealias Cache = [MappedMosaicTileLayoutItem]
+    typealias Cache = MosaicGridLayoutCache
     
     let orientation: Axis.Set
     let tileSize: CGSize

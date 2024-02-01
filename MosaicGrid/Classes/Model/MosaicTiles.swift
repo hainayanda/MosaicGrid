@@ -12,7 +12,7 @@ struct MosaicTiles: LayoutValueKey {
     static let defaultValue: MosaicGridSize? = nil
 }
 
-struct MosaicGridSize {
+struct MosaicGridSize: Equatable {
     let width: Int
     let height: Int
 }

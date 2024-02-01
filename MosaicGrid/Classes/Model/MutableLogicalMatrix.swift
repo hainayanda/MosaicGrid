@@ -7,13 +7,13 @@
 
 import Foundation
 
-protocol MutableLogicalMatrix: AnyObject {
+protocol MutableLogicalMatrix {
     var width: Int { get }
     var height: Int { get }
     subscript(_ column: Int, _ row: Int) -> Bool? { get set }
 }
 
-class VMutableLogicalMatrix: MutableLogicalMatrix {
+struct VMutableLogicalMatrix: MutableLogicalMatrix {
     
     let width: Int
     var height: Int { twoDArray.count }
@@ -50,7 +50,7 @@ class VMutableLogicalMatrix: MutableLogicalMatrix {
     }
 }
 
-class HMutableLogicalMatrix: MutableLogicalMatrix {
+struct HMutableLogicalMatrix: MutableLogicalMatrix {
     
     var width: Int { twoDArray.count }
     let height: Int
