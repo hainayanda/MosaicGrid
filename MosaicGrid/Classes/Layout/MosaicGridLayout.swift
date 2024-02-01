@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-// MARK:  MosaicGridLayout
+// MARK: MosaicGridLayout
 
 protocol MosaicGridLayout: Layout {
     var spacing: MosaicGridSpacing { get }
@@ -18,16 +18,12 @@ protocol MosaicGridLayout: Layout {
     func tilesSize(basedOn proposal: ProposedViewSize) -> CGSize
 }
 
-// MARK:  MosaicGridLayout + Extensions
+// MARK: MosaicGridLayout + Extensions
 
 extension MosaicGridLayout {
     
     @inlinable var crossOrientation: Axis.Set {
         orientation == .vertical ? .horizontal: .vertical
-    }
-    
-    @inlinable var axisSpacing: CGFloat {
-        orientation == .vertical ? spacing.vertical: spacing.horizontal
     }
     
     @inlinable var crossAxisSpacing: CGFloat {
@@ -50,7 +46,6 @@ extension MosaicGridLayout where Cache == [MappedMosaicTileLayoutItem] {
         let items = subviews.map { subview in
             MosaicTileLayoutItem(
                 view: subview,
-                proposal: proposal,
                 gridSize: gridSize,
                 spacing: spacing
             )
@@ -145,10 +140,11 @@ extension MosaicGridLayout where Cache == [MappedMosaicTileLayoutItem] {
 
 private extension Sequence where Element == MosaicGridCoordinate {
     func isValid(in matrix: MutableLogicalMatrix) -> Bool {
-        controlableReduce(true) { _, coordinate in
+        for coordinate in self {
             let isFilled = matrix[coordinate.x, coordinate.y] ?? false
-            return isFilled ? .stopWith(result: false): .result(true)
+            if isFilled { return false }
         }
+        return true
     }
 }
 
@@ -175,17 +171,6 @@ private extension MosaicTileLayoutItem {
 }
 
 private extension MosaicGridCoordinate {
-    
-    init(orientation: Axis.Set, axis: Int, crossAxis: Int) {
-        switch orientation {
-        case .horizontal:
-            self.y = axis
-            self.x = crossAxis
-        default:
-            self.x = axis
-            self.y = crossAxis
-        }
-    }
     
     func value(of axis: Axis.Set) -> Int {
         axis == .vertical ? y: x

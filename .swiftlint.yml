@@ -38,6 +38,8 @@ identifier_name:
     - of
     - pm
     - no
+    - x
+    - y
 large_tuple:
    - 5
    - 6

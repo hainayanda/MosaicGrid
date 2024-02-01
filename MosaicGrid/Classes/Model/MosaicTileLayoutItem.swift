@@ -24,12 +24,12 @@ struct MosaicTileLayoutItem {
         self.gridSize = gridSize
     }
     
-    init(view: LayoutSubview, proposal: ProposedViewSize, gridSize: CGSize, spacing: MosaicGridSpacing) {
+    init(view: LayoutSubview, gridSize: CGSize, spacing: MosaicGridSpacing) {
         self.view = view
         self.spacing = spacing
         self.gridSize = gridSize
         let tilesSize = view[MosaicTiles.self]
-        let mosaicSizeProposal = tilesSize?.proposalSize(from: proposal, gridSize: gridSize, spacing: spacing) ?? .unspecified
+        let mosaicSizeProposal = tilesSize?.proposalSize(for: gridSize, spacing: spacing) ?? .unspecified
         self.sizeThatFits = view.sizeThatFits(mosaicSizeProposal)
         self.mosaicSize = sizeThatFits.mosaicGridSize(using: gridSize, spacing: spacing)
     }
@@ -84,8 +84,7 @@ private extension CGSize {
 private extension MosaicGridSize {
     
     func proposalSize(
-        from containerProposal: ProposedViewSize,
-        gridSize: CGSize,
+        for gridSize: CGSize,
         spacing: MosaicGridSpacing) -> ProposedViewSize {
             let proposalWidth: CGFloat = (CGFloat(width) * gridSize.width) + (CGFloat(width - 1) * spacing.horizontal)
             let proposalHeight: CGFloat = (CGFloat(height) * gridSize.height) + (CGFloat(height - 1) * spacing.vertical)

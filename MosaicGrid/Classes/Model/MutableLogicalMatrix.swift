@@ -41,7 +41,7 @@ class VMutableLogicalMatrix: MutableLogicalMatrix {
             if row >= twoDArray.count {
                 let numberOfArrayNeeded = row - twoDArray.count + 1
                 let newArrays: [[Bool]] = (0 ..< numberOfArrayNeeded).map { _ in
-                    Array<Bool>.init(repeating: false, count: width)
+                    [Bool].init(repeating: false, count: width)
                 }
                 twoDArray.append(contentsOf: newArrays)
             }
@@ -78,7 +78,7 @@ class HMutableLogicalMatrix: MutableLogicalMatrix {
             if column >= twoDArray.count {
                 let numberOfArrayNeeded = column - twoDArray.count + 1
                 let newArrays: [[Bool]] = (0 ..< numberOfArrayNeeded).map { _ in
-                    Array<Bool>.init(repeating: false, count: height)
+                    [Bool].init(repeating: false, count: height)
                 }
                 twoDArray.append(contentsOf: newArrays)
             }
