@@ -34,7 +34,7 @@ struct MosaicTileLayoutItem {
         self.mosaicSize = sizeThatFits.mosaicGridSize(using: gridSize, spacing: spacing)
     }
     
-    func maxedH(at height: Int) -> MosaicTileLayoutItem {
+    @inlinable func maxedH(at height: Int) -> MosaicTileLayoutItem {
         MosaicTileLayoutItem(
             view: view,
             sizeThatFits: sizeThatFits,
@@ -44,7 +44,7 @@ struct MosaicTileLayoutItem {
         )
     }
     
-    func maxedW(at width: Int) -> MosaicTileLayoutItem {
+    @inlinable func maxedW(at width: Int) -> MosaicTileLayoutItem {
         MosaicTileLayoutItem(
             view: view,
             sizeThatFits: sizeThatFits,
@@ -54,7 +54,7 @@ struct MosaicTileLayoutItem {
         )
     }
     
-    func maxed(_ axis: Axis.Set, at max: Int) -> MosaicTileLayoutItem {
+    @inlinable func maxed(_ axis: Axis.Set, at max: Int) -> MosaicTileLayoutItem {
         switch axis {
         case .vertical:
             return maxedH(at: max)
@@ -73,7 +73,7 @@ private extension CGSize {
         )
     }
     
-    private func calculateGridCount(for dimension: CGFloat, gridDimension: CGFloat, spacing: CGFloat) -> Int {
+    func calculateGridCount(for dimension: CGFloat, gridDimension: CGFloat, spacing: CGFloat) -> Int {
         let roughResult = (dimension / (gridDimension + spacing)).rounded(.up)
         let validation = (roughResult * gridDimension) + ((roughResult - 1) * spacing)
         let result = validation >= dimension ? roughResult: roughResult + 1

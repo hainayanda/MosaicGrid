@@ -25,12 +25,19 @@ class VMutableLogicalMatrix: MutableLogicalMatrix {
     }
     
     subscript(_ column: Int, _ row: Int) -> Bool? {
-        get {
-            guard let rowArray = twoDArray[safe: row] else { return nil }
+        @inlinable get {
+            guard let rowArray = twoDArray[safe: row] else {
+                log(.error, "Try to get item out of its matrix bounds. [\(column),\(row)] while matrix size is [\(width), \(height)]")
+                return nil
+            }
             return rowArray[safe: column] ?? nil
         }
-        set {
-            guard column < width else { fatalError("Column should be less than matrix width") }
+        @inlinable set {
+            guard column < width else {
+                let message = "Column should be less than matrix width. Column is \(column), while width is \(width)"
+                log(.error, message)
+                fatalError(message)
+            }
             if row >= twoDArray.count {
                 let numberOfArrayNeeded = row - twoDArray.count + 1
                 let newArrays: [[Bool]] = (0 ..< numberOfArrayNeeded).map { _ in
@@ -55,12 +62,19 @@ class HMutableLogicalMatrix: MutableLogicalMatrix {
     }
     
     subscript(_ column: Int, _ row: Int) -> Bool? {
-        get {
-            guard let columnArray = twoDArray[safe: column] else { return nil }
-            return columnArray[safe: row] ?? nil
+        @inlinable get {
+            guard let columnArray = twoDArray[safe: column], let value = columnArray[safe: row] else {
+                log(.error, "Try to get item out of its matrix bounds. [\(column),\(row)] while matrix size is [\(width), \(height)]")
+                return nil
+            }
+            return value
         }
-        set {
-            guard row < height else { fatalError("Row should be less than matrix height") }
+        @inlinable set {
+            guard row < height else {
+                let message = "Row should be less than matrix width. Row is \(row), while height is \(height)"
+                log(.error, message)
+                fatalError(message)
+            }
             if column >= twoDArray.count {
                 let numberOfArrayNeeded = column - twoDArray.count + 1
                 let newArrays: [[Bool]] = (0 ..< numberOfArrayNeeded).map { _ in

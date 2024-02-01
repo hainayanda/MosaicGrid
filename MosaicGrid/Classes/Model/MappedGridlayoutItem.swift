@@ -12,12 +12,12 @@ struct MappedMosaicTileLayoutItem {
     let coordinate: MosaicGridCoordinate
     let layoutItem: MosaicTileLayoutItem
     
-    var maxX: Int { coordinate.x + layoutItem.mosaicSize.width - 1 }
-    var maxY: Int { coordinate.y + layoutItem.mosaicSize.height - 1 }
-    var minX: Int { coordinate.x }
-    var minY: Int { coordinate.y }
+    @inlinable var maxX: Int { coordinate.x + layoutItem.mosaicSize.width - 1 }
+    @inlinable var maxY: Int { coordinate.y + layoutItem.mosaicSize.height - 1 }
+    @inlinable var minX: Int { coordinate.x }
+    @inlinable var minY: Int { coordinate.y }
     
-    public subscript<Property>(
+    @inlinable public subscript<Property>(
         dynamicMember keyPath: KeyPath<MosaicTileLayoutItem, Property>) -> Property {
             layoutItem[keyPath: keyPath]
         }

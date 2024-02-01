@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 extension ProposedViewSize {
-    func axisDimension(for axis: Axis.Set) -> CGFloat? {
+    @inlinable func axisDimension(for axis: Axis.Set) -> CGFloat? {
         axis == .vertical ? height: width
     }
 }

@@ -9,7 +9,7 @@ import Foundation
 
 // MARK: Sequence + Extensions
 
-enum ControlResult<Value> {
+@usableFromInline enum ControlResult<Value> {
     case result(Value)
     case stop
     case stopWith(result: Value)
@@ -17,7 +17,7 @@ enum ControlResult<Value> {
 }
 
 extension Sequence {
-    func controlableReduce<Result>(_ initialResult: Result, _ nextPartialResult: (Result, Element) throws -> ControlResult<Result>) rethrows -> Result {
+    @inlinable func controlableReduce<Result>(_ initialResult: Result, _ nextPartialResult: (Result, Element) throws -> ControlResult<Result>) rethrows -> Result {
         var temporaryResult: Result = initialResult
         for element in self {
             let controlableResult = try nextPartialResult(temporaryResult, element)
@@ -39,7 +39,7 @@ extension Sequence {
 // MARK: Array + Extensions
 
 extension Array {
-    subscript(safe index: Int) -> Element? {
+    @inlinable subscript(safe index: Int) -> Element? {
         guard index < count else { return nil }
         return self[index]
     }

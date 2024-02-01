@@ -8,32 +8,32 @@
 import Foundation
 import SwiftUI
 
-/// <#Description#>
+/// Horizontal and vertical spacing for Mosaic Grid
 public struct MosaicGridSpacing {
-    /// <#Description#>
+    /// Horizontal spacing
     public let horizontal: CGFloat
     
-    /// <#Description#>
+    /// Vertical spacing
     public let vertical: CGFloat
     
-    /// <#Description#>
+    /// Initialize `MosaicGridSpacing` with given horizontal and vertical spacing
     /// - Parameters:
-    ///   - horizontal: <#horizontal description#>
-    ///   - vertical: <#vertical description#>
+    ///   - horizontal: Horizontal spacing
+    ///   - vertical: Vertical spacing. Default value is zero
     public init(h horizontal: CGFloat, v vertical: CGFloat = .zero) {
         self.horizontal = horizontal
         self.vertical = vertical
     }
     
-    /// <#Description#>
-    /// - Parameter vertical: <#vertical description#>
+    /// Initialize `MosaicGridSpacing` with given vertical spacing. Horizontal spacing will be zero.
+    /// - Parameter vertical: Vertical spacing
     public init(v vertical: CGFloat) {
         self.horizontal = .zero
         self.vertical = vertical
     }
     
-    /// <#Description#>
-    /// - Parameter spacing: <#spacing description#>
+    /// Initialize `MosaicGridSpacing` with same value for horizontal and vertical spacing.
+    /// - Parameter spacing: Spacing used for both horizontal and vertical spacings.
     public init(spacings: CGFloat) {
         self.horizontal = spacings
         self.vertical = spacings

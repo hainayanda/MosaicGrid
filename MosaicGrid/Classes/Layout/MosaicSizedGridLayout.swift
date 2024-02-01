@@ -16,8 +16,8 @@ struct MosaicSizedGridLayout: MosaicGridLayout {
     let tileSize: CGSize
     let minimumSpacing: MosaicGridSpacing
     
-    @Mutable var crossOrientationCount: Int = 1
-    @Mutable var spacing: MosaicGridSpacing = .zero
+    @Mutable private(set) var crossOrientationCount: Int = 1
+    @Mutable private(set) var spacing: MosaicGridSpacing = .zero
     
     init(orientation: Axis.Set, tileSize: CGSize, minimumSpacing: MosaicGridSpacing = .zero) {
         self.orientation = orientation
@@ -25,7 +25,7 @@ struct MosaicSizedGridLayout: MosaicGridLayout {
         self.minimumSpacing = minimumSpacing
     }
     
-    func tilesSize(basedOn proposal: ProposedViewSize) -> CGSize {
+    @inlinable func tilesSize(basedOn proposal: ProposedViewSize) -> CGSize {
         let tileAxisDimension = tileSize.axisDimension(for: crossOrientation)
         let axisDimension = proposal.axisDimension(for: crossOrientation) ?? tileAxisDimension
         let crossAxisSpacing = minimumSpacing.axisSpacing(for: crossOrientation)
