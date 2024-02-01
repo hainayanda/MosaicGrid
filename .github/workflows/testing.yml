@@ -1,0 +1,19 @@
+name: test
+
+on:
+  pull_request:
+    branches:
+    - main
+  workflow_dispatch:
+
+jobs:
+  test:
+    name: Testing Pod
+    runs-on: macos-13
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v1
+      - name: Force XCode 14.3
+        run: sudo xcode-select -switch /Applications/Xcode_14.3.app
+      - name: Testing Pod Library
+        run: bash ./.github/scripts/test_lib.sh
