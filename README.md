@@ -2,7 +2,7 @@
 
 `MosaicGrid` is a SwiftUI library that provides both horizontal and vertical mosaic grid views, along with utility functions for customizing view tile sizes and placement. These components allow you to arrange multiple items in a visually appealing grid layout.
 
-[![Codacy Badge](https://app.codacy.com/project/badge/Grade/d07d496defc943ad90e96fde91a55e65)](https://app.codacy.com/gh/hainayanda/MosaicGrid/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/8e40c3e960d24b82b8f64224f19bda38)](https://app.codacy.com/gh/hainayanda/MosaicGrid/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
 ![build](https://github.com/hainayanda/MosaicGrid/workflows/build/badge.svg)
 ![test](https://github.com/hainayanda/MosaicGrid/workflows/test/badge.svg)
 [![SwiftPM Compatible](https://img.shields.io/badge/SwiftPM-Compatible-brightgreen)](https://swift.org/package-manager/)
@@ -101,42 +101,14 @@ The arrangement will be following this pattern:
 You can customize how the grid size is calculated by using these 3 different `init`:
 
 ```swift
-/// Initialize Vertical Mosaic Grid View.
-/// It will divide the width of the view with `hGridCount` to get the height of a single grid.
-/// If `spacing` is provided, it will add it to the calculation to make sure each grid has a spacing from each other.
-/// `gridAspectRatio` then will be used to calculate the height of a single grid.
-/// `content` will be used to get the view to be arranged by the Mosaic Grid View
-/// - Parameters:
-///   - hGridCount: Count of the horizontal grid.
-///   - spacing: Spacing on each grid. The default is zero.
-///   - gridAspectRatio: Aspect ratio of each grid
-///   - content: View that will be used as this Mosaic Grid Content
 public init(hGridCount: Int, spacing: MosaicGridSpacing = .zero, gridAspectRatio: Double = 1, @ViewBuilder content: @escaping () -> Content) { ... }
 ```
 
 ```swift
- /// Initialize Vertical Mosaic Grid View.
- /// It will divide the width of the view with `hGridCount` to get the height of a single grid.
- /// If `spacing` is provided, it will add it to the calculation to make sure each grid has a spacing from each other.
- /// `gridHeight` then will be used as the height of a single grid.
- /// `content` will be used to get the view to be arranged by the Mosaic Grid View
- /// - Parameters:
- ///   - hGridCount: Count of the horizontal grid.
- ///   - spacing: Spacing on each grid. The default is zero.
- ///   - gridHeight: Width of each grid
- ///   - content: View that will be used as this Mosaic Grid Content
 public init(hGridCount: Int, spacing: MosaicGridSpacing = .zero, gridHeight: CGFloat, @ViewBuilder content: @escaping () -> Content) { ... }
 ```
 
 ```swift
- /// Initialize Vertical Mosaic Grid View.
- /// It will use `gridSize` as the size of a single grid
- /// If `minimumSpacing` is provided, it will add it to the calculation to make sure each grid has a minimum spacing from each other.
- /// `content` will be used to get the view to be arranged by the Mosaic Grid View
- /// - Parameters:
- ///   - gridSize: Static size of a single grid.
- ///   - minimumSpacing: Minimum spacing on each grid. The default is zero.
- ///   - content: the view that will be used as this Mosaic Grid Content
 public init(gridSize: CGSize, minimumSpacing: MosaicGridSpacing = .zero, @ViewBuilder content: @escaping () -> Content) { ... }
 ```
 
@@ -162,42 +134,14 @@ The arrangement will be following this pattern:
 You can customize how the grid size is calculated by using these 3 different `init`:
 
 ```swift
- /// Initialize Horizontal Mosaic Grid View.
- /// It will divide the height of the view with `vGridCount` to get the height of a single grid.
- /// If `spacing` is provided, it will add it to the calculation to make sure each grid has a spacing from each other.
- /// `gridAspectRatio` then will be used to calculate the width of a single grid.
- /// `content` will be used to get the view to be arranged by the Mosaic Grid View
- /// - Parameters:
- ///   - vGridCount: Count of the vertical grid.
- ///   - spacing: Spacing on each grid. The default is zero.
- ///   - gridAspectRatio: Aspect ratio of each grid
- ///   - content: View that will be used as this Mosaic Grid Content
  public init(vGridCount: Int, spacing: MosaicGridSpacing = .zero, gridAspectRatio: Double = 1, @ViewBuilder content: @escaping () -> Content) { ... }
 ```
 
 ```swift
- /// Initialize Horizontal Mosaic Grid View.
- /// It will divide the height of the view with `vGridCount` to get the height of a single grid.
- /// If `spacing` is provided, it will add it to the calculation to make sure each grid has a spacing from each other.
- /// `gridWidth` then will be used as the height of a single grid.
- /// `content` will be used to get the view to be arranged by the Mosaic Grid View
- /// - Parameters:
- ///   - vGridCount: Count of the vertical grid.
- ///   - spacing: Spacing on each grid. The default is zero.
- ///   - gridWidth: Width of each grid
- ///   - content: View that will be used as this Mosaic Grid Content
  public init(vGridCount: Int, spacing: MosaicGridSpacing = .zero, gridWidth: CGFloat, @ViewBuilder content: @escaping () -> Content) { ... }
 ```
 
 ```swift
- /// Initialize Horizontal Mosaic Grid View.
- /// It will use `gridSize` as the size of a single grid
- /// If `minimumSpacing` is provided, it will add it to the calculation to make sure each grid has a minimum spacing from each other.
- /// `content` will be used to get the view to be arranged by the Mosaic Grid View
- /// - Parameters:
- ///   - gridSize: Static size of a single grid.
- ///   - minimumSpacing: Minimum spacing on each grid. The default is zero.
- ///   - content: the view that will be used as this Mosaic Grid Content
  public init(gridSize: CGSize, minimumSpacing: MosaicGridSpacing = .zero, @ViewBuilder content: @escaping () -> Content) { ... }
 ```
 
