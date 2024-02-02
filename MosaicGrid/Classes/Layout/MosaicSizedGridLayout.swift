@@ -31,9 +31,14 @@ struct MosaicSizedGridLayout: MosaicGridLayout {
         let crossAxisSpacing = minimumSpacing.axisSpacing(for: crossOrientation)
         let axisSpacing = minimumSpacing.axisSpacing(for: orientation)
         
-        self.crossOrientationCount = Int((axisDimension + crossAxisSpacing) / (tileAxisDimension + crossAxisSpacing))
-        let realSpacing = (axisDimension - (tileAxisDimension * CGFloat(crossOrientationCount))) / CGFloat(crossOrientationCount)
-        self.spacing = MosaicGridSpacing(axis: axisSpacing, crossAxis: realSpacing, for: orientation)
+        self.crossOrientationCount = max(1, Int((axisDimension + crossAxisSpacing) / (tileAxisDimension + crossAxisSpacing)))
+        
+        if crossOrientationCount == 1 {
+            self.spacing = minimumSpacing
+        } else {
+            let realSpacing = (axisDimension - (tileAxisDimension * CGFloat(crossOrientationCount))) / CGFloat(crossOrientationCount - 1)
+            self.spacing = MosaicGridSpacing(axis: axisSpacing, crossAxis: realSpacing, for: orientation)
+        }
         
         return tileSize
     }
