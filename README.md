@@ -77,7 +77,7 @@ How the placement will go will depend on the type of MosaicGrid you use, whether
 
 Or this abstract-like art :stuck_out_tongue_winking_eye:
 
-![Freestyle](Freestyle.png)
+![Freestyle](FreeStyle.png)
 
 ### VMosaicGrid
 
