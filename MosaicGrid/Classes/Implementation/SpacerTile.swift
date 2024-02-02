@@ -9,6 +9,11 @@ import Foundation
 import SwiftUI
 
 // swiftlint:disable identifier_name
+/// Create a clear rectangle with a given tile size.
+/// - Parameters:
+///   - width: number of horizontal tiles used.
+///   - height: number of vertical tiles used.
+/// - Returns: View with given tile size
 public func SpacerTile(w width: Int = 1, h height: Int = 1) -> some View {
     Rectangle()
         .foregroundColor(.clear)

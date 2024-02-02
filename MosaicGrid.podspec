@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
   s.name             = 'MosaicGrid'
   s.version          = '0.1.0'
-  s.summary          = 'A short description of MosaicGrid.'
+  s.summary          = 'MosaicGrid is a SwiftUI library that provides both horizontal and vertical mosaic grid views.'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-TODO: Add long description of the pod here.
+  MosaicGrid is a SwiftUI library that provides both horizontal and vertical mosaic grid views, along with utility functions for customizing view tile sizes and placement. These components allow you to arrange multiple items in a visually appealing grid layout.
                        DESC
 
   s.homepage         = 'https://github.com/hainayanda/MosaicGrid'
@@ -28,7 +28,11 @@ TODO: Add long description of the pod here.
   s.source           = { :git => 'https://github.com/hainayanda/MosaicGrid.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
-  s.ios.deployment_target = '16.0'
+  s.ios.deployment_target = "16.0"
+  s.osx.deployment_target = "13.0"
+  s.tvos.deployment_target = '16.0'
+  s.watchos.deployment_target = '8.0'
+  s.swift_versions = '5.5'
 
   s.source_files = 'MosaicGrid/Classes/**/*'
   

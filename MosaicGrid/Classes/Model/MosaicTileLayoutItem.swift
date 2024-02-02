@@ -29,7 +29,7 @@ struct MosaicTileLayoutItem: Equatable {
         self.spacing = spacing
         self.gridSize = gridSize
         let tilesSize = view[MosaicTiles.self]
-        let mosaicSizeProposal = tilesSize?.proposalSize(for: gridSize, spacing: spacing) ?? .unspecified
+        let mosaicSizeProposal = tilesSize.proposalSize(for: gridSize, spacing: spacing)
         self.sizeThatFits = view.sizeThatFits(mosaicSizeProposal)
         self.mosaicSize = sizeThatFits.mosaicGridSize(using: gridSize, spacing: spacing)
     }
