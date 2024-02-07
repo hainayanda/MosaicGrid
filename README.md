@@ -73,13 +73,9 @@ Then, include it in your target:
 
 How the placement will go will depend on the type of MosaicGrid you use, whether is it `VMosaicGrid` or `HMosaicGrid`. You can utilize `tileSized(w:h:)` to control how many tiles will be used for each view. With this, arranging UI with grid placement will be very easy!
 
- Like this photo album example:
+ Like this photo album example, or this abstract-like art :stuck_out_tongue_winking_eye:
 
-![Photos App](Photos.png)
-
-Or this abstract-like art :stuck_out_tongue_winking_eye:
-
-![Freestyle](FreeStyle.png)
+![Photos App](Photos.png) ![Freestyle](FreeStyle.png)
 
 ### VMosaicGrid
 
