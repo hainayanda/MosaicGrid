@@ -1,4 +1,4 @@
-name: build
+name: podlint
 
 on:
   pull_request:

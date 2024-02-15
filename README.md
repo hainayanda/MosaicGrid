@@ -3,7 +3,7 @@
 `MosaicGrid` is a SwiftUI library that provides both horizontal and vertical mosaic grid views, along with utility functions for customizing view tile sizes and placement. These components allow you to arrange multiple items in a visually appealing grid layout.
 
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/8e40c3e960d24b82b8f64224f19bda38)](https://app.codacy.com/gh/hainayanda/MosaicGrid/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
-![build](https://github.com/hainayanda/MosaicGrid/workflows/build/badge.svg)
+![build](https://github.com/hainayanda/MosaicGrid/workflows/podlint/badge.svg)
 ![test](https://github.com/hainayanda/MosaicGrid/workflows/test/badge.svg)
 [![SwiftPM Compatible](https://img.shields.io/badge/SwiftPM-Compatible-brightgreen)](https://swift.org/package-manager/)
 [![Version](https://img.shields.io/cocoapods/v/MosaicGrid.svg?style=flat)](https://cocoapods.org/pods/MosaicGrid)
