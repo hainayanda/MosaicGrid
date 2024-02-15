@@ -74,44 +74,42 @@ public struct HMosaicGrid<Content>: View where Content: View {
 
 // MARK: Preview
 
-struct HMosaicGrid_Previews: PreviewProvider {
-    static var previews: some View {
-        ScrollView(.horizontal) {
-            HMosaicGrid(vGridCount: 6, spacing: 10) {
-                ForEach(0..<50) { _ in
-                    Rectangle()
-                        .foregroundColor(.red)
-                        .tileSized(w: 2, h: 2)
-                    Rectangle()
-                        .foregroundColor(.orange)
-                        .tileSized(w: 2)
-                    Rectangle()
-                        .foregroundColor(.yellow)
-                        .tileSized(h: 3)
-                    Rectangle()
-                        .foregroundColor(.green)
-                        .tileSized()
-                    Rectangle()
-                        .foregroundColor(.cyan)
-                        .tileSized(w: 3, h: 2)
-                    Rectangle()
-                        .foregroundColor(.blue)
-                        .tileSized()
-                    Rectangle()
-                        .foregroundColor(.purple)
-                        .tileSized(w: 2, h: 3)
-                    Rectangle()
-                        .foregroundColor(.pink)
-                        .tileSized(w: 2)
-                    Rectangle()
-                        .foregroundColor(.red)
-                        .tileSized(h: 2)
-                    Rectangle()
-                        .foregroundColor(.orange)
-                        .tileSized(h: 3)
-                }
+#Preview {
+    ScrollView(.horizontal) {
+        HMosaicGrid(vGridCount: 6, spacing: 10) {
+            ForEach(0..<50) { _ in
+                Rectangle()
+                    .foregroundColor(.red)
+                    .tileSized(w: 2, h: 2)
+                Rectangle()
+                    .foregroundColor(.orange)
+                    .tileSized(w: 2)
+                Rectangle()
+                    .foregroundColor(.yellow)
+                    .tileSized(h: 3)
+                Rectangle()
+                    .foregroundColor(.green)
+                    .tileSized()
+                Rectangle()
+                    .foregroundColor(.cyan)
+                    .tileSized(w: 3, h: 2)
+                Rectangle()
+                    .foregroundColor(.blue)
+                    .tileSized()
+                Rectangle()
+                    .foregroundColor(.purple)
+                    .tileSized(w: 2, h: 3)
+                Rectangle()
+                    .foregroundColor(.pink)
+                    .tileSized(w: 2)
+                Rectangle()
+                    .foregroundColor(.red)
+                    .tileSized(h: 2)
+                Rectangle()
+                    .foregroundColor(.orange)
+                    .tileSized(h: 3)
             }
-            .padding()
         }
+        .padding()
     }
 }

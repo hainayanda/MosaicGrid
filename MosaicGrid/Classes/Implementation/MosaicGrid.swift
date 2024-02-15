@@ -70,50 +70,48 @@ struct MosaicGrid<Content>: View where Content: View {
 
 // MARK: Preview
 
-struct MosaicGrid_Previews: PreviewProvider {
-    static var previews: some View {
-        ScrollView(.vertical) {
-            MosaicGrid(orientation: .vertical, spacing: 18, gridSizing: .constantSize(CGSize(width: 9, height: 9))) {
-                ForEach(0..<50) { _ in
-                    Rectangle()
-                        .foregroundColor(.red)
-                        .tileSized(w: 2, h: 2)
-                    Rectangle()
-                        .foregroundColor(.orange)
-                        .tileSized(w: 2)
-                    Rectangle()
-                        .foregroundColor(.yellow)
-                        .tileSized(h: 3)
-                    Rectangle()
-                        .foregroundColor(.green)
-                        .tileSized()
-                    Rectangle()
-                        .foregroundColor(.cyan)
-                        .tileSized(w: 2, h: 2)
-                    Rectangle()
-                        .foregroundColor(.blue)
-                        .tileSized()
-                    Rectangle()
-                        .foregroundColor(.purple)
-                        .tileSized(w: 2, h: 3)
-                    Rectangle()
-                        .foregroundColor(.pink)
-                        .tileSized()
-                    Rectangle()
-                        .foregroundColor(.red)
-                        .tileSized(w: 3)
-                    Rectangle()
-                        .foregroundColor(.orange)
-                        .tileSized(h: 2)
-                    Rectangle()
-                        .foregroundColor(.yellow)
-                        .tileSized()
-                    Rectangle()
-                        .foregroundColor(.green)
-                        .tileSized(w: 2)
-                }
+#Preview {
+    ScrollView(.vertical) {
+        MosaicGrid(orientation: .vertical, spacing: 18, gridSizing: .constantSize(CGSize(width: 9, height: 9))) {
+            ForEach(0..<50) { _ in
+                Rectangle()
+                    .foregroundColor(.red)
+                    .tileSized(w: 2, h: 2)
+                Rectangle()
+                    .foregroundColor(.orange)
+                    .tileSized(w: 2)
+                Rectangle()
+                    .foregroundColor(.yellow)
+                    .tileSized(h: 3)
+                Rectangle()
+                    .foregroundColor(.green)
+                    .tileSized()
+                Rectangle()
+                    .foregroundColor(.cyan)
+                    .tileSized(w: 2, h: 2)
+                Rectangle()
+                    .foregroundColor(.blue)
+                    .tileSized()
+                Rectangle()
+                    .foregroundColor(.purple)
+                    .tileSized(w: 2, h: 3)
+                Rectangle()
+                    .foregroundColor(.pink)
+                    .tileSized()
+                Rectangle()
+                    .foregroundColor(.red)
+                    .tileSized(w: 3)
+                Rectangle()
+                    .foregroundColor(.orange)
+                    .tileSized(h: 2)
+                Rectangle()
+                    .foregroundColor(.yellow)
+                    .tileSized()
+                Rectangle()
+                    .foregroundColor(.green)
+                    .tileSized(w: 2)
             }
-            .padding()
         }
+        .padding()
     }
 }
