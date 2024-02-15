@@ -7,13 +7,13 @@ on:
   workflow_dispatch:
 
 jobs:
-  test:
-    name: Testing Pod
-    runs-on: macos-14
+  build:
+    
+    runs-on: macos-latest
+    
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v1
-      - name: Force XCode 15.1
-        run: sudo xcode-select -switch /Applications/Xcode_15.1.app
-      - name: Testing Pod Library
-        run: bash ./.github/scripts/test_lib.sh
+      - uses: actions/checkout@v3
+      - name: Build
+        run: swift build -v
+      - name: Run tests
+        run: swift test -v
