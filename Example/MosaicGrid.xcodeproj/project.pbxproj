@@ -527,6 +527,7 @@
 			baseConfigurationReference = F8A163BEB49983FA38A39FFC /* Pods-MosaicGrid_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 384SJ33M83;
 				INFOPLIST_FILE = MosaicGrid/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -545,6 +546,7 @@
 			baseConfigurationReference = 0A97596207A3E01DB01D868A /* Pods-MosaicGrid_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 384SJ33M83;
 				INFOPLIST_FILE = MosaicGrid/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
