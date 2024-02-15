@@ -25,7 +25,7 @@ struct MosaicRatioGridLayout: MosaicGridLayout {
     }
     
     @inlinable func tilesSize(basedOn proposal: ProposedViewSize) -> CGSize {
-        guard let proposedDimension = proposal.axisDimension(for: crossOrientation) else { return .zero }
+        guard let proposedDimension = proposal.axisDimension(for: crossOrientation), proposedDimension.isNormal else { return .zero }
         let usedDimension = proposedDimension - (crossAxisSpacing * CGFloat(crossOrientationCount - 1))
         let calculatedGridDimension = usedDimension / CGFloat(crossOrientationCount)
         switch orientation {

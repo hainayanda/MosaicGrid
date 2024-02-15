@@ -1,27 +1,16 @@
 PODS:
   - MosaicGrid (0.1.0)
-  - Nimble (11.2.1)
-  - Quick (6.1.0)
 
 DEPENDENCIES:
   - MosaicGrid (from `../`)
-  - Nimble (~> 11.2.1)
-  - Quick (~> 6.1.0)
-
-SPEC REPOS:
-  trunk:
-    - Nimble
-    - Quick
 
 EXTERNAL SOURCES:
   MosaicGrid:
     :path: "../"
 
 SPEC CHECKSUMS:
-  MosaicGrid: a58340055c61baea0afe767a5b7673a549db7316
-  Nimble: 516ac503a0fafaa8e41dbb4a70a61be421fa893a
-  Quick: 6676ffb409bf04abba2ff23902af2407bfc6ac90
+  MosaicGrid: 02f5019d43fb467bde118291c303d7d13a00d9f2
 
-PODFILE CHECKSUM: c666c7fd6371db83b2149362ad3b74e89bd082fe
+PODFILE CHECKSUM: 9df2970a015cd3da6fde0146fd3be9f80fbcf62a
 
 COCOAPODS: 1.12.1

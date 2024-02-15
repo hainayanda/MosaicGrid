@@ -18,9 +18,6 @@ let package = Package(
         )
     ],
     dependencies: [
-        // uncomment code below to test
-       .package(url: "https://github.com/Quick/Quick.git", from: "7.0.0"),
-       .package(url: "https://github.com/Quick/Nimble.git", from: "12.0.0")
     ],
     targets: [
         .target(
@@ -28,11 +25,10 @@ let package = Package(
             dependencies: [],
             path: "MosaicGrid/Classes"
         ),
-        // uncomment code below to test
        .testTarget(
            name: "MosaicGridTests",
            dependencies: [
-               "MosaicGrid", "Quick", "Nimble"
+               "MosaicGrid"
            ],
            path: "Example/Tests",
            exclude: ["Info.plist"]

@@ -31,6 +31,10 @@ struct MosaicSizedGridLayout: MosaicGridLayout {
         let crossAxisSpacing = minimumSpacing.axisSpacing(for: crossOrientation)
         let axisSpacing = minimumSpacing.axisSpacing(for: orientation)
         
+        guard tileAxisDimension.isNormal, axisDimension.isNormal else {
+            return .zero
+        }
+        
         self.crossOrientationCount = max(1, Int((axisDimension + crossAxisSpacing) / (tileAxisDimension + crossAxisSpacing)))
         
         if crossOrientationCount == 1 {

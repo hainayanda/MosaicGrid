@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A2453012B7DD01600C38250 /* ProposedViewSizeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2453002B7DD01600C38250 /* ProposedViewSizeTests.swift */; };
+		3A2453032B7DDD5B00C38250 /* ArrayExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2453022B7DDD5B00C38250 /* ArrayExtensionsTests.swift */; };
+		3A2453052B7DDF9B00C38250 /* MosaicAxisDimensionGridLayoutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2453042B7DDF9B00C38250 /* MosaicAxisDimensionGridLayoutTests.swift */; };
+		3A2453072B7DE2F200C38250 /* MosaicRatioGridLayoutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2453062B7DE2F200C38250 /* MosaicRatioGridLayoutTests.swift */; };
+		3A2453092B7DE47D00C38250 /* MosaicSizedGridLayoutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2453082B7DE47D00C38250 /* MosaicSizedGridLayoutTests.swift */; };
+		3A24530D2B7DE9DC00C38250 /* MutableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A24530C2B7DE9DC00C38250 /* MutableTests.swift */; };
+		3A24530F2B7DEAA000C38250 /* MutableLogicalMatrixTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A24530E2B7DEAA000C38250 /* MutableLogicalMatrixTests.swift */; };
 		3AEE00012B6CF7770082FF4C /* PhotoAlbumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AEE00002B6CF7770082FF4C /* PhotoAlbumView.swift */; };
 		3BBD6AFFBFBDD3DABE41FBAE /* Pods_MosaicGrid_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B942B62B71387BB74E0B001C /* Pods_MosaicGrid_Example.framework */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
@@ -14,7 +21,6 @@
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
-		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
 		A394DA96918DC8C16D30E508 /* Pods_MosaicGrid_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCC42862AB5F30FFFE2B65BE /* Pods_MosaicGrid_Tests.framework */; };
 /* End PBXBuildFile section */
 
@@ -32,6 +38,13 @@
 		0A80FDD7E705B01FC8B6F38B /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		0A97596207A3E01DB01D868A /* Pods-MosaicGrid_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MosaicGrid_Example.release.xcconfig"; path = "Target Support Files/Pods-MosaicGrid_Example/Pods-MosaicGrid_Example.release.xcconfig"; sourceTree = "<group>"; };
 		35EF52CBC905ACD1148E3F25 /* MosaicGrid.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = MosaicGrid.podspec; path = ../MosaicGrid.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		3A2453002B7DD01600C38250 /* ProposedViewSizeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProposedViewSizeTests.swift; sourceTree = "<group>"; };
+		3A2453022B7DDD5B00C38250 /* ArrayExtensionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtensionsTests.swift; sourceTree = "<group>"; };
+		3A2453042B7DDF9B00C38250 /* MosaicAxisDimensionGridLayoutTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MosaicAxisDimensionGridLayoutTests.swift; sourceTree = "<group>"; };
+		3A2453062B7DE2F200C38250 /* MosaicRatioGridLayoutTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MosaicRatioGridLayoutTests.swift; sourceTree = "<group>"; };
+		3A2453082B7DE47D00C38250 /* MosaicSizedGridLayoutTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MosaicSizedGridLayoutTests.swift; sourceTree = "<group>"; };
+		3A24530C2B7DE9DC00C38250 /* MutableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MutableTests.swift; sourceTree = "<group>"; };
+		3A24530E2B7DEAA000C38250 /* MutableLogicalMatrixTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MutableLogicalMatrixTests.swift; sourceTree = "<group>"; };
 		3AEE00002B6CF7770082FF4C /* PhotoAlbumView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAlbumView.swift; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* MosaicGrid_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MosaicGrid_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -42,7 +55,6 @@
 		607FACDF1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		607FACE51AFB9204008FA782 /* MosaicGrid_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MosaicGrid_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		7AA81100D6F6C33083EC4CC0 /* Pods-MosaicGrid_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MosaicGrid_Tests.release.xcconfig"; path = "Target Support Files/Pods-MosaicGrid_Tests/Pods-MosaicGrid_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		B942B62B71387BB74E0B001C /* Pods_MosaicGrid_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MosaicGrid_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEFA73B45FBC107E3606323E /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
@@ -129,8 +141,14 @@
 		607FACE81AFB9204008FA782 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				607FACEB1AFB9204008FA782 /* Tests.swift */,
 				607FACE91AFB9204008FA782 /* Supporting Files */,
+				3A2453002B7DD01600C38250 /* ProposedViewSizeTests.swift */,
+				3A2453022B7DDD5B00C38250 /* ArrayExtensionsTests.swift */,
+				3A2453042B7DDF9B00C38250 /* MosaicAxisDimensionGridLayoutTests.swift */,
+				3A2453062B7DE2F200C38250 /* MosaicRatioGridLayoutTests.swift */,
+				3A2453082B7DE47D00C38250 /* MosaicSizedGridLayoutTests.swift */,
+				3A24530C2B7DE9DC00C38250 /* MutableTests.swift */,
+				3A24530E2B7DEAA000C38250 /* MutableLogicalMatrixTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -193,7 +211,6 @@
 				607FACE11AFB9204008FA782 /* Sources */,
 				607FACE21AFB9204008FA782 /* Frameworks */,
 				607FACE31AFB9204008FA782 /* Resources */,
-				6013DBA7D051EBA666B879F0 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -308,26 +325,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		6013DBA7D051EBA666B879F0 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MosaicGrid_Tests/Pods-MosaicGrid_Tests-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
-				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quick.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MosaicGrid_Tests/Pods-MosaicGrid_Tests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		86F4F45172D95243F138FC42 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -385,7 +382,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				607FACEC1AFB9204008FA782 /* Tests.swift in Sources */,
+				3A24530F2B7DEAA000C38250 /* MutableLogicalMatrixTests.swift in Sources */,
+				3A2453012B7DD01600C38250 /* ProposedViewSizeTests.swift in Sources */,
+				3A2453092B7DE47D00C38250 /* MosaicSizedGridLayoutTests.swift in Sources */,
+				3A24530D2B7DE9DC00C38250 /* MutableTests.swift in Sources */,
+				3A2453052B7DDF9B00C38250 /* MosaicAxisDimensionGridLayoutTests.swift in Sources */,
+				3A2453072B7DE2F200C38250 /* MosaicRatioGridLayoutTests.swift in Sources */,
+				3A2453032B7DDD5B00C38250 /* ArrayExtensionsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

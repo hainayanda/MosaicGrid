@@ -30,7 +30,7 @@ struct VMutableLogicalMatrix: MutableLogicalMatrix {
                 log(.error, "Try to get item out of its matrix bounds. [\(column),\(row)] while matrix size is [\(width), \(height)]")
                 return nil
             }
-            return rowArray[safe: column] ?? nil
+            return rowArray[safe: column] ?? false
         }
         @inlinable set {
             guard column < width else {
@@ -63,11 +63,11 @@ struct HMutableLogicalMatrix: MutableLogicalMatrix {
     
     subscript(_ column: Int, _ row: Int) -> Bool? {
         @inlinable get {
-            guard let columnArray = twoDArray[safe: column], let value = columnArray[safe: row] else {
+            guard let columnArray = twoDArray[safe: column] else {
                 log(.error, "Try to get item out of its matrix bounds. [\(column),\(row)] while matrix size is [\(width), \(height)]")
                 return nil
             }
-            return value
+            return columnArray[safe: row] ?? false
         }
         @inlinable set {
             guard row < height else {
