@@ -43,19 +43,3 @@ public struct MosaicGridSpacing: Equatable {
 extension MosaicGridSpacing {
     public static var zero: MosaicGridSpacing { .init(spacings: .zero) }
 }
-
-extension MosaicGridSpacing: ExpressibleByFloatLiteral {
-    public typealias FloatLiteralType = Double
-    
-    public init(floatLiteral value: Double) {
-        self.init(spacings: value)
-    }
-}
-
-extension MosaicGridSpacing: ExpressibleByIntegerLiteral {
-    public typealias IntegerLiteralType = Int
-    
-    public init(integerLiteral value: Int) {
-        self.init(spacings: CGFloat(value))
-    }
-}

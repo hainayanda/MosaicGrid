@@ -15,7 +15,7 @@ protocol MosaicGridLayout: Layout {
     var crossOrientationCount: Int { get }
     var orientation: Axis.Set { get }
     
-    func tilesSize(basedOn proposal: ProposedViewSize) -> CGSize
+    func calculateGridSize(basedOn proposal: ProposedViewSize) -> CGSize
 }
 
 // MARK: MosaicGridLayout + Extensions
@@ -45,7 +45,7 @@ extension MosaicGridLayout where Cache == MosaicGridLayoutCache {
     @inlinable func makeCache(subviews: Subviews) -> MosaicGridLayoutCache { .empty }
     
     func sizeThatFits(proposal: ProposedViewSize, subviews: Subviews, cache: inout MosaicGridLayoutCache) -> CGSize {
-        let gridSize = tilesSize(basedOn: proposal)
+        let gridSize = calculateGridSize(basedOn: proposal)
         guard gridSize.width > .zero, gridSize.height > .zero else {
             log(.info, "Calculated grid size is invalid. Widht is \(gridSize.width) and height is \(gridSize.height). Will use zero instead.")
             return .zero
@@ -77,14 +77,14 @@ extension MosaicGridLayout where Cache == MosaicGridLayoutCache {
     }
     
     func placeSubviews(in bounds: CGRect, proposal: ProposedViewSize, subviews: Subviews, cache: inout MosaicGridLayoutCache) {
-        let gridSize = tilesSize(basedOn: proposal)
+        let gridSize = calculateGridSize(basedOn: proposal)
         guard gridSize.width > .zero, gridSize.height > .zero else {
             log(.info, "Calculated grid size is invalid. Widht is \(gridSize.width) and height is \(gridSize.height). Will not place a subview")
             return
         }
         let origin = bounds.origin
         cache.mapped.forEach { item in
-            let idealSize = item.tileSize
+            let idealSize = item.usedGridsSize
             let innerX = CGFloat(item.minX) * (gridSize.width + spacing.horizontal)
             let innerY = CGFloat(item.minY) * (gridSize.height + spacing.vertical)
             let idealOrigin = CGPoint(x: origin.x + innerX, y: origin.y + innerY)

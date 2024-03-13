@@ -13,38 +13,38 @@ struct MosaicSizedGridLayout: MosaicGridLayout {
     typealias Cache = MosaicGridLayoutCache
     
     let orientation: Axis.Set
-    let tileSize: CGSize
+    let gridSize: CGSize
     let minimumSpacing: MosaicGridSpacing
     
     @Mutable private(set) var crossOrientationCount: Int = 1
     @Mutable private(set) var spacing: MosaicGridSpacing = .zero
     
-    init(orientation: Axis.Set, tileSize: CGSize, minimumSpacing: MosaicGridSpacing = .zero) {
+    init(orientation: Axis.Set, gridSize: CGSize, minimumSpacing: MosaicGridSpacing = .zero) {
         self.orientation = orientation
-        self.tileSize = tileSize
+        self.gridSize = gridSize
         self.minimumSpacing = minimumSpacing
     }
     
-    @inlinable func tilesSize(basedOn proposal: ProposedViewSize) -> CGSize {
-        let tileAxisDimension = tileSize.axisDimension(for: crossOrientation)
-        let axisDimension = proposal.axisDimension(for: crossOrientation) ?? tileAxisDimension
+    @inlinable func calculateGridSize(basedOn proposal: ProposedViewSize) -> CGSize {
+        let gridAxisDimension = gridSize.axisDimension(for: crossOrientation)
+        let axisDimension = proposal.axisDimension(for: crossOrientation) ?? gridAxisDimension
         let crossAxisSpacing = minimumSpacing.axisSpacing(for: crossOrientation)
         let axisSpacing = minimumSpacing.axisSpacing(for: orientation)
         
-        guard tileAxisDimension.isNormal, axisDimension.isNormal else {
+        guard gridAxisDimension.isNormal, axisDimension.isNormal else {
             return .zero
         }
         
-        self.crossOrientationCount = max(1, Int((axisDimension + crossAxisSpacing) / (tileAxisDimension + crossAxisSpacing)))
+        self.crossOrientationCount = max(1, Int((axisDimension + crossAxisSpacing) / (gridAxisDimension + crossAxisSpacing)))
         
         if crossOrientationCount == 1 {
             self.spacing = minimumSpacing
         } else {
-            let realSpacing = (axisDimension - (tileAxisDimension * CGFloat(crossOrientationCount))) / CGFloat(crossOrientationCount - 1)
+            let realSpacing = (axisDimension - (gridAxisDimension * CGFloat(crossOrientationCount))) / CGFloat(crossOrientationCount - 1)
             self.spacing = MosaicGridSpacing(axis: axisSpacing, crossAxis: realSpacing, for: orientation)
         }
         
-        return tileSize
+        return gridSize
     }
 }
 

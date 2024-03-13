@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-struct MosaicTiles: LayoutValueKey {
+struct UsingGrids: LayoutValueKey {
     static let defaultValue: MosaicGridSize = MosaicGridSize(width: 1, height: 1)
 }
 

@@ -14,7 +14,7 @@ struct MosaicTileLayoutItem: Equatable {
     let mosaicSize: MosaicGridSize
     let spacing: MosaicGridSpacing
     let gridSize: CGSize
-    var tileSize: CGSize { mosaicSize.tileSize(for: gridSize, with: spacing) }
+    var usedGridsSize: CGSize { mosaicSize.usedGridsSize(for: gridSize, with: spacing) }
     
     init(view: LayoutSubview, sizeThatFits: CGSize, gridSize: CGSize, mosaicSize: MosaicGridSize, spacing: MosaicGridSpacing) {
         self.view = view
@@ -28,7 +28,7 @@ struct MosaicTileLayoutItem: Equatable {
         self.view = view
         self.spacing = spacing
         self.gridSize = gridSize
-        let tilesSize = view[MosaicTiles.self]
+        let tilesSize = view[UsingGrids.self]
         let mosaicSizeProposal = tilesSize.proposalSize(for: gridSize, spacing: spacing)
         self.sizeThatFits = view.sizeThatFits(mosaicSizeProposal)
         self.mosaicSize = sizeThatFits.mosaicGridSize(using: gridSize, spacing: spacing)
@@ -91,7 +91,7 @@ private extension MosaicGridSize {
             return ProposedViewSize(width: proposalWidth, height: proposalHeight)
         }
     
-    func tileSize(for gridSize: CGSize, with spacing: MosaicGridSpacing) -> CGSize {
+    func usedGridsSize(for gridSize: CGSize, with spacing: MosaicGridSpacing) -> CGSize {
         let sizeWidth = (CGFloat(width) * gridSize.width) + (CGFloat(width - 1) * spacing.horizontal)
         let sizeHeight = (CGFloat(height) * gridSize.height) + (CGFloat(height - 1) * spacing.vertical)
         return CGSize(width: sizeWidth, height: sizeHeight)

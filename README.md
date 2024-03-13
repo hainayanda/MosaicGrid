@@ -71,7 +71,7 @@ Then, include it in your target:
 
 ![Grid Anatomy](GridAnatomy.png)
 
-How the placement will go will depend on the type of MosaicGrid you use, whether is it `VMosaicGrid` or `HMosaicGrid`. You can utilize `tileSized(w:h:)` to control how many tiles will be used for each view. With this, arranging UI with grid placement will be very easy!
+How the placement will go will depend on the type of MosaicGrid you use, whether is it `VMosaicGrid` or `HMosaicGrid`. You can utilize `usingGrids(h:v:)` to control how many tiles will be used for each view. With this, arranging UI with grid placement will be very easy!
 
  Like this photo album example, or this abstract-like art :stuck_out_tongue_winking_eye:
 
@@ -87,7 +87,7 @@ How the placement will go will depend on the type of MosaicGrid you use, whether
 VMosaicGrid(hGridCount: 3, spacing: 2) {
     ForEach(models) { model in
         MyView(from: model)
-            .tileSize(w: model.width, h: model.height)
+            .usingGrids(h: model.width, v: model.height)
     }
 }
 ```
@@ -120,7 +120,7 @@ public init(gridSize: CGSize, minimumSpacing: MosaicGridSpacing = .zero, @ViewBu
 HMosaicGrid(vGridCount: 3, spacing: 2) {
     ForEach(models) { model in
         MyView(from: model)
-            .tileSize(w: model.width, h: model.height)
+            .usingGrids(h: model.width, v: model.height)
     }
 }
 ```
@@ -151,9 +151,9 @@ You can customize how the grid size is calculated by using these 3 different `in
 VMosaicGrid(hGridCount: 3, spacing: 2) {
     ForEach(models) { model in
         MyView(from: model)
-            .tileSize(w: model.width, h: model.height)
+            .usingGrids(h: model.width, v: model.height)
         // spacer that fills grid 3x1
-        SpacerTile(w: 3, h: 1)
+        SpacerTile(h: 3, v: 1)
     }
 }
 ```

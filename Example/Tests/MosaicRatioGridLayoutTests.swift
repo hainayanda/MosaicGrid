@@ -22,7 +22,7 @@ class MosaicRatioGridLayoutTests: XCTestCase {
         
         let viewSize = ProposedViewSize(width: 50, height: 50)
         
-        let size = vGrid.tilesSize(basedOn: viewSize)
+        let size = vGrid.calculateGridSize(basedOn: viewSize)
         
         XCTAssertEqual(size, CGSize(width: 10, height: 5))
     }
@@ -36,7 +36,7 @@ class MosaicRatioGridLayoutTests: XCTestCase {
         
         let viewSize = ProposedViewSize(width: 50, height: 50)
         
-        let size = hGrid.tilesSize(basedOn: viewSize)
+        let size = hGrid.calculateGridSize(basedOn: viewSize)
         
         XCTAssertEqual(size, CGSize(width: 20, height: 10))
     }
@@ -46,12 +46,12 @@ class MosaicRatioGridLayoutTests: XCTestCase {
             orientation: .vertical,
             crossGridCount: 5,
             aspectRatio: 2,
-            spacing: 10
+            spacing: MosaicGridSpacing(spacings: 10)
         )
         
         let viewSize = ProposedViewSize(width: 90, height: 90)
         
-        let size = vGrid.tilesSize(basedOn: viewSize)
+        let size = vGrid.calculateGridSize(basedOn: viewSize)
         
         XCTAssertEqual(size, CGSize(width: 10, height: 5))
     }
@@ -61,12 +61,12 @@ class MosaicRatioGridLayoutTests: XCTestCase {
             orientation: .horizontal,
             crossGridCount: 5,
             aspectRatio: 2,
-            spacing: 10
+            spacing: MosaicGridSpacing(spacings: 10)
         )
         
         let viewSize = ProposedViewSize(width: 90, height: 90)
         
-        let size = hGrid.tilesSize(basedOn: viewSize)
+        let size = hGrid.calculateGridSize(basedOn: viewSize)
         
         XCTAssertEqual(size, CGSize(width: 20, height: 10))
     }
@@ -80,7 +80,7 @@ class MosaicRatioGridLayoutTests: XCTestCase {
         
         let viewSize = ProposedViewSize(width: 0, height: 0)
         
-        let size = vGrid.tilesSize(basedOn: viewSize)
+        let size = vGrid.calculateGridSize(basedOn: viewSize)
         
         XCTAssertEqual(size, CGSize(width: 0, height: 0))
     }
@@ -94,7 +94,7 @@ class MosaicRatioGridLayoutTests: XCTestCase {
         
         let viewSize = ProposedViewSize(width: 0, height: 0)
         
-        let size = hGrid.tilesSize(basedOn: viewSize)
+        let size = hGrid.calculateGridSize(basedOn: viewSize)
         
         XCTAssertEqual(size, CGSize(width: 0, height: 0))
     }

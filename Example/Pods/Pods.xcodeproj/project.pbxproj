@@ -20,7 +20,7 @@
 		40BC963338F47CA1B61CEEB109543E30 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
 		4135E7F436DE80A65E3E14F212350DF9 /* MosaicGridLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53DB0B411A414EA6DF927196CE18EE16 /* MosaicGridLayout.swift */; };
 		484D4CCB88EDD3E03F506F2DCB8F9315 /* MutableLogicalMatrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D2563150C25076F7EA2B72B023246F /* MutableLogicalMatrix.swift */; };
-		4A1769BB805C3EEBFA4B7C0619BD52C3 /* MosaicTiles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BC3553E9941F0B1148E231514C561D5 /* MosaicTiles.swift */; };
+		4A1769BB805C3EEBFA4B7C0619BD52C3 /* UsingGrids.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BC3553E9941F0B1148E231514C561D5 /* UsingGrids.swift */; };
 		54C63D838A1CEAF1D2FBBD537E9B2A89 /* MosaicAxisDimensionGridLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E862EC6F4DEC042F8DD42883BC3E30 /* MosaicAxisDimensionGridLayout.swift */; };
 		5BD32612DD53DD98D2824467AEF35E38 /* MosaicTileLayoutItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1CA3B76AB5012BC08CDE74DB6DF244 /* MosaicTileLayoutItem.swift */; };
 		69FEC92FFE9313555D9385B9BC795393 /* ProposedViewSize+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1ECC7C0EEEA2E9F6C61573D017CF193 /* ProposedViewSize+Extensions.swift */; };
@@ -62,7 +62,7 @@
 		0B4A544FF4F7A1A7AAECDAB814743B90 /* MosaicGrid.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MosaicGrid.swift; sourceTree = "<group>"; };
 		0B8BD3B279A7BB9AFBA56EA53908C870 /* Pods-MosaicGrid_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-MosaicGrid_Example-frameworks.sh"; sourceTree = "<group>"; };
 		0B98F1ED66F7444C772D41CC69C6B184 /* Pods-MosaicGrid_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-MosaicGrid_Example-umbrella.h"; sourceTree = "<group>"; };
-		0BC3553E9941F0B1148E231514C561D5 /* MosaicTiles.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MosaicTiles.swift; sourceTree = "<group>"; };
+		0BC3553E9941F0B1148E231514C561D5 /* UsingGrids.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = UsingGrids.swift; sourceTree = "<group>"; };
 		0CC92F6BDF69082D691F609EC6CB0507 /* Pods-MosaicGrid_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MosaicGrid_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		0F1CA3B76AB5012BC08CDE74DB6DF244 /* MosaicTileLayoutItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MosaicTileLayoutItem.swift; sourceTree = "<group>"; };
 		1AC041C96AFA69976EA40C72CC9C71D1 /* MappedGridlayoutItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MappedGridlayoutItem.swift; sourceTree = "<group>"; };
@@ -76,15 +76,15 @@
 		4A79F7267291F12EB8DF3D9CF4278FDA /* Pods-MosaicGrid_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-MosaicGrid_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
 		4D5121CCBCBD60BB996D2C753E2B87F2 /* InternalLogger.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = InternalLogger.swift; path = MosaicGrid/Classes/InternalLogger.swift; sourceTree = "<group>"; };
 		4F3AC18FD641F7BC60A0D5F37FD40C9F /* MosaicGridSpacing.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MosaicGridSpacing.swift; sourceTree = "<group>"; };
-		51989D9373B364CF73AD0A62FA508CA5 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		51989D9373B364CF73AD0A62FA508CA5 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		53DB0B411A414EA6DF927196CE18EE16 /* MosaicGridLayout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MosaicGridLayout.swift; sourceTree = "<group>"; };
 		569820F92EAAC8F8ACB82FB71DF75CF2 /* Pods-MosaicGrid_Tests */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-MosaicGrid_Tests"; path = Pods_MosaicGrid_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B4E26A27696FA122AADFAA772AB3494 /* MosaicRatioGridLayout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MosaicRatioGridLayout.swift; sourceTree = "<group>"; };
 		6AAFE25B09BC766579A0800F635BCE2B /* Pods-MosaicGrid_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-MosaicGrid_Tests-umbrella.h"; sourceTree = "<group>"; };
 		70DEE79A50D542BEDF35D93BEC781C04 /* VMosaicGrid.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = VMosaicGrid.swift; sourceTree = "<group>"; };
 		73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		73A4ABC1ED39F4D54BE2809E454ECC06 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
-		79008DD1A566282767827CBEC10E21D6 /* MosaicGrid.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = MosaicGrid.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		73A4ABC1ED39F4D54BE2809E454ECC06 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		79008DD1A566282767827CBEC10E21D6 /* MosaicGrid.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = MosaicGrid.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		7983BC766B8575FFBFE7D64A2D2C4C01 /* MosaicGrid-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MosaicGrid-umbrella.h"; sourceTree = "<group>"; };
 		7B40CABDAAD01BADA641016E2047E2EC /* Pods-MosaicGrid_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-MosaicGrid_Tests-dummy.m"; sourceTree = "<group>"; };
 		7CF0ED18347FA4EC661D6BED33CEDA12 /* MosaicGrid-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MosaicGrid-prefix.pch"; sourceTree = "<group>"; };
@@ -96,7 +96,7 @@
 		894F19863EDB725A32D7A960C9C32E9E /* MosaicGrid-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MosaicGrid-dummy.m"; sourceTree = "<group>"; };
 		928CDA343DDB91EC11853E632B3F4571 /* Pods-MosaicGrid_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MosaicGrid_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		963351D85C728DF6777AB28B405FE789 /* Pods-MosaicGrid_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-MosaicGrid_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		AA27733925E924841F77ABBB54461757 /* MosaicGrid.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MosaicGrid.release.xcconfig; sourceTree = "<group>"; };
 		AEE745D6D777500129136CEB4B04926F /* Pods-MosaicGrid_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-MosaicGrid_Example.modulemap"; sourceTree = "<group>"; };
 		B0ACD5FF81A3ABF923D6BF6D08020B2B /* MosaicGrid.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = MosaicGrid.modulemap; sourceTree = "<group>"; };
@@ -146,7 +146,7 @@
 				362ABDC5EE206C55984DFFDD7A24D478 /* MosaicGridSizing.swift */,
 				4F3AC18FD641F7BC60A0D5F37FD40C9F /* MosaicGridSpacing.swift */,
 				0F1CA3B76AB5012BC08CDE74DB6DF244 /* MosaicTileLayoutItem.swift */,
-				0BC3553E9941F0B1148E231514C561D5 /* MosaicTiles.swift */,
+				0BC3553E9941F0B1148E231514C561D5 /* UsingGrids.swift */,
 				7D2BCA390EA09B1A68C06AAD0E5B5C0B /* Mutable.swift */,
 				31D2563150C25076F7EA2B72B023246F /* MutableLogicalMatrix.swift */,
 			);
@@ -482,7 +482,7 @@
 				352C1A3F7C284F5316A0CE9A876C51DB /* MosaicRatioGridLayout.swift in Sources */,
 				981F9A54EDA99EFC17B84A08C95276C6 /* MosaicSizedGridLayout.swift in Sources */,
 				5BD32612DD53DD98D2824467AEF35E38 /* MosaicTileLayoutItem.swift in Sources */,
-				4A1769BB805C3EEBFA4B7C0619BD52C3 /* MosaicTiles.swift in Sources */,
+				4A1769BB805C3EEBFA4B7C0619BD52C3 /* UsingGrids.swift in Sources */,
 				1485F4E0C2AFD482C0FBA7FE9ABA295F /* Mutable.swift in Sources */,
 				484D4CCB88EDD3E03F506F2DCB8F9315 /* MutableLogicalMatrix.swift in Sources */,
 				69FEC92FFE9313555D9385B9BC795393 /* ProposedViewSize+Extensions.swift in Sources */,
