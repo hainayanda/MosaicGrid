@@ -69,51 +69,52 @@ struct MosaicGrid<Content>: View where Content: View {
 }
 
 // MARK: Preview
-
+#if DEBUG
 struct MosaicGrid_Previews: PreviewProvider {
     static var previews: some View {
         ScrollView(.vertical) {
-            MosaicGrid(orientation: .vertical, spacing: 18, gridSizing: .constantSize(CGSize(width: 9, height: 9))) {
+            MosaicGrid(orientation: .vertical, spacing: MosaicGridSpacing(spacings: 18), gridSizing: .constantSize(CGSize(width: 9, height: 9))) {
                 ForEach(0..<50) { _ in
                     Rectangle()
                         .foregroundColor(.red)
-                        .tileSized(w: 2, h: 2)
+                        .usingGrids(h: 2, v: 2)
                     Rectangle()
                         .foregroundColor(.orange)
-                        .tileSized(w: 2)
+                        .usingGrids(h: 2)
                     Rectangle()
                         .foregroundColor(.yellow)
-                        .tileSized(h: 3)
+                        .usingGrids(v: 3)
                     Rectangle()
                         .foregroundColor(.green)
-                        .tileSized()
+                        .usingGrids()
                     Rectangle()
                         .foregroundColor(.cyan)
-                        .tileSized(w: 2, h: 2)
+                        .usingGrids(h: 2, v: 2)
                     Rectangle()
                         .foregroundColor(.blue)
-                        .tileSized()
+                        .usingGrids()
                     Rectangle()
                         .foregroundColor(.purple)
-                        .tileSized(w: 2, h: 3)
+                        .usingGrids(h: 2, v: 3)
                     Rectangle()
                         .foregroundColor(.pink)
-                        .tileSized()
+                        .usingGrids()
                     Rectangle()
                         .foregroundColor(.red)
-                        .tileSized(w: 3)
+                        .usingGrids(h: 3)
                     Rectangle()
                         .foregroundColor(.orange)
-                        .tileSized(h: 2)
+                        .usingGrids(v: 2)
                     Rectangle()
                         .foregroundColor(.yellow)
-                        .tileSized()
+                        .usingGrids()
                     Rectangle()
                         .foregroundColor(.green)
-                        .tileSized(w: 2)
+                        .usingGrids(h: 2)
                 }
             }
             .padding()
         }
     }
 }
+#endif
