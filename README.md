@@ -32,7 +32,7 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 You can easily install MosaicGrid via [CocoaPods](https://cocoapods.org). Add the following line to your Podfile:
 
 ```ruby
-pod 'MosaicGrid', '~> 1.0'
+pod 'MosaicGrid', '~> 1.1'
 ```
 
 ### Swift Package Manager (Xcode)
@@ -41,7 +41,7 @@ To install using Xcode's Swift Package Manager, follow these steps:
 
 - Go to **File > Swift Package > Add Package Dependency**
 - Enter the URL: **<https://github.com/hainayanda/MosaicGrid.git>**
-- Choose **Up to Next Major** for the version rule and set the version to **1.0.0**.
+- Choose **Up to Next Major** for the version rule and set the version to **1.1.0**.
 - Click "Next" and wait for the package to be fetched.
 
 ### Swift Package Manager (Package.swift)
@@ -50,7 +50,7 @@ If you prefer using Package.swift, add MosaicGrid as a dependency in your **Pack
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/hainayanda/MosaicGrid.git", .upToNextMajor(from: "1.0.0"))
+    .package(url: "https://github.com/hainayanda/MosaicGrid.git", .upToNextMajor(from: "1.1.0"))
 ]
 ```
 
