@@ -19,10 +19,10 @@ public struct HMosaicGrid<Content>: View where Content: View {
     /// `content` will be used to get the view to be arranged by the Mosaic Grid View
     /// - Parameters:
     ///   - vGridCount: Count of the vertical grid.
-    ///   - spacing: Spacing on each grid. The default is zero.
+    ///   - spacing: Spacing on each grid.
     ///   - gridAspectRatio: Aspect ratio of each grid
     ///   - content: View that will be used as this Mosaic Grid Content
-    public init(vGridCount: Int, spacing: MosaicGridSpacing = .zero, gridAspectRatio: Double = 1, @ViewBuilder content: @escaping () -> Content) {
+    public init(vGridCount: Int, spacing: MosaicGridSpacing, gridAspectRatio: Double = 1, @ViewBuilder content: @escaping () -> Content) {
         self.underlyingMosaicGrid = MosaicGrid(
             orientation: .horizontal,
             spacing: spacing,
@@ -38,10 +38,10 @@ public struct HMosaicGrid<Content>: View where Content: View {
     /// `content` will be used to get the view to be arranged by the Mosaic Grid View
     /// - Parameters:
     ///   - vGridCount: Count of the vertical grid.
-    ///   - spacing: Spacing on each grid. The default is zero.
+    ///   - spacing: Spacing on each grid.
     ///   - gridWidth: Width of each grid
     ///   - content: View that will be used as this Mosaic Grid Content
-    public init(vGridCount: Int, spacing: MosaicGridSpacing = .zero, gridWidth: CGFloat, @ViewBuilder content: @escaping () -> Content) {
+    public init(vGridCount: Int, spacing: MosaicGridSpacing, gridWidth: CGFloat, @ViewBuilder content: @escaping () -> Content) {
         self.underlyingMosaicGrid = MosaicGrid(
             orientation: .horizontal,
             spacing: spacing,
@@ -56,7 +56,7 @@ public struct HMosaicGrid<Content>: View where Content: View {
     /// `content` will be used to get the view to be arranged by the Mosaic Grid View
     /// - Parameters:
     ///   - gridSize: Static size of a single grid.
-    ///   - minimumSpacing: Minimum spacing on each grid. The default is zero.
+    ///   - minimumSpacing: Minimum spacing on each grid.
     ///   - content: the view that will be used as this Mosaic Grid Content
     public init(gridSize: CGSize, minimumSpacing: MosaicGridSpacing = .zero, @ViewBuilder content: @escaping () -> Content) {
         self.underlyingMosaicGrid = MosaicGrid(
@@ -81,7 +81,7 @@ public extension HMosaicGrid {
     /// `content` will be used to get the view to be arranged by the Mosaic Grid View
     /// - Parameters:
     ///   - vGridCount: Count of the vertical grid.
-    ///   - spacing: Both horizontal and vertical spacing on each grid. The default is zero.
+    ///   - spacing: Both horizontal and vertical spacing on each grid. 
     ///   - gridAspectRatio: Aspect ratio of each grid
     ///   - content: View that will be used as this Mosaic Grid Content
     @inlinable init(vGridCount: Int, spacing: CGFloat, gridAspectRatio: Double = 1, @ViewBuilder content: @escaping () -> Content) {
@@ -96,11 +96,31 @@ public extension HMosaicGrid {
     /// Initialize Horizontal Mosaic Grid View.
     /// It will divide the height of the view with `vGridCount` to get the height of a single grid.
     /// If `spacing` is provided, it will add it to the calculation to make sure each grid has a spacing from each other.
+    /// `gridAspectRatio` then will be used to calculate the width of a single grid.
+    /// `content` will be used to get the view to be arranged by the Mosaic Grid View
+    /// - Parameters:
+    ///   - vGridCount: Count of the vertical grid.
+    ///   - hSpacing: Horizontal spacing on each grid. 
+    ///   - vSpacing: Vertical spacing on each grid. 
+    ///   - gridAspectRatio: Aspect ratio of each grid
+    ///   - content: View that will be used as this Mosaic Grid Content
+    @inlinable init(vGridCount: Int, hSpacing: CGFloat = .zero, vSpacing: CGFloat = .zero, gridAspectRatio: Double = 1, @ViewBuilder content: @escaping () -> Content) {
+        self.init(
+            vGridCount: vGridCount,
+            spacing: MosaicGridSpacing(h: hSpacing, v: vSpacing),
+            gridAspectRatio: gridAspectRatio,
+            content: content
+        )
+    }
+    
+    /// Initialize Horizontal Mosaic Grid View.
+    /// It will divide the height of the view with `vGridCount` to get the height of a single grid.
+    /// If `spacing` is provided, it will add it to the calculation to make sure each grid has a spacing from each other.
     /// `gridWidth` then will be used as the height of a single grid.
     /// `content` will be used to get the view to be arranged by the Mosaic Grid View
     /// - Parameters:
     ///   - vGridCount: Count of the vertical grid.
-    ///   - spacing: Both horizontal and vertical spacing on each grid. The default is zero.
+    ///   - spacing: Both horizontal and vertical spacing on each grid. 
     ///   - gridWidth: Width of each grid
     ///   - content: View that will be used as this Mosaic Grid Content
     @inlinable init(vGridCount: Int, spacing: CGFloat, gridWidth: CGFloat, @ViewBuilder content: @escaping () -> Content) {
@@ -113,17 +133,54 @@ public extension HMosaicGrid {
     }
     
     /// Initialize Horizontal Mosaic Grid View.
+    /// It will divide the height of the view with `vGridCount` to get the height of a single grid.
+    /// If `spacing` is provided, it will add it to the calculation to make sure each grid has a spacing from each other.
+    /// `gridWidth` then will be used as the height of a single grid.
+    /// `content` will be used to get the view to be arranged by the Mosaic Grid View
+    /// - Parameters:
+    ///   - vGridCount: Count of the vertical grid.
+    ///   - hSpacing: Horizontal spacing on each grid. 
+    ///   - vSpacing: Vertical spacing on each grid. 
+    ///   - gridWidth: Width of each grid
+    ///   - content: View that will be used as this Mosaic Grid Content
+    @inlinable init(vGridCount: Int, hSpacing: CGFloat = .zero, vSpacing: CGFloat = .zero, gridWidth: CGFloat, @ViewBuilder content: @escaping () -> Content) {
+        self.init(
+            vGridCount: vGridCount,
+            spacing: MosaicGridSpacing(h: hSpacing, v: vSpacing),
+            gridWidth: gridWidth,
+            content: content
+        )
+    }
+    
+    /// Initialize Horizontal Mosaic Grid View.
     /// It will use `gridSize` as the size of a single grid
     /// If `minimumSpacing` is provided, it will add it to the calculation to make sure each grid has a minimum spacing from each other.
     /// `content` will be used to get the view to be arranged by the Mosaic Grid View
     /// - Parameters:
     ///   - gridSize: Static size of a single grid.
-    ///   - minimumSpacing: Both horizontal and vertical minimum spacing on each grid. The default is zero.
+    ///   - minimumSpacing: Both horizontal and vertical minimum spacing on each grid. 
     ///   - content: the view that will be used as this Mosaic Grid Content
     @inlinable init(gridSize: CGSize, minimumSpacing: CGFloat, @ViewBuilder content: @escaping () -> Content) {
         self.init(
             gridSize: gridSize,
             minimumSpacing: MosaicGridSpacing(spacings: minimumSpacing),
+            content: content
+        )
+    }
+    
+    /// Initialize Horizontal Mosaic Grid View.
+    /// It will use `gridSize` as the size of a single grid
+    /// If `minimumSpacing` is provided, it will add it to the calculation to make sure each grid has a minimum spacing from each other.
+    /// `content` will be used to get the view to be arranged by the Mosaic Grid View
+    /// - Parameters:
+    ///   - gridSize: Static size of a single grid.
+    ///   - minimumHSpacing: Horizontal minimum spacing on each grid. 
+    ///   - minimumVSpacing: Vertical minimum spacing on each grid. 
+    ///   - content: the view that will be used as this Mosaic Grid Content
+    @inlinable init(gridSize: CGSize, minimumHSpacing: CGFloat = .zero, minimumVSpacing: CGFloat = .zero, @ViewBuilder content: @escaping () -> Content) {
+        self.init(
+            gridSize: gridSize,
+            minimumSpacing: MosaicGridSpacing(h: minimumHSpacing, v: minimumVSpacing),
             content: content
         )
     }
