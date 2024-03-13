@@ -31,7 +31,7 @@ struct MosaicGrid<Content>: View where Content: View {
         case .constantAxis(let dimension, let crossGridCount):
             mosaicAxisDimensionGridLayout(axisDimension: dimension, crossGridCount: crossGridCount)
         case .constantSize(let size):
-            mosaicSizedGridLayout(tileSize: size, minimumSpacing: spacing)
+            mosaicSizedGridLayout(gridSize: size, minimumSpacing: spacing)
         }
     }
     
@@ -57,10 +57,10 @@ struct MosaicGrid<Content>: View where Content: View {
         }
     }
     
-    func mosaicSizedGridLayout(tileSize: CGSize, minimumSpacing: MosaicGridSpacing) -> some View {
+    func mosaicSizedGridLayout(gridSize: CGSize, minimumSpacing: MosaicGridSpacing) -> some View {
         MosaicSizedGridLayout(
             orientation: orientation,
-            tileSize: tileSize,
+            gridSize: gridSize,
             minimumSpacing: minimumSpacing
         ) {
             content()
