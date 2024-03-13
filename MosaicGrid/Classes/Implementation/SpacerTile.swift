@@ -21,8 +21,6 @@ public func SpacerTile(w width: Int = 1, h height: Int = 1) -> some View {
         .tileSized(w: width, h: height)
 }
 
-
-// swiftlint:disable identifier_name
 /// Create a clear rectangle with a given tile size.
 /// - Parameters:
 ///   - horizontal: number of horizontal tiles used.
