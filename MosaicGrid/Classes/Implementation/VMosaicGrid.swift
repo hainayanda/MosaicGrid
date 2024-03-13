@@ -72,8 +72,65 @@ public struct VMosaicGrid<Content>: View where Content: View {
     }
 }
 
-// MARK: Preview
+public extension VMosaicGrid {
+    
+    /// Initialize Vertical Mosaic Grid View.
+    /// It will divide the width of the view with `hGridCount` to get the height of a single grid.
+    /// If `spacing` is provided, it will add it to the calculation to make sure each grid has a spacing from each other.
+    /// `gridAspectRatio` then will be used to calculate the height of a single grid.
+    /// `content` will be used to get the view to be arranged by the Mosaic Grid View
+    /// - Parameters:
+    ///   - hGridCount: Count of the horizontal grid.
+    ///   - spacing: Both horizontal and vertical spacing on each grid. The default is zero.
+    ///   - gridAspectRatio: Aspect ratio of each grid
+    ///   - content: View that will be used as this Mosaic Grid Content
+    @inlinable init(hGridCount: Int, spacing: CGFloat, gridAspectRatio: Double = 1, @ViewBuilder content: @escaping () -> Content) {
+        self.init(
+            hGridCount: hGridCount,
+            spacing: MosaicGridSpacing(spacings: spacing),
+            gridAspectRatio: gridAspectRatio,
+            content: content
+        )
+    }
+    
+    /// Initialize Vertical Mosaic Grid View.
+    /// It will divide the width of the view with `hGridCount` to get the height of a single grid.
+    /// If `spacing` is provided, it will add it to the calculation to make sure each grid has a spacing from each other.
+    /// `gridHeight` then will be used as the height of a single grid.
+    /// `content` will be used to get the view to be arranged by the Mosaic Grid View
+    /// - Parameters:
+    ///   - hGridCount: Count of the horizontal grid.
+    ///   - spacing: Both horizontal and vertical spacing on each grid. The default is zero.
+    ///   - gridHeight: Width of each grid
+    ///   - content: View that will be used as this Mosaic Grid Content
+    @inlinable init(hGridCount: Int, spacing: CGFloat, gridHeight: CGFloat, @ViewBuilder content: @escaping () -> Content) {
+        self.init(
+            hGridCount: hGridCount,
+            spacing: MosaicGridSpacing(spacings: spacing),
+            gridHeight: gridHeight,
+            content: content
+        )
+    }
+    
+    /// Initialize Vertical Mosaic Grid View.
+    /// It will use `gridSize` as the size of a single grid
+    /// If `minimumSpacing` is provided, it will add it to the calculation to make sure each grid has a minimum spacing from each other.
+    /// `content` will be used to get the view to be arranged by the Mosaic Grid View
+    /// - Parameters:
+    ///   - gridSize: Static size of a single grid.
+    ///   - minimumSpacing: Both horizontal and vertical minimum spacing on each grid. The default is zero.
+    ///   - content: the view that will be used as this Mosaic Grid Content
+    @inlinable init(gridSize: CGSize, minimumSpacing: CGFloat, @ViewBuilder content: @escaping () -> Content) {
+        self.init(
+            gridSize: gridSize,
+            minimumSpacing: MosaicGridSpacing(spacings: minimumSpacing),
+            content: content
+        )
+    }
+}
 
+// MARK: Preview
+#if DEBUG
 struct VMosaicGrid_Previews: PreviewProvider {
     static var previews: some View {
         ScrollView(.vertical) {
