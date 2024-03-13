@@ -15,10 +15,30 @@ import SwiftUI
 ///   - height: number of vertical tiles used.
 /// - Returns: View with given tile size
 @available(*, deprecated, renamed: "SpacerTile(h:v:)")
-public func SpacerTile(w width: Int = 1, h height: Int = 1) -> some View {
+public func SpacerTile(w width: Int, h height: Int) -> some View {
     Rectangle()
         .foregroundColor(.clear)
         .tileSized(w: width, h: height)
+}
+
+/// Create a clear rectangle with a given tile size.
+/// - Parameter width: number of horizontal tiles used.
+/// - Returns: View with given tile size
+@available(*, deprecated, renamed: "SpacerTile(h:v:)")
+public func SpacerTile(w width: Int) -> some View {
+    Rectangle()
+        .foregroundColor(.clear)
+        .tileSized(w: width, h: 1)
+}
+
+/// Create a clear rectangle with a given tile size.
+/// - Parameter height: number of vertical tiles used.
+/// - Returns: View with given tile size
+@available(*, deprecated, renamed: "SpacerTile(h:v:)")
+public func SpacerTile(h height: Int) -> some View {
+    Rectangle()
+        .foregroundColor(.clear)
+        .tileSized(w: 1, h: height)
 }
 
 /// Create a clear rectangle with a given tile size.
