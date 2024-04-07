@@ -55,4 +55,30 @@ class MutableLogicalMatrixTests: XCTestCase {
             XCTAssertFalse((hMatrix[index, 0]!))
         }
     }
+    
+    func test_givenOutOfBoundsIndex_whenCheckValidity_thenItShouldReturnFalse() {
+        var vMatrix = VMutableLogicalMatrix(width: 5)
+        var hMatrix = HMutableLogicalMatrix(height: 5)
+        for index in 0..<6 {
+            vMatrix[1, index] = Bool.random()
+            hMatrix[index, 1] = Bool.random()
+            XCTAssertFalse(vMatrix.isValid(0, index + 1))
+            XCTAssertFalse(vMatrix.isValid(1, index + 1))
+            XCTAssertFalse(hMatrix.isValid(index + 1, 0))
+            XCTAssertFalse(hMatrix.isValid(index + 1, 1))
+        }
+    }
+    
+    func test_givenValidIndex_whenCheckValidity_thenItShouldReturnTrue() {
+        var vMatrix = VMutableLogicalMatrix(width: 5)
+        var hMatrix = HMutableLogicalMatrix(height: 5)
+        for index in 0..<6 {
+            vMatrix[1, index] = Bool.random()
+            hMatrix[index, 1] = Bool.random()
+            XCTAssertTrue(vMatrix.isValid(0, index))
+            XCTAssertTrue(vMatrix.isValid(1, index))
+            XCTAssertTrue(hMatrix.isValid(index, 0))
+            XCTAssertTrue(hMatrix.isValid(index, 1))
+        }
+    }
 }

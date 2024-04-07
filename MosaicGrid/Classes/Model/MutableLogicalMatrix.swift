@@ -11,6 +11,7 @@ protocol MutableLogicalMatrix {
     var width: Int { get }
     var height: Int { get }
     subscript(_ column: Int, _ row: Int) -> Bool? { get set }
+    func isValid(_ column: Int, _ row: Int) -> Bool
 }
 
 struct VMutableLogicalMatrix: MutableLogicalMatrix {
@@ -48,6 +49,13 @@ struct VMutableLogicalMatrix: MutableLogicalMatrix {
             twoDArray[row][column] = newValue ?? false
         }
     }
+    
+    func isValid(_ column: Int, _ row: Int) -> Bool {
+        guard let rowArray = twoDArray[safe: row] else {
+            return false
+        }
+        return rowArray.count > column
+    }
 }
 
 struct HMutableLogicalMatrix: MutableLogicalMatrix {
@@ -84,5 +92,12 @@ struct HMutableLogicalMatrix: MutableLogicalMatrix {
             }
             twoDArray[column][row] = newValue ?? false
         }
+    }
+    
+    func isValid(_ column: Int, _ row: Int) -> Bool {
+        guard let columnArray = twoDArray[safe: column] else {
+            return false
+        }
+        return columnArray.count > row
     }
 }
