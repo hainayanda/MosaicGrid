@@ -159,7 +159,7 @@ extension MosaicGridLayout where Cache == MosaicGridLayoutCache {
                 
                 let toFills = item.mapToGridCoordinate(startFrom: coordinate)
                 
-                guard toFills.isValid(in: mutableMatrix) else { continue }
+                guard toFills.isValidToFill(matrix: mutableMatrix) else { continue }
                 
                 toFills.forEach { coordinate in
                     mutableMatrix[coordinate.x, coordinate.y] = true
@@ -179,8 +179,8 @@ extension MosaicGridLayout where Cache == MosaicGridLayoutCache {
 // MARK: Private Extensions
 
 private extension Sequence where Element == MosaicGridCoordinate {
-    func isValid(in matrix: MutableLogicalMatrix) -> Bool {
-        for coordinate in self {
+    func isValidToFill(matrix: MutableLogicalMatrix) -> Bool {
+        for coordinate in self where matrix.isValid(coordinate.x, coordinate.y) {
             let isFilled = matrix[coordinate.x, coordinate.y] ?? false
             if isFilled { return false }
         }
