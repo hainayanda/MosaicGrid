@@ -32,7 +32,7 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 You can easily install MosaicGrid via [CocoaPods](https://cocoapods.org). Add the following line to your Podfile:
 
 ```ruby
-pod 'MosaicGrid', '~> 1.1.2'
+pod 'MosaicGrid', '~> 1.2.0'
 ```
 
 ### Swift Package Manager (Xcode)
@@ -41,7 +41,7 @@ To install using Xcode's Swift Package Manager, follow these steps:
 
 - Go to **File > Swift Package > Add Package Dependency**
 - Enter the URL: **<https://github.com/hainayanda/MosaicGrid.git>**
-- Choose **Up to Next Major** for the version rule and set the version to **1.1.2**.
+- Choose **Up to Next Major** for the version rule and set the version to **1.2.0**.
 - Click "Next" and wait for the package to be fetched.
 
 ### Swift Package Manager (Package.swift)
@@ -50,7 +50,7 @@ If you prefer using Package.swift, add MosaicGrid as a dependency in your **Pack
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/hainayanda/MosaicGrid.git", .upToNextMajor(from: "1.1.2"))
+    .package(url: "https://github.com/hainayanda/MosaicGrid.git", .upToNextMajor(from: "1.2.0"))
 ]
 ```
 
@@ -110,6 +110,14 @@ public init(hGridCount: Int, spacing: MosaicGridSpacing = .zero, gridHeight: CGF
 public init(gridSize: CGSize, minimumSpacing: MosaicGridSpacing = .zero, @ViewBuilder content: @escaping () -> Content) { ... }
 ```
 
+If you don't want to specify the grid guide, you can use this init:
+
+```swift
+ public init(spacing: MosaicGridSpacing = .zero, @ViewBuilder content: @escaping () -> Content) { ... }
+```
+
+But keep in mind that if you did not give any of `hGridCount` or `gridSize`, it will not calculate the grid guide, but it will place the view wherever it fit as compact as possible. `usingGrids(h:v:)` will not work too since there is no grid guide.
+
 ### HMosaicGrid
 
 ![Horizontal Mosaic](HMosaic.png)
@@ -143,6 +151,14 @@ You can customize how the grid size is calculated by using these 3 different `in
  public init(gridSize: CGSize, minimumSpacing: MosaicGridSpacing = .zero, @ViewBuilder content: @escaping () -> Content) { ... }
 ```
 
+If you don't want to specify the grid guide, you can use this init:
+
+```swift
+ public init(spacing: MosaicGridSpacing = .zero, @ViewBuilder content: @escaping () -> Content) { ... }
+```
+
+But keep in mind that if you did not give any of `vGridCount` or `gridSize`, it will not calculate the grid guide, but it will place the view wherever it fit as compact as possible. `usingGrids(h:v:)` will not work too since there is no grid guide.
+
 ### SpacerTile
 
 `SpacerTile` is a utility function to create a clear rectangle with a given tile size. It is used if you want to make sure some grids are not occupied with a view.
@@ -157,6 +173,8 @@ VMosaicGrid(hGridCount: 3, spacing: 2) {
     }
 }
 ```
+
+Keep in mind that if you did not give any of `vGridCount`, `hGridCount`, or `gridSize`, SpacerTile will not work since there will be no grid guide.
 
 ### MosaicGridSpacing
 
