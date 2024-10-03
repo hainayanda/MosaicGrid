@@ -70,8 +70,8 @@ struct FlowMosaicGridLayout: Layout {
     }
     
     func placeSubviews(in bounds: CGRect, proposal: ProposedViewSize, subviews: Subviews, cache: inout FlowMosaicGridLayoutCache) {
-        let adjustedX = (bounds.width - cache.calculatedSize.width) / 2
-        let adjustedY = (bounds.height - cache.calculatedSize.height) / 2
+        let adjustedX = max(.zero, (bounds.width - cache.calculatedSize.width) / 2)
+        let adjustedY = max(.zero, (bounds.height - cache.calculatedSize.height) / 2)
         cache.items.forEach { element in
             let realOrigin = CGPoint(
                 x: bounds.minX + element.origin.x + adjustedX,
@@ -107,33 +107,44 @@ struct FlowMosaicGridLayout: Layout {
     }
     
     private func calculateSizeAndPlacement(
-        for newSubviews: [LayoutSubview], proposal: ProposedViewSize,
-        viewSize: CGSize, cache: inout [FlowMosaicLayoutItem]) -> CGSize {
-        
-        var coordinateCalculator = FlowCoordinateCalculator(
-            orientation: orientation,
-            cache: cache,
-            viewSize: viewSize,
-            spacing: spacing
-        )
-        
-        for subview in newSubviews {
-            let sizeThatFits = subview.sizeThatFits(proposal)
-            let subviewSize = sizeThatFits.withSpacing(spacing)
-            let available = coordinateCalculator.potentialCoordinate(for: subviewSize)
-            for placement in available {
-                let subviewRect = CGRect(origin: placement, size: subviewSize)
-                guard coordinateCalculator.isAvailable(subviewRect, inView: viewSize) else {
-                    continue
+        for newSubviews: [LayoutSubview],
+        proposal: ProposedViewSize,
+        viewSize: CGSize,
+        cache: inout [FlowMosaicLayoutItem]) -> CGSize {
+            
+            var coordinateCalculator = FlowCoordinateCalculator(
+                orientation: orientation,
+                cache: cache,
+                viewSize: viewSize,
+                spacing: spacing
+            )
+            
+            for subview in newSubviews {
+                let sizeThatFits = subview.sizeThatFits(proposal)
+                let subviewSize = sizeThatFits.withSpacing(spacing)
+                let available = coordinateCalculator.potentialCoordinate(for: subviewSize)
+                var placed: Bool = false
+                for placement in available {
+                    let subviewRect = CGRect(origin: placement, size: subviewSize)
+                    guard coordinateCalculator.isAvailable(subviewRect, inView: viewSize) else {
+                        continue
+                    }
+                    coordinateCalculator.add(subviewRect, inView: viewSize)
+                    cache.append(FlowMosaicLayoutItem(view: subview, size: sizeThatFits, origin: placement))
+                    placed = true
+                    break
                 }
-                coordinateCalculator.add(subviewRect, inView: viewSize)
-                cache.append(FlowMosaicLayoutItem(view: subview, size: sizeThatFits, origin: placement))
-                break
+                if !placed {
+                    let fallbackPlacement = coordinateCalculator.fallBackCoordinate
+                    let subviewRect = CGRect(origin: fallbackPlacement, size: subviewSize)
+                    log(.error, "Failed to place subview with size (\(sizeThatFits.height),\(sizeThatFits.width)), will put at fallback position at (\(fallbackPlacement.x),\(fallbackPlacement.y))")
+                    coordinateCalculator.add(subviewRect, inView: viewSize)
+                    cache.append(FlowMosaicLayoutItem(view: subview, size: sizeThatFits, origin: fallbackPlacement))
+                }
             }
+            
+            return coordinateCalculator.calculatedSize
         }
-        
-        return coordinateCalculator.calculatedSize
-    }
 }
 
 // MARK: FlowCoordinateCalculator
@@ -157,6 +168,13 @@ private struct FlowCoordinateCalculator {
     
     var calculatedHeight: CGFloat {
         takens.height
+    }
+    
+    var fallBackCoordinate: CGPoint {
+        switch orientation {
+        case .vertical: return CGPoint(x: .zero, y: calculatedHeight)
+        default: return CGPoint(x: calculatedWidth, y: .zero)
+        }
     }
     
     init(orientation: Axis.Set) {
