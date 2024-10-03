@@ -62,7 +62,7 @@ extension MosaicGridLayout where Cache == MosaicGridLayoutCache {
     func sizeThatFits(proposal: ProposedViewSize, subviews: Subviews, cache: inout MosaicGridLayoutCache) -> CGSize {
         let gridSize = calculateGridSize(basedOn: proposal)
         guard gridSize.width > .zero, gridSize.height > .zero else {
-            log(.info, "Calculated grid size is invalid. Widht is \(gridSize.width) and height is \(gridSize.height). Will use zero instead.")
+            log(.error, "Calculated grid size is invalid. Width is \(gridSize.width) and height is \(gridSize.height). Will use zero instead.")
             return .zero
         }
         let items = subviews.map { subview in
@@ -94,7 +94,7 @@ extension MosaicGridLayout where Cache == MosaicGridLayoutCache {
     func placeSubviews(in bounds: CGRect, proposal: ProposedViewSize, subviews: Subviews, cache: inout MosaicGridLayoutCache) {
         let gridSize = calculateGridSize(basedOn: proposal)
         guard gridSize.width > .zero, gridSize.height > .zero else {
-            log(.info, "Calculated grid size is invalid. Widht is \(gridSize.width) and height is \(gridSize.height). Will not place a subview")
+            log(.error, "Calculated grid size is invalid. Width is \(gridSize.width) and height is \(gridSize.height). Will not place a subview")
             return
         }
         let origin = bounds.origin

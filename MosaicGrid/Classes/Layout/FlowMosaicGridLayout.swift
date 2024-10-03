@@ -41,7 +41,7 @@ struct FlowMosaicGridLayout: Layout {
     func sizeThatFits(proposal: ProposedViewSize, subviews: Subviews, cache: inout FlowMosaicGridLayoutCache) -> CGSize {
         let expandableViewSize = proposal.expandableViewSize(for: orientation)
         guard expandableViewSize.width > 0, expandableViewSize.height > 0 else {
-            log(.info, "Calculated size is invalid. Width is \(expandableViewSize.width) and height is \(expandableViewSize.height). Will use zero instead.")
+            log(.error, "Calculated size is invalid. Width is \(expandableViewSize.width) and height is \(expandableViewSize.height). Will use zero instead.")
             return .zero
         }
         let sizeWithExtraSpace = expandableViewSize.withSpacing(spacing)
