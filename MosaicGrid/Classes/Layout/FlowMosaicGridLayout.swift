@@ -74,8 +74,8 @@ struct FlowMosaicGridLayout: Layout {
         let adjustedY = (bounds.height - cache.calculatedSize.height) / 2
         cache.items.forEach { element in
             let realOrigin = CGPoint(
-                x: bounds.minX + element.coordinate.x + adjustedX,
-                y: bounds.minY + element.coordinate.y + adjustedY
+                x: bounds.minX + element.origin.x + adjustedX,
+                y: bounds.minY + element.origin.y + adjustedY
             )
             element.view.place(at: realOrigin, proposal: ProposedViewSize(element.size))
         }
@@ -127,7 +127,7 @@ struct FlowMosaicGridLayout: Layout {
                     continue
                 }
                 coordinateCalculator.add(subviewRect, inView: viewSize)
-                cache.append(FlowMosaicLayoutItem(view: subview, size: sizeThatFits, coordinate: placement))
+                cache.append(FlowMosaicLayoutItem(view: subview, size: sizeThatFits, origin: placement))
                 break
             }
         }
@@ -176,7 +176,7 @@ private struct FlowCoordinateCalculator {
         cache.forEach { element in
             add(
                 CGRect(
-                    origin: element.coordinate,
+                    origin: element.origin,
                     size: element.size.withSpacing(spacing)
                 ),
                 inView: viewSize
@@ -277,10 +277,8 @@ private extension Sequence where Element == CGRect {
     }
     
     func intersect(with rectangle: CGRect) -> Bool {
-        for rect in self {
-            if rect.intersects(rectangle) {
-                return true
-            }
+        for rect in self where rect.intersects(rectangle) {
+            return true
         }
         return false
     }
