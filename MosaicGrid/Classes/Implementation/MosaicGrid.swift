@@ -32,6 +32,8 @@ struct MosaicGrid<Content>: View where Content: View {
             mosaicAxisDimensionGridLayout(axisDimension: dimension, crossGridCount: crossGridCount)
         case .constantSize(let size):
             mosaicSizedGridLayout(gridSize: size, minimumSpacing: spacing)
+        case .flow:
+            flowGridLayout(minimumSpacing: spacing)
         }
     }
     
@@ -66,55 +68,62 @@ struct MosaicGrid<Content>: View where Content: View {
             content()
         }
     }
+    
+    func flowGridLayout(minimumSpacing: MosaicGridSpacing) -> some View {
+        FlowMosaicGridLayout(
+            orientation: orientation,
+            spacing: minimumSpacing
+        ) {
+            content()
+        }
+    }
 }
 
 // MARK: Preview
 #if DEBUG
-struct MosaicGrid_Previews: PreviewProvider {
-    static var previews: some View {
-        ScrollView(.vertical) {
-            MosaicGrid(orientation: .vertical, spacing: MosaicGridSpacing(spacings: 18), gridSizing: .constantSize(CGSize(width: 9, height: 9))) {
-                ForEach(0..<50) { _ in
-                    Rectangle()
-                        .foregroundColor(.red)
-                        .usingGrids(h: 2, v: 2)
-                    Rectangle()
-                        .foregroundColor(.orange)
-                        .usingGrids(h: 2)
-                    Rectangle()
-                        .foregroundColor(.yellow)
-                        .usingGrids(v: 3)
-                    Rectangle()
-                        .foregroundColor(.green)
-                        .usingGrids()
-                    Rectangle()
-                        .foregroundColor(.cyan)
-                        .usingGrids(h: 2, v: 2)
-                    Rectangle()
-                        .foregroundColor(.blue)
-                        .usingGrids()
-                    Rectangle()
-                        .foregroundColor(.purple)
-                        .usingGrids(h: 2, v: 3)
-                    Rectangle()
-                        .foregroundColor(.pink)
-                        .usingGrids()
-                    Rectangle()
-                        .foregroundColor(.red)
-                        .usingGrids(h: 3)
-                    Rectangle()
-                        .foregroundColor(.orange)
-                        .usingGrids(v: 2)
-                    Rectangle()
-                        .foregroundColor(.yellow)
-                        .usingGrids()
-                    Rectangle()
-                        .foregroundColor(.green)
-                        .usingGrids(h: 2)
-                }
+#Preview {
+    ScrollView(.vertical) {
+        MosaicGrid(orientation: .vertical, spacing: MosaicGridSpacing(spacings: 18), gridSizing: .constantSize(CGSize(width: 9, height: 9))) {
+            ForEach(0..<50) { _ in
+                Rectangle()
+                    .foregroundColor(.red)
+                    .usingGrids(h: 2, v: 2)
+                Rectangle()
+                    .foregroundColor(.orange)
+                    .usingGrids(h: 2)
+                Rectangle()
+                    .foregroundColor(.yellow)
+                    .usingGrids(v: 3)
+                Rectangle()
+                    .foregroundColor(.green)
+                    .usingGrids()
+                Rectangle()
+                    .foregroundColor(.cyan)
+                    .usingGrids(h: 2, v: 2)
+                Rectangle()
+                    .foregroundColor(.blue)
+                    .usingGrids()
+                Rectangle()
+                    .foregroundColor(.purple)
+                    .usingGrids(h: 2, v: 3)
+                Rectangle()
+                    .foregroundColor(.pink)
+                    .usingGrids()
+                Rectangle()
+                    .foregroundColor(.red)
+                    .usingGrids(h: 3)
+                Rectangle()
+                    .foregroundColor(.orange)
+                    .usingGrids(v: 2)
+                Rectangle()
+                    .foregroundColor(.yellow)
+                    .usingGrids()
+                Rectangle()
+                    .foregroundColor(.green)
+                    .usingGrids(h: 2)
             }
-            .padding()
         }
+        .padding()
     }
 }
 #endif
