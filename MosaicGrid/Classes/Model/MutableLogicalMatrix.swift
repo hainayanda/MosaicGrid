@@ -37,7 +37,8 @@ struct VMutableLogicalMatrix: MutableLogicalMatrix {
             guard column < width else {
                 let message = "Column should be less than matrix width. Column is \(column), while width is \(width)"
                 log(.error, message)
-                fatalError(message)
+                assertionFailure(message)
+                return
             }
             if row >= twoDArray.count {
                 let numberOfArrayNeeded = row - twoDArray.count + 1
@@ -81,7 +82,8 @@ struct HMutableLogicalMatrix: MutableLogicalMatrix {
             guard row < height else {
                 let message = "Row should be less than matrix width. Row is \(row), while height is \(height)"
                 log(.error, message)
-                fatalError(message)
+                assertionFailure(message)
+                return
             }
             if column >= twoDArray.count {
                 let numberOfArrayNeeded = column - twoDArray.count + 1

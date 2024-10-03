@@ -40,6 +40,8 @@ identifier_name:
     - no
     - x
     - y
+    - z
+    - i
 large_tuple:
    - 5
    - 6

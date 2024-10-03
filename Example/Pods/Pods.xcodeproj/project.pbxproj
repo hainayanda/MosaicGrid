@@ -17,6 +17,9 @@
 		28F0A5E64176B9A5ED5F1CDF9BBAADE1 /* SpacerTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA3BC3E555B06444F3113609E7E0AE0 /* SpacerTile.swift */; };
 		2E4142B619184E147D54F96497BC2AF2 /* Pods-MosaicGrid_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B98F1ED66F7444C772D41CC69C6B184 /* Pods-MosaicGrid_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		352C1A3F7C284F5316A0CE9A876C51DB /* MosaicRatioGridLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4E26A27696FA122AADFAA772AB3494 /* MosaicRatioGridLayout.swift */; };
+		3AA738B92CAEEE82006CDDC3 /* FlowMosaicLayoutItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA738B72CAEEE82006CDDC3 /* FlowMosaicLayoutItem.swift */; };
+		3AA738BA2CAEEE82006CDDC3 /* SortedSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA738B82CAEEE82006CDDC3 /* SortedSet.swift */; };
+		3AA738BC2CAEEE95006CDDC3 /* FlowMosaicGridLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA738BB2CAEEE95006CDDC3 /* FlowMosaicGridLayout.swift */; };
 		40BC963338F47CA1B61CEEB109543E30 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
 		4135E7F436DE80A65E3E14F212350DF9 /* MosaicGridLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53DB0B411A414EA6DF927196CE18EE16 /* MosaicGridLayout.swift */; };
 		484D4CCB88EDD3E03F506F2DCB8F9315 /* MutableLogicalMatrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D2563150C25076F7EA2B72B023246F /* MutableLogicalMatrix.swift */; };
@@ -58,7 +61,7 @@
 /* Begin PBXFileReference section */
 		03A53A90D288D37D295FCACD952462FD /* MosaicGridCoordinate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MosaicGridCoordinate.swift; sourceTree = "<group>"; };
 		06A1E881DB3694D2E18E30C35156D9D7 /* Pods-MosaicGrid_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-MosaicGrid_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
-		09194FBFE5A16B098AF1F12BC570E581 /* Pods-MosaicGrid_Example */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-MosaicGrid_Example"; path = Pods_MosaicGrid_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		09194FBFE5A16B098AF1F12BC570E581 /* Pods_MosaicGrid_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MosaicGrid_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B4A544FF4F7A1A7AAECDAB814743B90 /* MosaicGrid.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MosaicGrid.swift; sourceTree = "<group>"; };
 		0B8BD3B279A7BB9AFBA56EA53908C870 /* Pods-MosaicGrid_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-MosaicGrid_Example-frameworks.sh"; sourceTree = "<group>"; };
 		0B98F1ED66F7444C772D41CC69C6B184 /* Pods-MosaicGrid_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-MosaicGrid_Example-umbrella.h"; sourceTree = "<group>"; };
@@ -72,13 +75,16 @@
 		31D2563150C25076F7EA2B72B023246F /* MutableLogicalMatrix.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MutableLogicalMatrix.swift; sourceTree = "<group>"; };
 		35AC214C7A5C0720C42398E6878C40E2 /* HMosaicGrid.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HMosaicGrid.swift; sourceTree = "<group>"; };
 		362ABDC5EE206C55984DFFDD7A24D478 /* MosaicGridSizing.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MosaicGridSizing.swift; sourceTree = "<group>"; };
+		3AA738B72CAEEE82006CDDC3 /* FlowMosaicLayoutItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowMosaicLayoutItem.swift; sourceTree = "<group>"; };
+		3AA738B82CAEEE82006CDDC3 /* SortedSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortedSet.swift; sourceTree = "<group>"; };
+		3AA738BB2CAEEE95006CDDC3 /* FlowMosaicGridLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowMosaicGridLayout.swift; sourceTree = "<group>"; };
 		450CA55F13EF811B1D05EB09F4969609 /* Pods-MosaicGrid_Tests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-MosaicGrid_Tests-Info.plist"; sourceTree = "<group>"; };
 		4A79F7267291F12EB8DF3D9CF4278FDA /* Pods-MosaicGrid_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-MosaicGrid_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
 		4D5121CCBCBD60BB996D2C753E2B87F2 /* InternalLogger.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = InternalLogger.swift; path = MosaicGrid/Classes/InternalLogger.swift; sourceTree = "<group>"; };
 		4F3AC18FD641F7BC60A0D5F37FD40C9F /* MosaicGridSpacing.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MosaicGridSpacing.swift; sourceTree = "<group>"; };
 		51989D9373B364CF73AD0A62FA508CA5 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		53DB0B411A414EA6DF927196CE18EE16 /* MosaicGridLayout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MosaicGridLayout.swift; sourceTree = "<group>"; };
-		569820F92EAAC8F8ACB82FB71DF75CF2 /* Pods-MosaicGrid_Tests */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-MosaicGrid_Tests"; path = Pods_MosaicGrid_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		569820F92EAAC8F8ACB82FB71DF75CF2 /* Pods_MosaicGrid_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MosaicGrid_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B4E26A27696FA122AADFAA772AB3494 /* MosaicRatioGridLayout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MosaicRatioGridLayout.swift; sourceTree = "<group>"; };
 		6AAFE25B09BC766579A0800F635BCE2B /* Pods-MosaicGrid_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-MosaicGrid_Tests-umbrella.h"; sourceTree = "<group>"; };
 		70DEE79A50D542BEDF35D93BEC781C04 /* VMosaicGrid.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = VMosaicGrid.swift; sourceTree = "<group>"; };
@@ -88,7 +94,7 @@
 		7983BC766B8575FFBFE7D64A2D2C4C01 /* MosaicGrid-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MosaicGrid-umbrella.h"; sourceTree = "<group>"; };
 		7B40CABDAAD01BADA641016E2047E2EC /* Pods-MosaicGrid_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-MosaicGrid_Tests-dummy.m"; sourceTree = "<group>"; };
 		7CF0ED18347FA4EC661D6BED33CEDA12 /* MosaicGrid-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MosaicGrid-prefix.pch"; sourceTree = "<group>"; };
-		7CFFF6F4C0897AEDCF382D618A94DEA0 /* MosaicGrid */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = MosaicGrid; path = MosaicGrid.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7CFFF6F4C0897AEDCF382D618A94DEA0 /* MosaicGrid.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MosaicGrid.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D2BCA390EA09B1A68C06AAD0E5B5C0B /* Mutable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Mutable.swift; sourceTree = "<group>"; };
 		7F73185B75D3CB6B9AD2559515A64E50 /* Array+Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
 		86FAA0377FD7844040D8F8CF72F3BACB /* View+Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
@@ -141,6 +147,8 @@
 		23422ED598C32E84FAFC1722AE4CEBDE /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				3AA738B72CAEEE82006CDDC3 /* FlowMosaicLayoutItem.swift */,
+				3AA738B82CAEEE82006CDDC3 /* SortedSet.swift */,
 				1AC041C96AFA69976EA40C72CC9C71D1 /* MappedGridlayoutItem.swift */,
 				03A53A90D288D37D295FCACD952462FD /* MosaicGridCoordinate.swift */,
 				362ABDC5EE206C55984DFFDD7A24D478 /* MosaicGridSizing.swift */,
@@ -212,6 +220,7 @@
 		67E4CAB0433B6926B97FF47051E94252 /* Layout */ = {
 			isa = PBXGroup;
 			children = (
+				3AA738BB2CAEEE95006CDDC3 /* FlowMosaicGridLayout.swift */,
 				C0E862EC6F4DEC042F8DD42883BC3E30 /* MosaicAxisDimensionGridLayout.swift */,
 				53DB0B411A414EA6DF927196CE18EE16 /* MosaicGridLayout.swift */,
 				5B4E26A27696FA122AADFAA772AB3494 /* MosaicRatioGridLayout.swift */,
@@ -309,9 +318,9 @@
 		F19A557775F60C1D924F2B345E66ACF0 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				7CFFF6F4C0897AEDCF382D618A94DEA0 /* MosaicGrid */,
-				09194FBFE5A16B098AF1F12BC570E581 /* Pods-MosaicGrid_Example */,
-				569820F92EAAC8F8ACB82FB71DF75CF2 /* Pods-MosaicGrid_Tests */,
+				7CFFF6F4C0897AEDCF382D618A94DEA0 /* MosaicGrid.framework */,
+				09194FBFE5A16B098AF1F12BC570E581 /* Pods_MosaicGrid_Example.framework */,
+				569820F92EAAC8F8ACB82FB71DF75CF2 /* Pods_MosaicGrid_Tests.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -362,7 +371,7 @@
 			);
 			name = "Pods-MosaicGrid_Tests";
 			productName = Pods_MosaicGrid_Tests;
-			productReference = 569820F92EAAC8F8ACB82FB71DF75CF2 /* Pods-MosaicGrid_Tests */;
+			productReference = 569820F92EAAC8F8ACB82FB71DF75CF2 /* Pods_MosaicGrid_Tests.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		4DAF03986396D159B415E9823AAF42F1 /* MosaicGrid */ = {
@@ -380,7 +389,7 @@
 			);
 			name = MosaicGrid;
 			productName = MosaicGrid;
-			productReference = 7CFFF6F4C0897AEDCF382D618A94DEA0 /* MosaicGrid */;
+			productReference = 7CFFF6F4C0897AEDCF382D618A94DEA0 /* MosaicGrid.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		FAA8D54D7F5FC247646DE7F0B404578E /* Pods-MosaicGrid_Example */ = {
@@ -399,7 +408,7 @@
 			);
 			name = "Pods-MosaicGrid_Example";
 			productName = Pods_MosaicGrid_Example;
-			productReference = 09194FBFE5A16B098AF1F12BC570E581 /* Pods-MosaicGrid_Example */;
+			productReference = 09194FBFE5A16B098AF1F12BC570E581 /* Pods_MosaicGrid_Example.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -481,10 +490,13 @@
 				F663749D61622A8C96EC0280C4EF1406 /* MosaicGridSpacing.swift in Sources */,
 				352C1A3F7C284F5316A0CE9A876C51DB /* MosaicRatioGridLayout.swift in Sources */,
 				981F9A54EDA99EFC17B84A08C95276C6 /* MosaicSizedGridLayout.swift in Sources */,
+				3AA738BC2CAEEE95006CDDC3 /* FlowMosaicGridLayout.swift in Sources */,
 				5BD32612DD53DD98D2824467AEF35E38 /* MosaicTileLayoutItem.swift in Sources */,
 				4A1769BB805C3EEBFA4B7C0619BD52C3 /* UsingGrids.swift in Sources */,
 				1485F4E0C2AFD482C0FBA7FE9ABA295F /* Mutable.swift in Sources */,
 				484D4CCB88EDD3E03F506F2DCB8F9315 /* MutableLogicalMatrix.swift in Sources */,
+				3AA738B92CAEEE82006CDDC3 /* FlowMosaicLayoutItem.swift in Sources */,
+				3AA738BA2CAEEE82006CDDC3 /* SortedSet.swift in Sources */,
 				69FEC92FFE9313555D9385B9BC795393 /* ProposedViewSize+Extensions.swift in Sources */,
 				28F0A5E64176B9A5ED5F1CDF9BBAADE1 /* SpacerTile.swift in Sources */,
 				C7275337B0807649D0E23828912530F8 /* View+Extensions.swift in Sources */,
