@@ -33,7 +33,7 @@ struct MosaicGrid<Content>: View where Content: View {
         case .constantSize(let size):
             mosaicSizedGridLayout(gridSize: size, minimumSpacing: spacing)
         case .flow:
-            flowGridLayout(minimumSpacing: spacing)
+            flowGridLayout(spacing: spacing)
         }
     }
     
@@ -69,10 +69,10 @@ struct MosaicGrid<Content>: View where Content: View {
         }
     }
     
-    func flowGridLayout(minimumSpacing: MosaicGridSpacing) -> some View {
+    func flowGridLayout(spacing: MosaicGridSpacing) -> some View {
         FlowMosaicGridLayout(
             orientation: orientation,
-            spacing: minimumSpacing
+            spacing: spacing
         ) {
             content()
         }
