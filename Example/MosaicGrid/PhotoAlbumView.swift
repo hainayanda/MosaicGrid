@@ -13,7 +13,7 @@ struct PhotoAlbumView: View {
     var body: some View {
         ScrollView(.vertical) {
             VMosaicGrid(hGridCount: 3, spacing: 2) {
-                ForEach(0..<10) { _ in
+                ForEach(0..<5) { _ in
                     image(from: "https://picsum.photos/200")
                         .usingGrids(h: 2, v: 2)
                     image(from: "https://picsum.photos/100")
