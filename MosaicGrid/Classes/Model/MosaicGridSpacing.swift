@@ -20,26 +20,26 @@ public struct MosaicGridSpacing: Equatable {
     /// - Parameters:
     ///   - horizontal: Horizontal spacing
     ///   - vertical: Vertical spacing. Default value is zero
-    public init(h horizontal: CGFloat, v vertical: CGFloat = .zero) {
+    @inlinable public init(h horizontal: CGFloat, v vertical: CGFloat = .zero) {
         self.horizontal = horizontal
         self.vertical = vertical
     }
     
     /// Initialize `MosaicGridSpacing` with given vertical spacing. Horizontal spacing will be zero.
     /// - Parameter vertical: Vertical spacing
-    public init(v vertical: CGFloat) {
+    @inlinable public init(v vertical: CGFloat) {
         self.horizontal = .zero
         self.vertical = vertical
     }
     
     /// Initialize `MosaicGridSpacing` with same value for horizontal and vertical spacing.
     /// - Parameter spacing: Spacing used for both horizontal and vertical spacings.
-    public init(spacings: CGFloat) {
+    @inlinable public init(spacings: CGFloat) {
         self.horizontal = spacings
         self.vertical = spacings
     }
 }
 
 extension MosaicGridSpacing {
-    public static var zero: MosaicGridSpacing { .init(spacings: .zero) }
+    @inlinable public static var zero: MosaicGridSpacing { .init(spacings: .zero) }
 }

@@ -46,7 +46,7 @@ public func SpacerTile(h height: Int) -> some View {
 ///   - horizontal: number of horizontal tiles used.
 ///   - vertical: number of vertical tiles used.
 /// - Returns: View with given tile size
-public func SpacerTile(h horizontal: Int = 1, v vertical: Int = 1) -> some View {
+@inlinable public func SpacerTile(h horizontal: Int = 1, v vertical: Int = 1) -> some View {
     Rectangle()
         .foregroundColor(.clear)
         .usingGrids(h: horizontal, v: vertical)

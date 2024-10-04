@@ -16,7 +16,7 @@ struct MosaicTileLayoutItem: Equatable {
     let gridSize: CGSize
     var usedGridsSize: CGSize { mosaicSize.usedGridsSize(for: gridSize, with: spacing) }
     
-    init(view: LayoutSubview, sizeThatFits: CGSize, gridSize: CGSize, mosaicSize: MosaicGridSize, spacing: MosaicGridSpacing) {
+    @inlinable init(view: LayoutSubview, sizeThatFits: CGSize, gridSize: CGSize, mosaicSize: MosaicGridSize, spacing: MosaicGridSpacing) {
         self.view = view
         self.sizeThatFits = sizeThatFits
         self.mosaicSize = mosaicSize
@@ -24,7 +24,7 @@ struct MosaicTileLayoutItem: Equatable {
         self.gridSize = gridSize
     }
     
-    init(view: LayoutSubview, gridSize: CGSize, spacing: MosaicGridSpacing) {
+    @inlinable init(view: LayoutSubview, gridSize: CGSize, spacing: MosaicGridSpacing) {
         self.view = view
         self.spacing = spacing
         self.gridSize = gridSize
@@ -54,7 +54,7 @@ struct MosaicTileLayoutItem: Equatable {
         )
     }
     
-    @inlinable func maxed(_ axis: Axis.Set, at max: Int) -> MosaicTileLayoutItem {
+    @inlinable func maxed(_ axis: GridOrientation, at max: Int) -> MosaicTileLayoutItem {
         switch axis {
         case .vertical:
             return maxedH(at: max)

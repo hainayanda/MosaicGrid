@@ -13,7 +13,7 @@ import SwiftUI
 protocol MosaicGridLayout: Layout {
     var spacing: MosaicGridSpacing { get }
     var crossOrientationCount: Int { get }
-    var orientation: Axis.Set { get }
+    var orientation: GridOrientation { get }
     
     func calculateGridSize(basedOn proposal: ProposedViewSize) -> CGSize
 }
@@ -22,7 +22,7 @@ protocol MosaicGridLayout: Layout {
 
 extension MosaicGridLayout {
     
-    @inlinable var crossOrientation: Axis.Set {
+    @inlinable var crossOrientation: GridOrientation {
         orientation == .vertical ? .horizontal: .vertical
     }
     
@@ -39,7 +39,7 @@ struct MosaicGridLayoutCache {
     let spacing: MosaicGridSpacing
     let mapped: [MappedMosaicTileLayoutItem]
     
-    static var empty: MosaicGridLayoutCache {
+    @inlinable static var empty: MosaicGridLayoutCache {
         MosaicGridLayoutCache(
             proposal: .unspecified,
             gridSize: .zero,
@@ -48,7 +48,7 @@ struct MosaicGridLayoutCache {
         )
     }
     
-    func mightStillValid(with proposal: ProposedViewSize, gridSize: CGSize, spacing: MosaicGridSpacing) -> Bool {
+    @inlinable func mightStillValid(with proposal: ProposedViewSize, gridSize: CGSize, spacing: MosaicGridSpacing) -> Bool {
         proposal == self.proposal && gridSize == self.gridSize && spacing == self.spacing
     }
 }
@@ -59,7 +59,7 @@ extension MosaicGridLayout where Cache == MosaicGridLayoutCache {
     
     @inlinable func makeCache(subviews: Subviews) -> MosaicGridLayoutCache { .empty }
     
-    func sizeThatFits(proposal: ProposedViewSize, subviews: Subviews, cache: inout MosaicGridLayoutCache) -> CGSize {
+    @inlinable func sizeThatFits(proposal: ProposedViewSize, subviews: Subviews, cache: inout MosaicGridLayoutCache) -> CGSize {
         let gridSize = calculateGridSize(basedOn: proposal)
         guard gridSize.width > .zero, gridSize.height > .zero else {
             log(.error, "Calculated grid size is invalid. Width is \(gridSize.width) and height is \(gridSize.height). Will use zero instead.")
@@ -91,7 +91,7 @@ extension MosaicGridLayout where Cache == MosaicGridLayoutCache {
         return CGSize(width: width, height: height)
     }
     
-    func placeSubviews(in bounds: CGRect, proposal: ProposedViewSize, subviews: Subviews, cache: inout MosaicGridLayoutCache) {
+    @inlinable func placeSubviews(in bounds: CGRect, proposal: ProposedViewSize, subviews: Subviews, cache: inout MosaicGridLayoutCache) {
         let gridSize = calculateGridSize(basedOn: proposal)
         guard gridSize.width > .zero, gridSize.height > .zero else {
             log(.error, "Calculated grid size is invalid. Width is \(gridSize.width) and height is \(gridSize.height). Will not place a subview")
@@ -131,7 +131,7 @@ extension MosaicGridLayout where Cache == MosaicGridLayoutCache {
         return (validCache, mutableItems)
     }
     
-    private func makeMutableMatrix() -> MutableLogicalMatrix {
+    private func makeMutableMatrix() -> any MutableLogicalMatrix {
         orientation == .vertical
         ? VMutableLogicalMatrix(width: crossOrientationCount)
         : HMutableLogicalMatrix(height: crossOrientationCount)

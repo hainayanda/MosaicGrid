@@ -8,13 +8,13 @@
 import SwiftUI
 
 struct MosaicGrid<Content>: View where Content: View {
-    let orientation: Axis.Set
+    let orientation: GridOrientation
     let spacing: MosaicGridSpacing
     let gridSizing: MosaicGridSizing
     private let content: () -> Content
     
     init(
-        orientation: Axis.Set,
+        orientation: GridOrientation,
         spacing: MosaicGridSpacing,
         gridSizing: MosaicGridSizing,
         @ViewBuilder content: @escaping () -> Content) {

@@ -263,23 +263,24 @@ public extension VMosaicGrid {
                     .usingGrids(h: 2, v: 2)
                 Rectangle()
                     .foregroundColor(.orange)
-                    .usingGrids()
+                    .usingGrids(h: 2)
                 Rectangle()
                     .foregroundColor(.yellow)
                     .usingGrids(v: 3)
                 Rectangle()
                     .foregroundColor(.green)
-                    .usingGrids(h: 2)
+                    .usingGrids()
                 Rectangle()
                     .foregroundColor(.cyan)
                     .usingGrids(h: 2)
             }
         }
     }
+    .padding()
 }
 #Preview(".constantSize") {
     ScrollView(.vertical) {
-        VMosaicGrid(gridSize: CGSize(width: 120, height: 120), minimumSpacing: 10) {
+        VMosaicGrid(gridSize: CGSize(width: 115, height: 115), minimumSpacing: 10) {
             ForEach(0..<10) { _ in
                 Rectangle()
                     .foregroundColor(.red)
@@ -299,6 +300,7 @@ public extension VMosaicGrid {
             }
         }
     }
+    .padding()
 }
 #Preview(".constantAxis") {
     ScrollView(.vertical) {
@@ -322,5 +324,6 @@ public extension VMosaicGrid {
             }
         }
     }
+    .padding()
 }
 #endif

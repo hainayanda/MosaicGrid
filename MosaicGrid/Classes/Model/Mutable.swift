@@ -12,7 +12,7 @@ class Mutable<Property> {
     
     var wrappedValue: Property
     
-    init(wrappedValue: Property) {
+    @inlinable init(wrappedValue: Property) {
         self.wrappedValue = wrappedValue
     }
 }
