@@ -41,7 +41,7 @@ struct FlowMosaicGridLayout: Layout {
     @inlinable func sizeThatFits(proposal: ProposedViewSize, subviews: Subviews, cache: inout FlowMosaicGridLayoutCache) -> CGSize {
         let expandableViewSize = proposal.expandableViewSize(for: orientation)
         guard expandableViewSize.width > 0, expandableViewSize.height > 0 else {
-            log(.error, "Calculated size is invalid. Width is \(expandableViewSize.width) and height is \(expandableViewSize.height). Will use zero instead.")
+            log(.info, "Calculated size is invalid. Width is \(expandableViewSize.width) and height is \(expandableViewSize.height). Will use zero instead.")
             return .zero
         }
         let sizeWithExtraSpace = expandableViewSize.withSpacing(spacing)
@@ -137,7 +137,7 @@ struct FlowMosaicGridLayout: Layout {
                 if !placed {
                     let fallbackPlacement = coordinateCalculator.fallBackCoordinate
                     let subviewRect = CGRect(origin: fallbackPlacement, size: subviewSize)
-                    log(.error, "Failed to place subview with size (\(sizeThatFits.height),\(sizeThatFits.width)), will put at fallback position at (\(fallbackPlacement.x),\(fallbackPlacement.y))")
+                    log(.info, "Failed to place subview with size (\(sizeThatFits.height),\(sizeThatFits.width)), will put at fallback position at (\(fallbackPlacement.x),\(fallbackPlacement.y))")
                     coordinateCalculator.add(subviewRect, inView: viewSize)
                     cache.append(FlowMosaicLayoutItem(view: subview, size: sizeThatFits, origin: fallbackPlacement))
                 }

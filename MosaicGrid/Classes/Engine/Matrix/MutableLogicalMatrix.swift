@@ -14,7 +14,7 @@ protocol MutableLogicalMatrix: Sequence where Iterator == MutableLogicalMatrixIt
     var endIndex: Int { get }
     var lastAvailableIndex: Int { get }
     subscript(_ index: Int) -> [Bool]? { get }
-    subscript(_ column: Int, _ row: Int) -> Bool? { get set }
+    subscript(_ column: Int, _ row: Int) -> Bool { get set }
 }
 
 extension MutableLogicalMatrix {

@@ -62,7 +62,7 @@ extension MosaicGridLayout where Cache == MosaicGridLayoutCache {
     @inlinable func sizeThatFits(proposal: ProposedViewSize, subviews: Subviews, cache: inout MosaicGridLayoutCache) -> CGSize {
         let gridSize = calculateGridSize(basedOn: proposal)
         guard gridSize.width > .zero, gridSize.height > .zero else {
-            log(.error, "Calculated grid size is invalid. Width is \(gridSize.width) and height is \(gridSize.height). Will use zero instead.")
+            log(.info, "Calculated grid size is invalid. Width is \(gridSize.width) and height is \(gridSize.height). Will use zero instead.")
             return .zero
         }
         let items = subviews.map { subview in
@@ -94,7 +94,7 @@ extension MosaicGridLayout where Cache == MosaicGridLayoutCache {
     @inlinable func placeSubviews(in bounds: CGRect, proposal: ProposedViewSize, subviews: Subviews, cache: inout MosaicGridLayoutCache) {
         let gridSize = calculateGridSize(basedOn: proposal)
         guard gridSize.width > .zero, gridSize.height > .zero else {
-            log(.error, "Calculated grid size is invalid. Width is \(gridSize.width) and height is \(gridSize.height). Will not place a subview")
+            log(.info, "Calculated grid size is invalid. Width is \(gridSize.width) and height is \(gridSize.height). Will not place a subview")
             return
         }
         let origin = bounds.origin
@@ -192,11 +192,15 @@ private extension Sequence where Element == MosaicGridCoordinate {
         for coordinate in self {
             switch orientation {
             case .vertical:
-                if matrix.width <= coordinate.x { return false }
+                if matrix.width <= coordinate.x {
+                    return false
+                } else if matrix.height <= coordinate.y { continue }
             case .horizontal:
-                if matrix.height <= coordinate.y { return false }
+                if matrix.height <= coordinate.y {
+                    return false
+                } else if matrix.width <= coordinate.x { continue }
             }
-            let isFilled = matrix[coordinate.x, coordinate.y] ?? false
+            let isFilled = matrix[coordinate.x, coordinate.y]
             if isFilled { return false }
         }
         return true

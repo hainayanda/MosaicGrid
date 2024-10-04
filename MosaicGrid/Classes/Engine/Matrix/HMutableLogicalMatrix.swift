@@ -23,11 +23,13 @@ struct HMutableLogicalMatrix: MutableLogicalMatrix {
         twoDArray[safe: index]
     }
     
-    subscript(_ column: Int, _ row: Int) -> Bool? {
+    subscript(_ column: Int, _ row: Int) -> Bool {
         @inlinable get {
             guard let columnArray = twoDArray[safe: column] else {
-                log(.error, "Try to get item out of its matrix bounds. [\(column),\(row)] while matrix size is [\(width), \(height)]")
-                return nil
+                let message = "Try to get item out of its matrix bounds. [\(column),\(row)] while matrix size is [\(width), \(height)]"
+                log(.error, message)
+                assertionFailure(message)
+                return false
             }
             return columnArray[safe: row] ?? false
         }
@@ -45,8 +47,8 @@ struct HMutableLogicalMatrix: MutableLogicalMatrix {
                 }
                 twoDArray.append(contentsOf: newArrays)
             }
-            twoDArray[column][row] = newValue ?? false
-            lastAvailableIndex = calculateLastAvailableIndexAfter(set: newValue ?? false, at: column)
+            twoDArray[column][row] = newValue
+            lastAvailableIndex = calculateLastAvailableIndexAfter(set: newValue, at: column)
         }
     }
 }

@@ -40,19 +40,8 @@ class MutableLogicalMatrixTests: XCTestCase {
         for index in 0..<6 {
             vMatrix[0, index] = true
             hMatrix[index, 0] = true
-            XCTAssertFalse((vMatrix[6, index]!))
-            XCTAssertFalse((hMatrix[index, 6]!))
-        }
-    }
-    
-    func test_givenMatrix_whenSetNil_thenItShouldSetFalse() {
-        var vMatrix = VMutableLogicalMatrix(width: 5)
-        var hMatrix = HMutableLogicalMatrix(height: 5)
-        for index in 0..<6 {
-            vMatrix[0, index] = nil
-            hMatrix[index, 0] = nil
-            XCTAssertFalse((vMatrix[0, index]!))
-            XCTAssertFalse((hMatrix[index, 0]!))
+            XCTAssertFalse((vMatrix[6, index]))
+            XCTAssertFalse((hMatrix[index, 6]))
         }
     }
 }

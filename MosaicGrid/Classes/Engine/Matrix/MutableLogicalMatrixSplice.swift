@@ -19,7 +19,7 @@ struct MutableLogicalMatrixSplice: MutableLogicalMatrix {
         underlyingMatrix[index]
     }
     
-    @inlinable subscript(column: Int, row: Int) -> Bool? {
+    @inlinable subscript(column: Int, row: Int) -> Bool {
         get {
             underlyingMatrix[column, row]
         }
