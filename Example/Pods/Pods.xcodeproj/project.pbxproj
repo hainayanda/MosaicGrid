@@ -17,6 +17,13 @@
 		28F0A5E64176B9A5ED5F1CDF9BBAADE1 /* SpacerTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA3BC3E555B06444F3113609E7E0AE0 /* SpacerTile.swift */; };
 		2E4142B619184E147D54F96497BC2AF2 /* Pods-MosaicGrid_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B98F1ED66F7444C772D41CC69C6B184 /* Pods-MosaicGrid_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		352C1A3F7C284F5316A0CE9A876C51DB /* MosaicRatioGridLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4E26A27696FA122AADFAA772AB3494 /* MosaicRatioGridLayout.swift */; };
+		3A866C892CB037AB002C7CF5 /* VMutableLogicalMatrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A866C882CB0379B002C7CF5 /* VMutableLogicalMatrix.swift */; };
+		3A866C8B2CB037BE002C7CF5 /* HMutableLogicalMatrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A866C8A2CB037B8002C7CF5 /* HMutableLogicalMatrix.swift */; };
+		3A866C8E2CB0382B002C7CF5 /* MutableLogicalMatrixIterator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A866C8D2CB03828002C7CF5 /* MutableLogicalMatrixIterator.swift */; };
+		3A866C902CB03851002C7CF5 /* MutableLogicalMatrixSplice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A866C8F2CB03850002C7CF5 /* MutableLogicalMatrixSplice.swift */; };
+		3A866C932CB0392F002C7CF5 /* FlowCoordinateCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A866C922CB0392D002C7CF5 /* FlowCoordinateCalculator.swift */; };
+		3A866C952CB039BE002C7CF5 /* CGSize+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A866C942CB039B6002C7CF5 /* CGSize+Extensions.swift */; };
+		3A866C972CB03C9A002C7CF5 /* GridOrientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A866C962CB03C8F002C7CF5 /* GridOrientation.swift */; };
 		3AA738B92CAEEE82006CDDC3 /* FlowMosaicLayoutItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA738B72CAEEE82006CDDC3 /* FlowMosaicLayoutItem.swift */; };
 		3AA738BA2CAEEE82006CDDC3 /* SortedSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA738B82CAEEE82006CDDC3 /* SortedSet.swift */; };
 		3AA738BC2CAEEE95006CDDC3 /* FlowMosaicGridLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA738BB2CAEEE95006CDDC3 /* FlowMosaicGridLayout.swift */; };
@@ -75,6 +82,13 @@
 		31D2563150C25076F7EA2B72B023246F /* MutableLogicalMatrix.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MutableLogicalMatrix.swift; sourceTree = "<group>"; };
 		35AC214C7A5C0720C42398E6878C40E2 /* HMosaicGrid.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HMosaicGrid.swift; sourceTree = "<group>"; };
 		362ABDC5EE206C55984DFFDD7A24D478 /* MosaicGridSizing.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MosaicGridSizing.swift; sourceTree = "<group>"; };
+		3A866C882CB0379B002C7CF5 /* VMutableLogicalMatrix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VMutableLogicalMatrix.swift; sourceTree = "<group>"; };
+		3A866C8A2CB037B8002C7CF5 /* HMutableLogicalMatrix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HMutableLogicalMatrix.swift; sourceTree = "<group>"; };
+		3A866C8D2CB03828002C7CF5 /* MutableLogicalMatrixIterator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MutableLogicalMatrixIterator.swift; sourceTree = "<group>"; };
+		3A866C8F2CB03850002C7CF5 /* MutableLogicalMatrixSplice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MutableLogicalMatrixSplice.swift; sourceTree = "<group>"; };
+		3A866C922CB0392D002C7CF5 /* FlowCoordinateCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowCoordinateCalculator.swift; sourceTree = "<group>"; };
+		3A866C942CB039B6002C7CF5 /* CGSize+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGSize+Extensions.swift"; sourceTree = "<group>"; };
+		3A866C962CB03C8F002C7CF5 /* GridOrientation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridOrientation.swift; sourceTree = "<group>"; };
 		3AA738B72CAEEE82006CDDC3 /* FlowMosaicLayoutItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowMosaicLayoutItem.swift; sourceTree = "<group>"; };
 		3AA738B82CAEEE82006CDDC3 /* SortedSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortedSet.swift; sourceTree = "<group>"; };
 		3AA738BB2CAEEE95006CDDC3 /* FlowMosaicGridLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowMosaicGridLayout.swift; sourceTree = "<group>"; };
@@ -147,8 +161,8 @@
 		23422ED598C32E84FAFC1722AE4CEBDE /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				3A866C962CB03C8F002C7CF5 /* GridOrientation.swift */,
 				3AA738B72CAEEE82006CDDC3 /* FlowMosaicLayoutItem.swift */,
-				3AA738B82CAEEE82006CDDC3 /* SortedSet.swift */,
 				1AC041C96AFA69976EA40C72CC9C71D1 /* MappedGridlayoutItem.swift */,
 				03A53A90D288D37D295FCACD952462FD /* MosaicGridCoordinate.swift */,
 				362ABDC5EE206C55984DFFDD7A24D478 /* MosaicGridSizing.swift */,
@@ -156,7 +170,6 @@
 				0F1CA3B76AB5012BC08CDE74DB6DF244 /* MosaicTileLayoutItem.swift */,
 				0BC3553E9941F0B1148E231514C561D5 /* UsingGrids.swift */,
 				7D2BCA390EA09B1A68C06AAD0E5B5C0B /* Mutable.swift */,
-				31D2563150C25076F7EA2B72B023246F /* MutableLogicalMatrix.swift */,
 			);
 			name = Model;
 			path = MosaicGrid/Classes/Model;
@@ -165,12 +178,36 @@
 		27C99C3FDF8FC7E0FB4FCF454EB98C29 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				3A866C942CB039B6002C7CF5 /* CGSize+Extensions.swift */,
 				7F73185B75D3CB6B9AD2559515A64E50 /* Array+Extensions.swift */,
 				F1ECC7C0EEEA2E9F6C61573D017CF193 /* ProposedViewSize+Extensions.swift */,
 				86FAA0377FD7844040D8F8CF72F3BACB /* View+Extensions.swift */,
 			);
 			name = Extensions;
 			path = MosaicGrid/Classes/Extensions;
+			sourceTree = "<group>";
+		};
+		3A866C8C2CB037F4002C7CF5 /* Engine */ = {
+			isa = PBXGroup;
+			children = (
+				3AA738B82CAEEE82006CDDC3 /* SortedSet.swift */,
+				3A866C922CB0392D002C7CF5 /* FlowCoordinateCalculator.swift */,
+				3A866C912CB03916002C7CF5 /* Matrix */,
+			);
+			name = Engine;
+			path = MosaicGrid/Classes/Engine;
+			sourceTree = "<group>";
+		};
+		3A866C912CB03916002C7CF5 /* Matrix */ = {
+			isa = PBXGroup;
+			children = (
+				3A866C8F2CB03850002C7CF5 /* MutableLogicalMatrixSplice.swift */,
+				3A866C8A2CB037B8002C7CF5 /* HMutableLogicalMatrix.swift */,
+				31D2563150C25076F7EA2B72B023246F /* MutableLogicalMatrix.swift */,
+				3A866C8D2CB03828002C7CF5 /* MutableLogicalMatrixIterator.swift */,
+				3A866C882CB0379B002C7CF5 /* VMutableLogicalMatrix.swift */,
+			);
+			path = Matrix;
 			sourceTree = "<group>";
 		};
 		3E82629F8A16EFE17C40FEA9418BA557 /* Development Pods */ = {
@@ -304,6 +341,7 @@
 			isa = PBXGroup;
 			children = (
 				4D5121CCBCBD60BB996D2C753E2B87F2 /* InternalLogger.swift */,
+				3A866C8C2CB037F4002C7CF5 /* Engine */,
 				27C99C3FDF8FC7E0FB4FCF454EB98C29 /* Extensions */,
 				616DA41EF539007D8EC0D3317BE9CB28 /* Implementation */,
 				67E4CAB0433B6926B97FF47051E94252 /* Layout */,
@@ -490,16 +528,23 @@
 				F663749D61622A8C96EC0280C4EF1406 /* MosaicGridSpacing.swift in Sources */,
 				352C1A3F7C284F5316A0CE9A876C51DB /* MosaicRatioGridLayout.swift in Sources */,
 				981F9A54EDA99EFC17B84A08C95276C6 /* MosaicSizedGridLayout.swift in Sources */,
+				3A866C8E2CB0382B002C7CF5 /* MutableLogicalMatrixIterator.swift in Sources */,
 				3AA738BC2CAEEE95006CDDC3 /* FlowMosaicGridLayout.swift in Sources */,
 				5BD32612DD53DD98D2824467AEF35E38 /* MosaicTileLayoutItem.swift in Sources */,
 				4A1769BB805C3EEBFA4B7C0619BD52C3 /* UsingGrids.swift in Sources */,
+				3A866C8B2CB037BE002C7CF5 /* HMutableLogicalMatrix.swift in Sources */,
+				3A866C932CB0392F002C7CF5 /* FlowCoordinateCalculator.swift in Sources */,
 				1485F4E0C2AFD482C0FBA7FE9ABA295F /* Mutable.swift in Sources */,
+				3A866C972CB03C9A002C7CF5 /* GridOrientation.swift in Sources */,
 				484D4CCB88EDD3E03F506F2DCB8F9315 /* MutableLogicalMatrix.swift in Sources */,
+				3A866C892CB037AB002C7CF5 /* VMutableLogicalMatrix.swift in Sources */,
 				3AA738B92CAEEE82006CDDC3 /* FlowMosaicLayoutItem.swift in Sources */,
 				3AA738BA2CAEEE82006CDDC3 /* SortedSet.swift in Sources */,
 				69FEC92FFE9313555D9385B9BC795393 /* ProposedViewSize+Extensions.swift in Sources */,
 				28F0A5E64176B9A5ED5F1CDF9BBAADE1 /* SpacerTile.swift in Sources */,
 				C7275337B0807649D0E23828912530F8 /* View+Extensions.swift in Sources */,
+				3A866C902CB03851002C7CF5 /* MutableLogicalMatrixSplice.swift in Sources */,
+				3A866C952CB039BE002C7CF5 /* CGSize+Extensions.swift in Sources */,
 				A63D6B3B2011889B8CB9DEF972516242 /* VMosaicGrid.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
