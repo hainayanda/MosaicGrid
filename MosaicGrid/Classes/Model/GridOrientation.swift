@@ -5,7 +5,7 @@
 //  Created by Nayanda Haberty on 4/10/24.
 //
 
-enum GridOrientation: Equatable {
+@usableFromInline enum GridOrientation: Equatable {
     case vertical
     case horizontal
 }

@@ -8,7 +8,7 @@
 import Foundation
 
 @propertyWrapper
-class Mutable<Property> {
+final class Mutable<Property> {
     
     var wrappedValue: Property
     

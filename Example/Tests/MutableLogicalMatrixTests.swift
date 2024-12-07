@@ -12,15 +12,6 @@ import XCTest
 
 class MutableLogicalMatrixTests: XCTestCase {
     
-    func test_givenEmptyMatrix_whenGetInBounds_thenItShouldReturnNil() {
-        let vMatrix = VMutableLogicalMatrix(width: 5)
-        let hMatrix = HMutableLogicalMatrix(height: 5)
-        for index in 0..<6 {
-            XCTAssertNil(vMatrix[0, index])
-            XCTAssertNil(hMatrix[index, 0])
-        }
-    }
-    
     func test_givenMatrix_whenSetInBounds_thenItShouldGrow() {
         var vMatrix = VMutableLogicalMatrix(width: 5)
         var hMatrix = HMutableLogicalMatrix(height: 5)

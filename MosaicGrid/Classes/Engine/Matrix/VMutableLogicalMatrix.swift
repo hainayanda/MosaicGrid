@@ -8,9 +8,9 @@
 struct VMutableLogicalMatrix: MutableLogicalMatrix {
     
     let width: Int
-    var height: Int { twoDArray.count }
+    @inlinable var height: Int { twoDArray.count }
     let startIndex: Int = .zero
-    var endIndex: Int { height }
+    @inlinable var endIndex: Int { height }
     private(set) var lastAvailableIndex: Int = 0
     
     private var twoDArray: [[Bool]] = []
@@ -23,8 +23,8 @@ struct VMutableLogicalMatrix: MutableLogicalMatrix {
         twoDArray[safe: index]
     }
     
-    subscript(_ column: Int, _ row: Int) -> Bool {
-        @inlinable get {
+    @inlinable subscript(_ column: Int, _ row: Int) -> Bool {
+        get {
             guard let rowArray = twoDArray[safe: row] else {
                 let message = "Try to get item out of its matrix bounds. [\(column),\(row)] while matrix size is [\(width), \(height)]"
                 log(.error, message)
@@ -33,7 +33,7 @@ struct VMutableLogicalMatrix: MutableLogicalMatrix {
             }
             return rowArray[safe: column] ?? false
         }
-        @inlinable set {
+        set {
             guard column < width else {
                 let message = "Column should be less than matrix width. Column is \(column), while width is \(width)"
                 log(.error, message)

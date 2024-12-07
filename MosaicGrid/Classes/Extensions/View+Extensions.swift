@@ -16,7 +16,7 @@ extension View {
     ///   - horizontal: Number of horizontal grid used. Default is 1.
     ///   - vertical: Number of vertical grid used. Default is 1.
     /// - Returns: View with tile size layout value.
-    public func usingGrids(h horizontal: Int = 1, v vertical: Int = 1) -> some View {
+    @inlinable public func usingGrids(h horizontal: Int = 1, v vertical: Int = 1) -> some View {
         return layoutValue(key: UsingGrids.self, value: MosaicGridSize(width: horizontal, height: vertical))
     }
 }

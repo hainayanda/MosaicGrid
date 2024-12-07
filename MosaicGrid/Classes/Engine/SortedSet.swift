@@ -91,7 +91,7 @@ extension SortedSet: Hashable {
 }
 
 extension SortedSet {
-    class ElementContainer: Hashable {
+    final class ElementContainer: Hashable {
         
         let content: Element
         
