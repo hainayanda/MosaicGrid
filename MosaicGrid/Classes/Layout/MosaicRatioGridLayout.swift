@@ -13,11 +13,11 @@ struct MosaicRatioGridLayout: MosaicGridLayout {
     typealias Cache = MosaicGridLayoutCache
     
     let crossOrientationCount: Int
-    let orientation: Axis.Set
+    let orientation: GridOrientation
     let spacing: MosaicGridSpacing
     let aspectRatio: Double
     
-    init(orientation: Axis.Set, crossGridCount: Int, aspectRatio: Double = 1, spacing: MosaicGridSpacing = .zero) {
+    @inlinable init(orientation: GridOrientation, crossGridCount: Int, aspectRatio: Double = 1, spacing: MosaicGridSpacing = .zero) {
         self.orientation = orientation
         self.crossOrientationCount = crossGridCount
         self.spacing = spacing
@@ -33,7 +33,7 @@ struct MosaicRatioGridLayout: MosaicGridLayout {
             let height = calculatedGridDimension / aspectRatio
             let width = calculatedGridDimension
             return CGSize(width: width, height: height)
-        default:
+        case .horizontal:
             let width = calculatedGridDimension * aspectRatio
             let height = calculatedGridDimension
             return CGSize(width: width, height: height)

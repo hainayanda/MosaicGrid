@@ -8,11 +8,11 @@
 import Foundation
 
 @propertyWrapper
-class Mutable<Property> {
+final class Mutable<Property> {
     
     var wrappedValue: Property
     
-    init(wrappedValue: Property) {
+    @inlinable init(wrappedValue: Property) {
         self.wrappedValue = wrappedValue
     }
 }

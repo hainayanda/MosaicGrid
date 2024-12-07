@@ -12,14 +12,14 @@ struct MosaicSizedGridLayout: MosaicGridLayout {
     
     typealias Cache = MosaicGridLayoutCache
     
-    let orientation: Axis.Set
+    let orientation: GridOrientation
     let gridSize: CGSize
     let minimumSpacing: MosaicGridSpacing
     
     @Mutable private(set) var crossOrientationCount: Int = 1
     @Mutable private(set) var spacing: MosaicGridSpacing = .zero
     
-    init(orientation: Axis.Set, gridSize: CGSize, minimumSpacing: MosaicGridSpacing = .zero) {
+    @inlinable init(orientation: GridOrientation, gridSize: CGSize, minimumSpacing: MosaicGridSpacing = .zero) {
         self.orientation = orientation
         self.gridSize = gridSize
         self.minimumSpacing = minimumSpacing
@@ -51,14 +51,14 @@ struct MosaicSizedGridLayout: MosaicGridLayout {
 // MARK: Private Extensions
 
 private extension CGSize {
-    func axisDimension(for axis: Axis.Set) -> CGFloat {
+    func axisDimension(for axis: GridOrientation) -> CGFloat {
         axis == .vertical ? height: width
     }
 }
 
 private extension MosaicGridSpacing {
     
-    init(axis: CGFloat, crossAxis: CGFloat, for orientation: Axis.Set) {
+    init(axis: CGFloat, crossAxis: CGFloat, for orientation: GridOrientation) {
         switch orientation {
         case .horizontal:
             self.init(h: axis, v: crossAxis)
@@ -67,7 +67,7 @@ private extension MosaicGridSpacing {
         }
     }
     
-    func axisSpacing(for axis: Axis.Set) -> CGFloat {
+    func axisSpacing(for axis: GridOrientation) -> CGFloat {
         axis == .vertical ? vertical: horizontal
     }
 }

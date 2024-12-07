@@ -8,11 +8,18 @@
 import Foundation
 import SwiftUI
 
-struct UsingGrids: LayoutValueKey {
-    static let defaultValue: MosaicGridSize = MosaicGridSize(width: 1, height: 1)
+@usableFromInline struct UsingGrids: LayoutValueKey {
+    @usableFromInline static let defaultValue: MosaicGridSize = MosaicGridSize(width: 1, height: 1)
 }
 
-struct MosaicGridSize: Equatable {
+@usableFromInline struct MosaicGridSize: Equatable {
     let width: Int
     let height: Int
+    
+    // swiftlint:disable unneeded_synthesized_initializer
+    @usableFromInline init(width: Int, height: Int) {
+        self.width = width
+        self.height = height
+    }
+    // swiftlint:enable unneeded_synthesized_initializer
 }

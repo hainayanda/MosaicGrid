@@ -13,11 +13,11 @@ struct MosaicAxisDimensionGridLayout: MosaicGridLayout {
     typealias Cache = MosaicGridLayoutCache
     
     let crossOrientationCount: Int
-    let orientation: Axis.Set
+    let orientation: GridOrientation
     let spacing: MosaicGridSpacing
     let gridAxisDimension: CGFloat
     
-    init(orientation: Axis.Set, crossGridCount: Int, gridAxisDimension: CGFloat, spacing: MosaicGridSpacing = .zero) {
+    @inlinable init(orientation: GridOrientation, crossGridCount: Int, gridAxisDimension: CGFloat, spacing: MosaicGridSpacing = .zero) {
         self.orientation = orientation
         self.crossOrientationCount = crossGridCount
         self.spacing = spacing
