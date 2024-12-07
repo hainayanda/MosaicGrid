@@ -256,14 +256,14 @@ public extension VMosaicGrid {
 }
 #Preview(".aspectRatio") {
     ScrollView(.vertical) {
-        VMosaicGrid(hGridCount: 3, spacing: 10) {
+        VMosaicGrid(hGridCount: 6, spacing: 10) {
             ForEach(0..<10) { _ in
                 Rectangle()
                     .foregroundColor(.red)
-                    .usingGrids(h: 2, v: 2)
+                    .usingGrids()
                 Rectangle()
                     .foregroundColor(.orange)
-                    .usingGrids(h: 2)
+                    .usingGrids(h: 6)
                 Rectangle()
                     .foregroundColor(.yellow)
                     .usingGrids(v: 3)
@@ -272,11 +272,11 @@ public extension VMosaicGrid {
                     .usingGrids()
                 Rectangle()
                     .foregroundColor(.cyan)
-                    .usingGrids(h: 2)
+                    .usingGrids(h: 4, v: 2)
             }
         }
+        .padding()
     }
-    .padding()
 }
 #Preview(".constantSize") {
     ScrollView(.vertical) {
