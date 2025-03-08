@@ -23,6 +23,7 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 - MacOS 13.0 or higher
 - TVOS 16.0 or higher
 - WatchOS 8.0 or higher
+- VisionOS 1.0 or higher
 - Xcode 14 or higher
 
 ## Installation
