@@ -33,6 +33,7 @@ struct FlowMosaicGridLayout: Layout {
     
     let orientation: GridOrientation
     let spacing: MosaicGridSpacing
+    let alignment: FlowMosaicAlignment
     
     @inlinable func makeCache(subviews: Subviews) -> FlowMosaicGridLayoutCache {
         .empty
@@ -63,15 +64,32 @@ struct FlowMosaicGridLayout: Layout {
             items: cacheItems
         )
         
-        return CGSize(
-            width: orientation == .vertical ? (expandableViewSize.width) : calculatedSize.width,
-            height: orientation == .vertical ? calculatedSize.height : (expandableViewSize.height)
+        let size = CGSize(
+            width: orientation == .vertical ? (expandableViewSize.width) : (proposal.width ?? calculatedSize.width),
+            height: orientation == .vertical ? (proposal.height ?? calculatedSize.height) : (expandableViewSize.height)
         )
+        return size
     }
     
     @inlinable func placeSubviews(in bounds: CGRect, proposal: ProposedViewSize, subviews: Subviews, cache: inout FlowMosaicGridLayoutCache) {
-        let adjustedX = max(.zero, (bounds.width - cache.calculatedSize.width) / 2)
-        let adjustedY = max(.zero, (bounds.height - cache.calculatedSize.height) / 2)
+        let adjustedX: CGFloat = switch orientation {
+        case .horizontal: max(.zero, (bounds.width - cache.calculatedSize.width) / 2)
+        case .vertical:
+            switch alignment {
+            case .leading: .zero
+            case .center: max(.zero, (bounds.width - cache.calculatedSize.width) / 2)
+            case .trailing: max(.zero, bounds.width - cache.calculatedSize.width)
+            }
+        }
+        let adjustedY: CGFloat = switch orientation {
+        case .horizontal:
+            switch alignment {
+            case .leading: .zero
+            case .center: max(.zero, (bounds.height - cache.calculatedSize.height) / 2)
+            case .trailing: max(.zero, bounds.height - cache.calculatedSize.height)
+            }
+        case .vertical: max(.zero, (bounds.height - cache.calculatedSize.height) / 2)
+        }
         cache.items.forEach { element in
             let realOrigin = CGPoint(
                 x: bounds.minX + element.origin.x + adjustedX,
