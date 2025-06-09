@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'MosaicGrid'
-  s.version          = '2.0.0'
+  s.version          = '2.0.2'
   s.summary          = 'MosaicGrid is a SwiftUI library that provides both horizontal and vertical mosaic grid views.'
 
 # This description is used to generate tags and improve search results.
