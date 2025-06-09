@@ -18,11 +18,11 @@ public struct HMosaicGrid<Content>: View where Content: View {
     /// - Parameters:
     ///   - spacing: Spacing on each item.
     ///   - content: View that will be used as this Mosaic Grid Content
-    public init(spacing: MosaicGridSpacing, @ViewBuilder content: @escaping () -> Content) {
+    public init(spacing: MosaicGridSpacing, alignment: FlowMosaicAlignment, @ViewBuilder content: @escaping () -> Content) {
         self.underlyingMosaicGrid = MosaicGrid(
             orientation: .horizontal,
             spacing: spacing,
-            gridSizing: .flow,
+            gridSizing: .flow(alignment),
             content: content
         )
     }
@@ -95,9 +95,10 @@ public extension HMosaicGrid {
     /// - Parameters:
     ///   - spacing: Both horizontal and vertical spacing on each item.
     ///   - content: View that will be used as this Mosaic Grid Content
-    @inlinable init(spacing: CGFloat, @ViewBuilder content: @escaping () -> Content) {
+    @inlinable init(spacing: CGFloat, alignment: FlowMosaicAlignment = .center, @ViewBuilder content: @escaping () -> Content) {
         self.init(
             spacing: MosaicGridSpacing(h: spacing, v: spacing),
+            alignment: alignment,
             content: content
         )
     }
@@ -109,12 +110,15 @@ public extension HMosaicGrid {
     ///   - hSpacing: Horizontal spacing on each item.
     ///   - vSpacing: Vertical spacing on each item.
     ///   - content: View that will be used as this Mosaic Grid Content
-    @inlinable init(hSpacing: CGFloat = .zero, vSpacing: CGFloat = .zero, @ViewBuilder content: @escaping () -> Content) {
-        self.init(
-            spacing: MosaicGridSpacing(h: hSpacing, v: vSpacing),
-            content: content
-        )
-    }
+    @inlinable init(
+        hSpacing: CGFloat = .zero, vSpacing: CGFloat = .zero,
+        alignment: FlowMosaicAlignment = .center, @ViewBuilder content: @escaping () -> Content) {
+            self.init(
+                spacing: MosaicGridSpacing(h: hSpacing, v: vSpacing),
+                alignment: alignment,
+                content: content
+            )
+        }
     
     /// Initialize Horizontal Mosaic Grid View.
     /// It will divide the height of the view with `vGridCount` to get the height of a single grid.

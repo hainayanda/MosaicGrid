@@ -12,5 +12,5 @@ import SwiftUI
     case aspectRatio(Double, crossGridCount: Int)
     case constantAxis(CGFloat, crossGridCount: Int)
     case constantSize(CGSize)
-    case flow
+    case flow(FlowMosaicAlignment)
 }
