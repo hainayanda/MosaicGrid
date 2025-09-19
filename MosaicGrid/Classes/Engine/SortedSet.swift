@@ -8,52 +8,88 @@
 import Foundation
 
 struct SortedSet<Element: Hashable> {
-    
+
     typealias Iterator = Array<Element>.Iterator
-    
-    private var sortedElements: [ElementContainer]
-    private var set: Set<ElementContainer>
+
+    private var sortedElements: [Element]
+    private var set: Set<Element>
     private let sorter: (Element, Element) -> Bool
-    
+
     @inlinable init<S: Sequence>(_ sequence: S, sortBy sorter: @escaping (Element, Element) -> Bool) where S.Element == Element {
         self.sorter = sorter
-        set = Set(sequence.map { ElementContainer(content: $0) })
-        sortedElements = set.sorted { sorter($0.content, $1.content) }
+        let unique = Set(sequence)
+        self.set = unique
+        self.sortedElements = unique.sorted(by: sorter)
     }
-    
+
     @inlinable init(_ elements: Element..., sortBy sorter: @escaping (Element, Element) -> Bool) {
-        self.sorter = sorter
-        set = Set(elements.map { ElementContainer(content: $0) })
-        sortedElements = set.sorted { sorter($0.content, $1.content) }
+        self.init(elements, sortBy: sorter)
     }
-    
+
     @inlinable init(sortBy sorter: @escaping (Element, Element) -> Bool) {
         self.sorter = sorter
-        set = Set()
-        sortedElements = []
+        self.set = Set()
+        self.sortedElements = []
     }
-    
+
     @inlinable mutating func insert(_ element: Element) {
-        let countBefore = set.count
-        set.insert(ElementContainer(content: element))
-        guard countBefore < set.count else { return }
-        sortedElements = set.sorted { sorter($0.content, $1.content) }
+        let (inserted, _) = set.insert(element)
+        guard inserted else { return }
+        let insertionIndex = indexForInsertion(of: element)
+        sortedElements.insert(element, at: insertionIndex)
     }
-    
+
     @inlinable mutating func remove(_ element: Element) {
-        let countBefore = set.count
-        set.remove(ElementContainer(content: element))
-        guard countBefore > set.count else { return }
-        sortedElements = set.sorted { sorter($0.content, $1.content) }
+        guard set.remove(element) != nil else { return }
+        if let index = index(of: element) {
+            sortedElements.remove(at: index)
+        }
+    }
+
+    @inlinable func contains(_ element: Element) -> Bool {
+        set.contains(element)
+    }
+
+    // MARK: Private Helpers
+
+    @inlinable func indexForInsertion(of element: Element) -> Int {
+        var low = 0
+        var high = sortedElements.count
+        while low < high {
+            let mid = (low + high) / 2
+            if sorter(sortedElements[mid], element) {
+                low = mid + 1
+            } else {
+                high = mid
+            }
+        }
+        return low
+    }
+
+    @inlinable func index(of element: Element) -> Int? {
+        var low = 0
+        var high = sortedElements.count
+        while low < high {
+            let mid = (low + high) / 2
+            let midElement = sortedElements[mid]
+            if sorter(midElement, element) {
+                low = mid + 1
+            } else if sorter(element, midElement) {
+                high = mid
+            } else {
+                return mid
+            }
+        }
+        return nil
     }
 }
 
 extension SortedSet: Sequence {
-    
+
     @inlinable func makeIterator() -> Iterator {
-        sortedElements.lazy.map(\.content).makeIterator()
+        sortedElements.makeIterator()
     }
-    
+
     @inlinable var underestimatedCount: Int {
         sortedElements.underestimatedCount
     }
@@ -61,52 +97,32 @@ extension SortedSet: Sequence {
 
 extension SortedSet: RandomAccessCollection {
     @inlinable subscript(position: Int) -> Element {
-        sortedElements[position].content
+        sortedElements[position]
     }
-    
+
     @inlinable var startIndex: Int {
         sortedElements.startIndex
     }
-    
+
     @inlinable var endIndex: Int {
         sortedElements.endIndex
     }
-    
+
     @inlinable func index(after i: Int) -> Int {
         sortedElements.index(after: i)
     }
 }
 
 extension SortedSet: Hashable {
-    
-    @inlinable func hash(into hasher: inout Hasher) {
-        hasher.combine(self.set)
-    }
-    
-    @inlinable static func == (lhs: SortedSet<Element>, rhs: SortedSet<Element>) -> Bool {
-        guard lhs.count == rhs.count else { return false }
-        return lhs.sortedElements == rhs.sortedElements
-    }
-    
-}
 
-extension SortedSet {
-    final class ElementContainer: Hashable {
-        
-        let content: Element
-        
-        @inlinable init(content: Element) {
-            self.content = content
-        }
-        
-        @inlinable func hash(into hasher: inout Hasher) {
-            hasher.combine(content)
-        }
-        
-        @inlinable static func == (lhs: SortedSet<Element>.ElementContainer, rhs: SortedSet<Element>.ElementContainer) -> Bool {
-            lhs.content == rhs.content
-        }
+    @inlinable func hash(into hasher: inout Hasher) {
+        hasher.combine(sortedElements)
     }
+
+    @inlinable static func == (lhs: SortedSet<Element>, rhs: SortedSet<Element>) -> Bool {
+        lhs.sortedElements == rhs.sortedElements
+    }
+
 }
 
 extension SortedSet where Element: Comparable {

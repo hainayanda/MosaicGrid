@@ -60,21 +60,36 @@ struct FlowCoordinateCalculator {
         }
     }
     
-    @inlinable func potentialCoordinate(for size: CGSize) -> [CGPoint] {
+    @inlinable func firstAvailableCoordinate(for size: CGSize, inView viewSize: CGSize) -> CGPoint? {
         switch orientation {
         case .vertical:
-            return potentialY.flatMap { y in
-                potentialX.compactMap { x in
-                    coordinateFilter(x: x, y: y, viewSize: size)
+            for y in potentialY {
+                for x in potentialX {
+                    guard let coordinate = coordinateFilter(x: x, y: y, viewSize: size) else {
+                        continue
+                    }
+                    let rect = CGRect(origin: coordinate, size: size)
+                    guard isAvailable(rect, inView: viewSize) else {
+                        continue
+                    }
+                    return coordinate
                 }
             }
         case .horizontal:
-            return potentialX.flatMap { x in
-                potentialY.compactMap { y in
-                    coordinateFilter(x: x, y: y, viewSize: size)
+            for x in potentialX {
+                for y in potentialY {
+                    guard let coordinate = coordinateFilter(x: x, y: y, viewSize: size) else {
+                        continue
+                    }
+                    let rect = CGRect(origin: coordinate, size: size)
+                    guard isAvailable(rect, inView: viewSize) else {
+                        continue
+                    }
+                    return coordinate
                 }
             }
         }
+        return nil
     }
     
     @inlinable mutating func add(_ rect: CGRect, inView size: CGSize) {

@@ -140,27 +140,19 @@ struct FlowMosaicGridLayout: Layout {
             for subview in newSubviews {
                 let sizeThatFits = subview.sizeThatFits(proposal)
                 let subviewSize = sizeThatFits.withSpacing(spacing)
-                let available = coordinateCalculator.potentialCoordinate(for: subviewSize)
-                var placed: Bool = false
-                for placement in available {
+                if let placement = coordinateCalculator.firstAvailableCoordinate(for: subviewSize, inView: viewSize) {
                     let subviewRect = CGRect(origin: placement, size: subviewSize)
-                    guard coordinateCalculator.isAvailable(subviewRect, inView: viewSize) else {
-                        continue
-                    }
                     coordinateCalculator.add(subviewRect, inView: viewSize)
                     cache.append(FlowMosaicLayoutItem(view: subview, size: sizeThatFits, origin: placement))
-                    placed = true
-                    break
+                    continue
                 }
-                if !placed {
-                    let fallbackPlacement = coordinateCalculator.fallBackCoordinate
-                    let subviewRect = CGRect(origin: fallbackPlacement, size: subviewSize)
-                    log(.info, "Failed to place subview with size (\(sizeThatFits.height),\(sizeThatFits.width)), will put at fallback position at (\(fallbackPlacement.x),\(fallbackPlacement.y))")
-                    coordinateCalculator.add(subviewRect, inView: viewSize)
-                    cache.append(FlowMosaicLayoutItem(view: subview, size: sizeThatFits, origin: fallbackPlacement))
-                }
+                let fallbackPlacement = coordinateCalculator.fallBackCoordinate
+                let subviewRect = CGRect(origin: fallbackPlacement, size: subviewSize)
+                log(.info, "Failed to place subview with size (\(sizeThatFits.height),\(sizeThatFits.width)), will put at fallback position at (\(fallbackPlacement.x),\(fallbackPlacement.y))")
+                coordinateCalculator.add(subviewRect, inView: viewSize)
+                cache.append(FlowMosaicLayoutItem(view: subview, size: sizeThatFits, origin: fallbackPlacement))
             }
-            
+
             return coordinateCalculator.calculatedSize
         }
 }
