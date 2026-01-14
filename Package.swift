@@ -6,10 +6,10 @@ import PackageDescription
 let package = Package(
     name: "MosaicGrid",
     platforms: [
-        .iOS(.v16),
-        .macOS(.v13),
-        .tvOS(.v16),
-        .watchOS(.v9),
+        .iOS(.v14),
+        .macOS(.v11),
+        .tvOS(.v14),
+        .watchOS(.v7),
         .visionOS(.v1)
     ],
     products: [

@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'MosaicGrid'
-  s.version          = '2.1.0'
+  s.version          = '3.0.0'
   s.summary          = 'MosaicGrid is a SwiftUI library that provides both horizontal and vertical mosaic grid views.'
 
 # This description is used to generate tags and improve search results.
@@ -28,10 +28,10 @@ Pod::Spec.new do |s|
   s.source           = { :git => 'https://github.com/hainayanda/MosaicGrid.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
-  s.ios.deployment_target = "16.0"
-  s.osx.deployment_target = "13.0"
-  s.tvos.deployment_target = '16.0'
-  s.watchos.deployment_target = '9.0'
+  s.ios.deployment_target = "14.0"
+  s.osx.deployment_target = "11.0"
+  s.tvos.deployment_target = '14.0'
+  s.watchos.deployment_target = '7.0'
   s.swift_versions = '5.5'
 
   s.source_files = 'MosaicGrid/Classes/**/*'
