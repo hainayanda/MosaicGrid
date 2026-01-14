@@ -12,3 +12,11 @@
     /// Horizontal orientation where items flow horizontally.
     case horizontal
 }
+
+// MARK: - GridOrientation + Extensions
+
+extension GridOrientation {
+    @inlinable var cross: GridOrientation {
+        self == .vertical ? .horizontal : .vertical
+    }
+}

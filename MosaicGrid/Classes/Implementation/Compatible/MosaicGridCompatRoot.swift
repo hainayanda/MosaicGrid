@@ -103,23 +103,3 @@ struct MosaicGridCompatRoot: _VariadicView_MultiViewRoot {
         return max(1, Int((axisDimension + crossAxisSpacing) / (gridAxisDimension + crossAxisSpacing)))
     }
 }
-
-// MARK: - Private Extensions
-
-private extension CGSize {
-    func axisDimension(for axis: GridOrientation) -> CGFloat {
-        axis == .vertical ? height : width
-    }
-}
-
-private extension GridOrientation {
-    var cross: GridOrientation {
-        self == .vertical ? .horizontal : .vertical
-    }
-}
-
-private extension MosaicGridSpacing {
-    func axisSpacing(for axis: GridOrientation) -> CGFloat {
-        axis == .vertical ? vertical : horizontal
-    }
-}

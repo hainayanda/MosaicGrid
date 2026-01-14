@@ -48,29 +48,3 @@ struct MosaicSizedGridLayout: MosaicGridLayout {
         return gridSize
     }
 }
-
-// MARK: Private Extensions
-
-private extension CGSize {
-    func axisDimension(for axis: GridOrientation) -> CGFloat {
-        axis == .vertical ? height: width
-    }
-}
-
-// MARK: MosaicGridSpacing + Extensions
-
-private extension MosaicGridSpacing {
-    
-    init(axis: CGFloat, crossAxis: CGFloat, for orientation: GridOrientation) {
-        switch orientation {
-        case .horizontal:
-            self.init(h: axis, v: crossAxis)
-        default:
-            self.init(h: crossAxis, v: axis)
-        }
-    }
-    
-    func axisSpacing(for axis: GridOrientation) -> CGFloat {
-        axis == .vertical ? vertical: horizontal
-    }
-}

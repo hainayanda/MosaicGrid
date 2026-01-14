@@ -44,4 +44,17 @@ public struct MosaicGridSpacing: Equatable {
 
 extension MosaicGridSpacing {
     @inlinable public static var zero: MosaicGridSpacing { .init(spacings: .zero) }
+
+    @inlinable init(axis: CGFloat, crossAxis: CGFloat, for orientation: GridOrientation) {
+        switch orientation {
+        case .horizontal:
+            self.init(h: axis, v: crossAxis)
+        default:
+            self.init(h: crossAxis, v: axis)
+        }
+    }
+
+    @inlinable func axisSpacing(for axis: GridOrientation) -> CGFloat {
+        axis == .vertical ? vertical: horizontal
+    }
 }
