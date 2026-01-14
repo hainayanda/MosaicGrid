@@ -14,6 +14,7 @@ struct VMutableLogicalMatrix: MutableLogicalMatrix {
     private(set) var lastAvailableIndex: Int = 0
     
     private var twoDArray: [[Bool]] = []
+    private var filledCount: [Int] = []
     
     @inlinable init(width: Int) {
         self.width = width
@@ -46,9 +47,28 @@ struct VMutableLogicalMatrix: MutableLogicalMatrix {
                     [Bool].init(repeating: false, count: width)
                 }
                 twoDArray.append(contentsOf: newArrays)
+                filledCount.append(contentsOf: [Int](repeating: 0, count: numberOfArrayNeeded))
             }
-            twoDArray[row][column] = newValue
-            lastAvailableIndex = calculateLastAvailableIndexAfter(set: newValue, at: row)
+            let oldValue = twoDArray[row][column]
+            if oldValue != newValue {
+                twoDArray[row][column] = newValue
+                filledCount[row] += newValue ? 1 : -1
+                lastAvailableIndex = calculateLastAvailableIndexAfter(set: newValue, at: row)
+            }
         }
+    }
+    
+    @inlinable func calculateLastAvailableIndexAfter(set value: Bool, at updatedIndex: Int) -> Int {
+        if !value, lastAvailableIndex > updatedIndex {
+            return updatedIndex
+        } else if value, lastAvailableIndex == updatedIndex {
+            for index in (updatedIndex ..< height) {
+                if filledCount[index] < width {
+                    return index
+                }
+            }
+            return height
+        }
+        return lastAvailableIndex
     }
 }
