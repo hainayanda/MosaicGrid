@@ -14,12 +14,6 @@ struct MosaicGridEngine {
     let crossOrientationCount: Int
     let spacing: MosaicGridSpacing
     
-    init(orientation: GridOrientation, crossOrientationCount: Int, spacing: MosaicGridSpacing) {
-        self.orientation = orientation
-        self.crossOrientationCount = crossOrientationCount
-        self.spacing = spacing
-    }
-    
     func calculateLayout(for items: [UnifiedMosaicLayoutItem], cache: [MappedMosaicTileLayoutItem] = []) -> (mapped: [MappedMosaicTileLayoutItem], size: CGSize) {
         
         let validCache = unmappedItemsWithValidCache(for: items, in: cache)
@@ -41,7 +35,9 @@ struct MosaicGridEngine {
         var mutableItems = items
         var validCache: [MappedMosaicTileLayoutItem] = []
         for mapped in cache {
-            guard let item = mutableItems.first, mapped.sourceId == item.sourceId else {
+            guard let item = mutableItems.first,
+                  mapped.sourceId == item.sourceId,
+                  mapped.mosaicSize == item.mosaicSize else {
                 return (validCache, mutableItems)
             }
             mutableItems.removeFirst()
