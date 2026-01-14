@@ -170,7 +170,7 @@ extension MosaicGridLayout where Cache == MosaicGridLayoutCache {
     
     private func mark(
         coordinate: MosaicGridCoordinate,
-        from coordinates: [MosaicGridCoordinate],
+        from coordinates: some Sequence<MosaicGridCoordinate>,
         of item: MosaicTileLayoutItem,
         into matrix: inout any MutableLogicalMatrix) -> MappedMosaicTileLayoutItem {
         coordinates.forEach { coordinate in
@@ -190,32 +190,20 @@ extension MosaicGridLayout where Cache == MosaicGridLayoutCache {
 private extension Sequence where Element == MosaicGridCoordinate {
     func isValidToFill(matrix: any MutableLogicalMatrix, orientation: GridOrientation) -> Bool {
         for coordinate in self {
-            switch orientation {
-            case .vertical:
-                if matrix.width <= coordinate.x {
-                    return false
-                } else if matrix.height <= coordinate.y { continue }
-            case .horizontal:
-                if matrix.height <= coordinate.y {
-                    return false
-                } else if matrix.width <= coordinate.x { continue }
+            // Check bounds first - simplified logic
+            if orientation == .vertical {
+                if matrix.width <= coordinate.x { return false }
+                if matrix.height <= coordinate.y { continue }
+            } else {
+                if matrix.height <= coordinate.y { return false }
+                if matrix.width <= coordinate.x { continue }
             }
-            let isFilled = matrix[coordinate.x, coordinate.y]
-            if isFilled { return false }
+            
+            // Check if filled
+            if matrix[coordinate.x, coordinate.y] { return false }
         }
         return true
     }
 }
 
-private extension MosaicTileLayoutItem {
-    
-    func mapToGridCoordinate(startFrom coordinate: MosaicGridCoordinate) -> [MosaicGridCoordinate] {
-        let x = coordinate.x
-        let y = coordinate.y
-        return (y ..< y + mosaicSize.height).flatMap { currentY in
-            (x ..< x + mosaicSize.width).map { currentX in
-                MosaicGridCoordinate(x: currentX, y: currentY)
-            }
-        }
-    }
-}
+

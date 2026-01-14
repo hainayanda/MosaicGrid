@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct MosaicGridCoordinate {
+struct MosaicGridCoordinate: Equatable, Hashable {
     let x: Int
     let y: Int
 }
