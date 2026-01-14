@@ -48,47 +48,7 @@ struct SortedSet<Element: Hashable> {
     }
 }
 
-extension SortedSet: Sequence {
-    
-    @inlinable func makeIterator() -> Iterator {
-        sortedElements.lazy.map(\.content).makeIterator()
-    }
-    
-    @inlinable var underestimatedCount: Int {
-        sortedElements.underestimatedCount
-    }
-}
-
-extension SortedSet: RandomAccessCollection {
-    @inlinable subscript(position: Int) -> Element {
-        sortedElements[position].content
-    }
-    
-    @inlinable var startIndex: Int {
-        sortedElements.startIndex
-    }
-    
-    @inlinable var endIndex: Int {
-        sortedElements.endIndex
-    }
-    
-    @inlinable func index(after i: Int) -> Int {
-        sortedElements.index(after: i)
-    }
-}
-
-extension SortedSet: Hashable {
-    
-    @inlinable func hash(into hasher: inout Hasher) {
-        hasher.combine(self.set)
-    }
-    
-    @inlinable static func == (lhs: SortedSet<Element>, rhs: SortedSet<Element>) -> Bool {
-        guard lhs.count == rhs.count else { return false }
-        return lhs.sortedElements == rhs.sortedElements
-    }
-    
-}
+// MARK: - SortedSet + ElementContainer
 
 extension SortedSet {
     final class ElementContainer: Hashable {
@@ -108,6 +68,56 @@ extension SortedSet {
         }
     }
 }
+
+// MARK: - SortedSet + Sequence
+
+extension SortedSet: Sequence {
+    
+    @inlinable func makeIterator() -> Iterator {
+        sortedElements.lazy.map(\.content).makeIterator()
+    }
+    
+    @inlinable var underestimatedCount: Int {
+        sortedElements.underestimatedCount
+    }
+}
+
+// MARK: - SortedSet + RandomAccessCollection
+
+extension SortedSet: RandomAccessCollection {
+    @inlinable subscript(position: Int) -> Element {
+        sortedElements[position].content
+    }
+    
+    @inlinable var startIndex: Int {
+        sortedElements.startIndex
+    }
+    
+    @inlinable var endIndex: Int {
+        sortedElements.endIndex
+    }
+    
+    @inlinable func index(after i: Int) -> Int {
+        sortedElements.index(after: i)
+    }
+}
+
+// MARK: - SortedSet + Hashable
+
+extension SortedSet: Hashable {
+    
+    @inlinable func hash(into hasher: inout Hasher) {
+        hasher.combine(self.set)
+    }
+    
+    @inlinable static func == (lhs: SortedSet<Element>, rhs: SortedSet<Element>) -> Bool {
+        guard lhs.count == rhs.count else { return false }
+        return lhs.sortedElements == rhs.sortedElements
+    }
+    
+}
+
+// MARK: - SortedSet + Comparable
 
 extension SortedSet where Element: Comparable {
     enum Sorting {

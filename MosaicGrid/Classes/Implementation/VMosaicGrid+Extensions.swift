@@ -77,13 +77,13 @@ public extension VMosaicGrid {
             )
         }
     
-    /// Initialize Horizontal Mosaic Grid View.
-    /// It will divide the height of the view with `hGridCount` to get the height of a single grid.
+    /// Initialize Vertical Mosaic Grid View.
+    /// It will divide the width of the view with `hGridCount` to get the height of a single grid.
     /// If `spacing` is provided, it will add it to the calculation to make sure each grid has a spacing from each other.
-    /// `gridAspectRatio` then will be used to calculate the width of a single grid.
+    /// `gridAspectRatio` then will be used to calculate the height of a single grid.
     /// `content` will be used to get the view to be arranged by the Mosaic Grid View
     /// - Parameters:
-    ///   - hGridCount: Count of the vertical grid.
+    ///   - hGridCount: Count of the horizontal grid.
     ///   - spacing: Both horizontal and vertical spacing on each grid.
     ///   - gridAspectRatio: Aspect ratio of each grid
     ///   - content: View that will be used as this Mosaic Grid Content
@@ -95,14 +95,14 @@ public extension VMosaicGrid {
             content: content
         )
     }
-
-    /// Initialize Horizontal Mosaic Grid View.
-    /// It will divide the height of the view with `hGridCount` to get the height of a single grid.
+    
+    /// Initialize Vertical Mosaic Grid View.
+    /// It will divide the width of the view with `hGridCount` to get the height of a single grid.
     /// If `spacing` is provided, it will add it to the calculation to make sure each grid has a spacing from each other.
-    /// `gridAspectRatio` then will be used to calculate the width of a single grid.
+    /// `gridAspectRatio` then will be used to calculate the height of a single grid.
     /// `content` will be used to get the view to be arranged by the Mosaic Grid View
     /// - Parameters:
-    ///   - hGridCount: Count of the vertical grid.
+    ///   - hGridCount: Count of the horizontal grid.
     ///   - spacing: Both horizontal and vertical spacing on each grid.
     ///   - gridAspectRatio: Aspect ratio of each grid
     ///   - useCompatLayout: When true, always use the compatibility layout implementation.
@@ -118,13 +118,13 @@ public extension VMosaicGrid {
         )
     }
     
-    /// Initialize Horizontal Mosaic Grid View.
-    /// It will divide the height of the view with `hGridCount` to get the height of a single grid.
+    /// Initialize Vertical Mosaic Grid View.
+    /// It will divide the width of the view with `hGridCount` to get the height of a single grid.
     /// If `spacing` is provided, it will add it to the calculation to make sure each grid has a spacing from each other.
-    /// `gridAspectRatio` then will be used to calculate the width of a single grid.
+    /// `gridAspectRatio` then will be used to calculate the height of a single grid.
     /// `content` will be used to get the view to be arranged by the Mosaic Grid View
     /// - Parameters:
-    ///   - hGridCount: Count of the vertical grid.
+    ///   - hGridCount: Count of the horizontal grid.
     ///   - hSpacing: Horizontal spacing on each grid.
     ///   - vSpacing: Vertical spacing on each grid.
     ///   - gridAspectRatio: Aspect ratio of each grid
@@ -137,14 +137,14 @@ public extension VMosaicGrid {
             content: content
         )
     }
-
-    /// Initialize Horizontal Mosaic Grid View.
-    /// It will divide the height of the view with `hGridCount` to get the height of a single grid.
+    
+    /// Initialize Vertical Mosaic Grid View.
+    /// It will divide the width of the view with `hGridCount` to get the height of a single grid.
     /// If `spacing` is provided, it will add it to the calculation to make sure each grid has a spacing from each other.
-    /// `gridAspectRatio` then will be used to calculate the width of a single grid.
+    /// `gridAspectRatio` then will be used to calculate the height of a single grid.
     /// `content` will be used to get the view to be arranged by the Mosaic Grid View
     /// - Parameters:
-    ///   - hGridCount: Count of the vertical grid.
+    ///   - hGridCount: Count of the horizontal grid.
     ///   - hSpacing: Horizontal spacing on each grid.
     ///   - vSpacing: Vertical spacing on each grid.
     ///   - gridAspectRatio: Aspect ratio of each grid
@@ -161,15 +161,15 @@ public extension VMosaicGrid {
         )
     }
     
-    /// Initialize Horizontal Mosaic Grid View.
-    /// It will divide the height of the view with `hGridCount` to get the height of a single grid.
+    /// Initialize Vertical Mosaic Grid View.
+    /// It will divide the width of the view with `hGridCount` to get the height of a single grid.
     /// If `spacing` is provided, it will add it to the calculation to make sure each grid has a spacing from each other.
     /// `gridHeight` then will be used as the height of a single grid.
     /// `content` will be used to get the view to be arranged by the Mosaic Grid View
     /// - Parameters:
-    ///   - hGridCount: Count of the vertical grid.
+    ///   - hGridCount: Count of the horizontal grid.
     ///   - spacing: Both horizontal and vertical spacing on each grid.
-    ///   - gridHeight: Width of each grid
+    ///   - gridHeight: Height of each grid
     ///   - content: View that will be used as this Mosaic Grid Content
     @inlinable init(hGridCount: Int, spacing: CGFloat, gridHeight: CGFloat, @ViewBuilder content: @escaping () -> Content) {
         self.init(
@@ -179,16 +179,16 @@ public extension VMosaicGrid {
             content: content
         )
     }
-
-    /// Initialize Horizontal Mosaic Grid View.
-    /// It will divide the height of the view with `hGridCount` to get the height of a single grid.
+    
+    /// Initialize Vertical Mosaic Grid View.
+    /// It will divide the width of the view with `hGridCount` to get the height of a single grid.
     /// If `spacing` is provided, it will add it to the calculation to make sure each grid has a spacing from each other.
     /// `gridHeight` then will be used as the height of a single grid.
     /// `content` will be used to get the view to be arranged by the Mosaic Grid View
     /// - Parameters:
-    ///   - hGridCount: Count of the vertical grid.
+    ///   - hGridCount: Count of the horizontal grid.
     ///   - spacing: Both horizontal and vertical spacing on each grid.
-    ///   - gridHeight: Width of each grid
+    ///   - gridHeight: Height of each grid
     ///   - useCompatLayout: When true, always use the compatibility layout implementation.
     ///   - content: View that will be used as this Mosaic Grid Content
     @available(iOS 16.0, macOS 13.0, tvOS 16.0, watchOS 9.0, *)
@@ -202,16 +202,16 @@ public extension VMosaicGrid {
         )
     }
     
-    /// Initialize Horizontal Mosaic Grid View.
-    /// It will divide the height of the view with `hGridCount` to get the height of a single grid.
+    /// Initialize Vertical Mosaic Grid View.
+    /// It will divide the width of the view with `hGridCount` to get the height of a single grid.
     /// If `spacing` is provided, it will add it to the calculation to make sure each grid has a spacing from each other.
     /// `gridHeight` then will be used as the height of a single grid.
     /// `content` will be used to get the view to be arranged by the Mosaic Grid View
     /// - Parameters:
-    ///   - hGridCount: Count of the vertical grid.
+    ///   - hGridCount: Count of the horizontal grid.
     ///   - hSpacing: Horizontal spacing on each grid.
     ///   - vSpacing: Vertical spacing on each grid.
-    ///   - gridHeight: Width of each grid
+    ///   - gridHeight: Height of each grid
     ///   - content: View that will be used as this Mosaic Grid Content
     @inlinable init(hGridCount: Int, hSpacing: CGFloat = .zero, vSpacing: CGFloat = .zero, gridHeight: CGFloat, @ViewBuilder content: @escaping () -> Content) {
         self.init(
@@ -221,17 +221,17 @@ public extension VMosaicGrid {
             content: content
         )
     }
-
-    /// Initialize Horizontal Mosaic Grid View.
-    /// It will divide the height of the view with `hGridCount` to get the height of a single grid.
+    
+    /// Initialize Vertical Mosaic Grid View.
+    /// It will divide the width of the view with `hGridCount` to get the height of a single grid.
     /// If `spacing` is provided, it will add it to the calculation to make sure each grid has a spacing from each other.
     /// `gridHeight` then will be used as the height of a single grid.
     /// `content` will be used to get the view to be arranged by the Mosaic Grid View
     /// - Parameters:
-    ///   - hGridCount: Count of the vertical grid.
+    ///   - hGridCount: Count of the horizontal grid.
     ///   - hSpacing: Horizontal spacing on each grid.
     ///   - vSpacing: Vertical spacing on each grid.
-    ///   - gridHeight: Width of each grid
+    ///   - gridHeight: Height of each grid
     ///   - useCompatLayout: When true, always use the compatibility layout implementation.
     ///   - content: View that will be used as this Mosaic Grid Content
     @available(iOS 16.0, macOS 13.0, tvOS 16.0, watchOS 9.0, *)
@@ -245,7 +245,7 @@ public extension VMosaicGrid {
         )
     }
     
-    /// Initialize Horizontal Mosaic Grid View.
+    /// Initialize Vertical Mosaic Grid View.
     /// It will use `gridSize` as the size of a single grid
     /// If `minimumSpacing` is provided, it will add it to the calculation to make sure each grid has a minimum spacing from each other.
     /// `content` will be used to get the view to be arranged by the Mosaic Grid View
@@ -260,8 +260,8 @@ public extension VMosaicGrid {
             content: content
         )
     }
-
-    /// Initialize Horizontal Mosaic Grid View.
+    
+    /// Initialize Vertical Mosaic Grid View.
     /// It will use `gridSize` as the size of a single grid
     /// If `minimumSpacing` is provided, it will add it to the calculation to make sure each grid has a minimum spacing from each other.
     /// `content` will be used to get the view to be arranged by the Mosaic Grid View
@@ -280,7 +280,7 @@ public extension VMosaicGrid {
         )
     }
     
-    /// Initialize Horizontal Mosaic Grid View.
+    /// Initialize Vertical Mosaic Grid View.
     /// It will use `gridSize` as the size of a single grid
     /// If `minimumSpacing` is provided, it will add it to the calculation to make sure each grid has a minimum spacing from each other.
     /// `content` will be used to get the view to be arranged by the Mosaic Grid View
@@ -296,8 +296,8 @@ public extension VMosaicGrid {
             content: content
         )
     }
-
-    /// Initialize Horizontal Mosaic Grid View.
+    
+    /// Initialize Vertical Mosaic Grid View.
     /// It will use `gridSize` as the size of a single grid
     /// If `minimumSpacing` is provided, it will add it to the calculation to make sure each grid has a minimum spacing from each other.
     /// `content` will be used to get the view to be arranged by the Mosaic Grid View

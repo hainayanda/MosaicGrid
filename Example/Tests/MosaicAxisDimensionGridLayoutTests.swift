@@ -79,5 +79,4 @@ class MosaicAxisDimensionGridLayoutTests: XCTestCase {
         
         XCTAssertEqual(size, CGSize(width: 0, height: 0))
     }
-    
 }

@@ -1,5 +1,5 @@
 //
-//  Tiles.swift
+//  UsingGrids.swift
 //  MosaicGrid
 //
 //  Created by Nayanda Haberty on 7/2/23.
@@ -13,8 +13,13 @@ import SwiftUI
     @usableFromInline static let defaultValue: MosaicGridSize = MosaicGridSize(width: 1, height: 1)
 }
 
+// MARK: - MosaicGridSize
+
+/// Represents the size of a grid in terms of horizontal and vertical units.
 @usableFromInline struct MosaicGridSize: Equatable {
+    /// The width of the grid in horizontal units.
     @usableFromInline let width: Int
+    /// The height of the grid in vertical units.
     @usableFromInline let height: Int
     
     // swiftlint:disable unneeded_synthesized_initializer

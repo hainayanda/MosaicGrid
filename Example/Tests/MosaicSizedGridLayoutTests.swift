@@ -13,7 +13,7 @@ import SwiftUI
 
 @available(iOS 16.0, macOS 13.0, tvOS 16.0, watchOS 9.0, *)
 class MosaicSizedGridLayoutTests: XCTestCase {
-        
+    
     func test_givenVGridWithSameSize_whenCalculateTileSize_shouldReturnSameSize() throws {
         try requireLayoutAvailability()
         let vGrid = MosaicSizedGridLayout(
@@ -129,5 +129,4 @@ class MosaicSizedGridLayoutTests: XCTestCase {
         
         XCTAssertEqual(size, CGSize(width: 0, height: 0))
     }
-    
 }

@@ -57,6 +57,8 @@ private extension CGSize {
     }
 }
 
+// MARK: MosaicGridSpacing + Extensions
+
 private extension MosaicGridSpacing {
     
     init(axis: CGFloat, crossAxis: CGFloat, for orientation: GridOrientation) {

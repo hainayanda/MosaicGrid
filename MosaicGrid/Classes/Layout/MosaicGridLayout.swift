@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-// MARK: MosaicGridLayout
+// MARK: - MosaicGridLayout Protocol
 
 @available(iOS 16.0, macOS 13.0, tvOS 16.0, watchOS 9.0, *)
 protocol MosaicGridLayout: Layout {
@@ -19,7 +19,7 @@ protocol MosaicGridLayout: Layout {
     func calculateGridSize(basedOn proposal: ProposedViewSize) -> CGSize
 }
 
-// MARK: MosaicGridLayout + Extensions
+// MARK: - MosaicGridLayout Protocol Extensions
 
 @available(iOS 16.0, macOS 13.0, tvOS 16.0, watchOS 9.0, *)
 extension MosaicGridLayout {
@@ -33,7 +33,7 @@ extension MosaicGridLayout {
     }
 }
 
-// MARK: MosaicGridLayoutCache
+// MARK: - MosaicGridLayoutCache
 
 @available(iOS 16.0, macOS 13.0, tvOS 16.0, watchOS 9.0, *)
 struct MosaicGridLayoutCache {
@@ -56,7 +56,7 @@ struct MosaicGridLayoutCache {
     }
 }
 
-// MARK: Default Implementation
+// MARK: - Default Implementation
 
 @available(iOS 16.0, macOS 13.0, tvOS 16.0, watchOS 9.0, *)
 extension MosaicGridLayout where Cache == MosaicGridLayoutCache {
@@ -77,7 +77,7 @@ extension MosaicGridLayout where Cache == MosaicGridLayoutCache {
                 gridSize: gridSize,
                 spacing: spacing
             )
-            .maxed(crossOrientation, at: crossOrientationCount)
+                .maxed(crossOrientation, at: crossOrientationCount)
             
             return UnifiedMosaicLayoutItem(
                 sourceId: AnyHashable(index), // Use index for identity for cache key
@@ -133,11 +133,3 @@ extension MosaicGridLayout where Cache == MosaicGridLayoutCache {
         }
     }
 }
-
-// Helper for mapped item extensions if needed to recover lost helpers
-
-
-
-
-
-

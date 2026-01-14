@@ -183,7 +183,8 @@ public struct HMosaicGrid<Content>: View where Content: View {
     }
 }
 
-// MARK: Preview
+// MARK: - Preview
+
 #if DEBUG
 #Preview(".flow") {
     ScrollView(.horizontal) {

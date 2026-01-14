@@ -8,18 +8,16 @@
 import Foundation
 import SwiftUI
 
-// This struct replaces `MosaicTileLayoutItem` for use in the Engine,
-// or we adapt `MosaicTileLayoutItem` to use this.
-// To avoid breaking changes, we might make a protocol or intermediate struct.
+// MARK: - MosaicLayoutItemSource
 
 protocol MosaicLayoutItemSource {
     var sizeThatFits: CGSize { get }
     var mosaicSize: MosaicGridSize { get }
     var gridSpacing: MosaicGridSpacing { get }
     var gridSize: CGSize { get }
-    
-    // We don't need the view itself in the Engine calculation, just its dimensions.
 }
+
+// MARK: - UnifiedMosaicLayoutItem
 
 struct UnifiedMosaicLayoutItem {
     let sourceId: AnyHashable

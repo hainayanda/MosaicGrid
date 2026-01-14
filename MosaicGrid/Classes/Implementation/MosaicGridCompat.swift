@@ -38,6 +38,8 @@ struct MosaicGridCompat<Content>: View where Content: View {
     }
 }
 
+// MARK: - MosaicGridCompatRoot
+
 struct MosaicGridCompatRoot: _VariadicView_MultiViewRoot {
 
     let orientation: GridOrientation
@@ -91,8 +93,8 @@ struct MosaicGridCompatRoot: _VariadicView_MultiViewRoot {
         let calculatedGridDimension = usedDimension / CGFloat(count)
 
         return orientation == .vertical
-            ? CGSize(width: calculatedGridDimension, height: dimension)
-            : CGSize(width: dimension, height: calculatedGridDimension)
+        ? CGSize(width: calculatedGridDimension, height: dimension)
+        : CGSize(width: dimension, height: calculatedGridDimension)
     }
 
     func calculateAspectRatioGridSize(proposal: CGSize, ratio: Double, count: Int) -> CGSize {
@@ -240,8 +242,8 @@ private struct MosaicGridCompatContent: View {
         let realSpacing = (axisDimension - (gridAxisDimension * CGFloat(crossCount))) / CGFloat(crossCount - 1)
 
         return orientation == .vertical
-            ? MosaicGridSpacing(h: realSpacing, v: axisSpacing)
-            : MosaicGridSpacing(h: axisSpacing, v: realSpacing)
+        ? MosaicGridSpacing(h: realSpacing, v: axisSpacing)
+        : MosaicGridSpacing(h: axisSpacing, v: realSpacing)
     }
 }
 
@@ -274,6 +276,8 @@ private struct FlowMosaicGridCompatWrapper: View {
         )
     }
 }
+
+// MARK: - FlowMosaicGridLayoutCompat
 
 struct FlowMosaicGridLayoutCompat: View {
     let children: _VariadicView.Children
@@ -361,6 +365,8 @@ struct FlowMosaicGridLayoutCompat: View {
     }
 }
 
+// MARK: - ChildSizePreferenceKey
+
 private struct ChildSizePreferenceKey: PreferenceKey {
     static var defaultValue: [AnyHashable: CGSize] = [:]
 
@@ -368,6 +374,8 @@ private struct ChildSizePreferenceKey: PreferenceKey {
         value.merge(nextValue()) { _, new in new }
     }
 }
+
+// MARK: - FlowMosaicGridLayoutCompat + Extensions
 
 extension FlowMosaicGridLayoutCompat {
     static func computeFlowPositions(
@@ -408,6 +416,8 @@ extension FlowMosaicGridLayoutCompat {
         return positions
     }
 }
+
+// MARK: - Private Extensions
 
 // Private extensions needed for calculation
 private extension CGSize {

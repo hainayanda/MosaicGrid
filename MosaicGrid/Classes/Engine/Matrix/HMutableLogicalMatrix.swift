@@ -72,4 +72,3 @@ struct HMutableLogicalMatrix: MutableLogicalMatrix {
         return lastAvailableIndex
     }
 }
-

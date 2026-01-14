@@ -8,7 +8,6 @@
 import Foundation
 import SwiftUI
 
-// Moves the algorithmic logic from MosaicGridLayout protocol extension to here.
 struct MosaicGridEngine {
     
     let orientation: GridOrientation
@@ -107,10 +106,6 @@ struct MosaicGridEngine {
             return mapped
         }
 }
-
-// Ensure MappedMosaicTileLayoutItem uses AnyHashable for sourceId instead of LayoutItem
-// We might need to modify MappedMosaicTileLayoutItem or create a new version.
-// Looking at file list, `MappedGridlayoutItem.swift`.
 
 // MARK: - Private Extension
 

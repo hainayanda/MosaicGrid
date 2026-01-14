@@ -105,5 +105,4 @@ class MosaicRatioGridLayoutTests: XCTestCase {
         
         XCTAssertEqual(size, CGSize(width: 0, height: 0))
     }
-    
 }

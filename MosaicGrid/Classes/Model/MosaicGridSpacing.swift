@@ -40,6 +40,8 @@ public struct MosaicGridSpacing: Equatable {
     }
 }
 
+// MARK: - MosaicGridSpacing + Extensions
+
 extension MosaicGridSpacing {
     @inlinable public static var zero: MosaicGridSpacing { .init(spacings: .zero) }
 }

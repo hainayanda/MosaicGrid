@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+// MARK: - FlowCoordinateCalculator
+
 struct FlowCoordinateCalculator {
     private var potentialX: SortedSet<CGFloat>
     private var potentialY: SortedSet<CGFloat>

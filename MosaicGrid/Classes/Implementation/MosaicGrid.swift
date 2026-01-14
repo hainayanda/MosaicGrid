@@ -7,10 +7,15 @@
 
 import SwiftUI
 
+/// A view that arranges its children in a mosaic grid layout.
 struct MosaicGrid<Content>: View where Content: View {
+    /// The orientation of the grid layout.
     let orientation: GridOrientation
+    /// The spacing between grid items.
     let spacing: MosaicGridSpacing
+    /// The sizing strategy for the grid.
     let gridSizing: MosaicGridSizing
+    /// Whether to use the compatibility layout implementation.
     let useCompatLayout: Bool
     private let content: () -> Content
     
@@ -109,7 +114,8 @@ struct MosaicGrid<Content>: View where Content: View {
     }
 }
 
-// MARK: Preview
+// MARK: - Preview
+
 #if DEBUG
 #Preview(".constantSize") {
     ScrollView(.vertical) {

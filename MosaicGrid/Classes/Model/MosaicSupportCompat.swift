@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+// MARK: - MosaicGridSizePreferenceKey
+
 struct MosaicGridSizePreferenceKey: PreferenceKey {
     static var defaultValue: [Int: MosaicGridSize] = [:]
     
@@ -14,6 +16,8 @@ struct MosaicGridSizePreferenceKey: PreferenceKey {
         value.merge(nextValue()) { $1 }
     }
 }
+
+// MARK: - MosaicGridSizePreferenceView
 
 struct MosaicGridSizePreferenceView: View {
     let id: Int

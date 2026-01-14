@@ -69,6 +69,8 @@ struct MosaicTileLayoutItem: Equatable {
     }
 }
 
+// MARK: - MosaicGridCoordinateSequence
+
 struct MosaicGridCoordinateSequence: Sequence {
     let startX: Int
     let startY: Int
@@ -107,6 +109,8 @@ struct MosaicGridCoordinateSequence: Sequence {
         }
     }
 }
+
+// MARK: - Private Extensions
 
 private extension CGSize {
     

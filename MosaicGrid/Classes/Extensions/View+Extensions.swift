@@ -22,6 +22,8 @@ extension View {
     }
 }
 
+// MARK: - UsingGridsModifier
+
 @usableFromInline struct UsingGridsModifier: ViewModifier {
     @usableFromInline let size: MosaicGridSize
     
