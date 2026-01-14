@@ -35,3 +35,4 @@
 - `VMosaicGrid` and `HMosaicGrid` are the primary SwiftUI entry points in `MosaicGrid/Classes/Implementation/`.
 - Layout strategy lives in `MosaicGrid/Classes/Layout/`, while `MosaicGrid/Classes/Engine/` contains grid/flow calculation utilities.
 - Data models in `MosaicGrid/Classes/Model/` define sizing, spacing, coordinates, and alignment used across the layouts.
+- iOS 16+ uses `Layout`-based implementations; iOS 14/15 fall back to `LegacyMosaicGrid` with `_VariadicView`-driven placement, including a legacy flow layout for `.flow` sizing.
