@@ -7,6 +7,8 @@
 
 import Foundation
 
+// MARK: - MutableLogicalMatrix
+
 protocol MutableLogicalMatrix: Sequence where Iterator == MutableLogicalMatrixIterator {
     var width: Int { get }
     var height: Int { get }
@@ -16,6 +18,8 @@ protocol MutableLogicalMatrix: Sequence where Iterator == MutableLogicalMatrixIt
     subscript(_ index: Int) -> [Bool]? { get }
     subscript(_ column: Int, _ row: Int) -> Bool { get set }
 }
+
+// MARK: - MutableLogicalMatrix + Extensions
 
 extension MutableLogicalMatrix {
     

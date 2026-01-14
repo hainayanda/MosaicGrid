@@ -8,8 +8,9 @@
 import Foundation
 import SwiftUI
 
-// MARK: FlowMosaicGridLayoutCache
+// MARK: - FlowMosaicGridLayoutCache
 
+@available(iOS 16.0, macOS 13.0, tvOS 16.0, watchOS 9.0, *)
 struct FlowMosaicGridLayoutCache {
     let proposal: ProposedViewSize
     let spacing: MosaicGridSpacing
@@ -27,8 +28,9 @@ struct FlowMosaicGridLayoutCache {
     }
 }
 
-// MARK: FlowMosaicGridLayout
+// MARK: - FlowMosaicGridLayout
 
+@available(iOS 16.0, macOS 13.0, tvOS 16.0, watchOS 9.0, *)
 struct FlowMosaicGridLayout: Layout {
     
     let orientation: GridOrientation
@@ -167,6 +169,7 @@ struct FlowMosaicGridLayout: Layout {
 
 // MARK: Private Extensions
 
+@available(iOS 16.0, macOS 13.0, tvOS 16.0, watchOS 9.0, *)
 private extension ProposedViewSize {
     func expandableViewSize(for orientation: GridOrientation) -> CGSize {
         CGSize(

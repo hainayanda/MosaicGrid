@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 
+@available(iOS 16.0, macOS 13.0, tvOS 16.0, watchOS 9.0, *)
 struct MosaicSizedGridLayout: MosaicGridLayout {
     
     typealias Cache = MosaicGridLayoutCache
@@ -45,29 +46,5 @@ struct MosaicSizedGridLayout: MosaicGridLayout {
         }
         
         return gridSize
-    }
-}
-
-// MARK: Private Extensions
-
-private extension CGSize {
-    func axisDimension(for axis: GridOrientation) -> CGFloat {
-        axis == .vertical ? height: width
-    }
-}
-
-private extension MosaicGridSpacing {
-    
-    init(axis: CGFloat, crossAxis: CGFloat, for orientation: GridOrientation) {
-        switch orientation {
-        case .horizontal:
-            self.init(h: axis, v: crossAxis)
-        default:
-            self.init(h: crossAxis, v: axis)
-        }
-    }
-    
-    func axisSpacing(for axis: GridOrientation) -> CGFloat {
-        axis == .vertical ? vertical: horizontal
     }
 }

@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 // swiftlint:disable identifier_name
-/// Create a clear rectangle with a given tile size.
+/// Creates a clear rectangle with a given tile size.
 /// - Parameters:
 ///   - horizontal: number of horizontal tiles used.
 ///   - vertical: number of vertical tiles used.

@@ -21,5 +21,5 @@ private let dateFormatter: DateFormatter = {
 }()
 
 private func currentTimeStamp() -> String {
-    dateFormatter.string(from: .now)
+    dateFormatter.string(from: Date())
 }

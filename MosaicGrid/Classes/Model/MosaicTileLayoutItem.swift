@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 
+@available(iOS 16.0, macOS 13.0, tvOS 16.0, watchOS 9.0, *)
 struct MosaicTileLayoutItem: Equatable {
     let view: LayoutSubview
     let sizeThatFits: CGSize
@@ -68,6 +69,8 @@ struct MosaicTileLayoutItem: Equatable {
     }
 }
 
+// MARK: - MosaicGridCoordinateSequence
+
 struct MosaicGridCoordinateSequence: Sequence {
     let startX: Int
     let startY: Int
@@ -107,6 +110,8 @@ struct MosaicGridCoordinateSequence: Sequence {
     }
 }
 
+// MARK: - Private Extensions
+
 private extension CGSize {
     
     func mosaicGridSize(using gridSize: CGSize, spacing: MosaicGridSpacing) -> MosaicGridSize {
@@ -124,6 +129,7 @@ private extension CGSize {
     }
 }
 
+@available(iOS 16.0, macOS 13.0, tvOS 16.0, watchOS 9.0, *)
 private extension MosaicGridSize {
     
     func proposalSize(
@@ -133,10 +139,4 @@ private extension MosaicGridSize {
             let proposalHeight: CGFloat = (CGFloat(height) * gridSize.height) + (CGFloat(height - 1) * spacing.vertical)
             return ProposedViewSize(width: proposalWidth, height: proposalHeight)
         }
-    
-    func usedGridsSize(for gridSize: CGSize, with spacing: MosaicGridSpacing) -> CGSize {
-        let sizeWidth = (CGFloat(width) * gridSize.width) + (CGFloat(width - 1) * spacing.horizontal)
-        let sizeHeight = (CGFloat(height) * gridSize.height) + (CGFloat(height - 1) * spacing.vertical)
-        return CGSize(width: sizeWidth, height: sizeHeight)
-    }
 }
