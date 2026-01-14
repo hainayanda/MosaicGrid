@@ -47,6 +47,7 @@ struct FlowCoordinateCalculator {
         )
     }
     
+    @available(iOS 16.0, macOS 13.0, tvOS 16.0, watchOS 9.0, *)
     @inlinable init (orientation: GridOrientation, cache: [FlowMosaicLayoutItem], viewSize: CGSize, spacing: MosaicGridSpacing) {
         self.init(orientation: orientation)
         cache.forEach { element in

@@ -8,13 +8,14 @@
 import Foundation
 import SwiftUI
 
+@available(iOS 16.0, macOS 13.0, tvOS 16.0, watchOS 9.0, *)
 @usableFromInline struct UsingGrids: LayoutValueKey {
     @usableFromInline static let defaultValue: MosaicGridSize = MosaicGridSize(width: 1, height: 1)
 }
 
 @usableFromInline struct MosaicGridSize: Equatable {
-    let width: Int
-    let height: Int
+    @usableFromInline let width: Int
+    @usableFromInline let height: Int
     
     // swiftlint:disable unneeded_synthesized_initializer
     @usableFromInline init(width: Int, height: Int) {
