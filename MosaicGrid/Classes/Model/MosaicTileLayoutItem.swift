@@ -62,6 +62,49 @@ struct MosaicTileLayoutItem: Equatable {
             return maxedW(at: max)
         }
     }
+    
+    @inlinable func mapToGridCoordinate(startFrom coordinate: MosaicGridCoordinate) -> MosaicGridCoordinateSequence {
+        MosaicGridCoordinateSequence(startFrom: coordinate, size: mosaicSize)
+    }
+}
+
+struct MosaicGridCoordinateSequence: Sequence {
+    let startX: Int
+    let startY: Int
+    let width: Int
+    let height: Int
+    
+    @inlinable init(startFrom coordinate: MosaicGridCoordinate, size: MosaicGridSize) {
+        self.startX = coordinate.x
+        self.startY = coordinate.y
+        self.width = size.width
+        self.height = size.height
+    }
+    
+    @inlinable func makeIterator() -> Iterator {
+        Iterator(startX: startX, startY: startY, width: width, height: height)
+    }
+    
+    struct Iterator: IteratorProtocol {
+        let startX: Int
+        let startY: Int
+        let width: Int
+        let height: Int
+        var currentX: Int = 0
+        var currentY: Int = 0
+        
+        @inlinable mutating func next() -> MosaicGridCoordinate? {
+            if width == 0 || height == 0 { return nil }
+            if currentY >= height { return nil }
+            let coord = MosaicGridCoordinate(x: startX + currentX, y: startY + currentY)
+            currentX += 1
+            if currentX >= width {
+                currentX = 0
+                currentY += 1
+            }
+            return coord
+        }
+    }
 }
 
 private extension CGSize {

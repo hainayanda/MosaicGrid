@@ -14,6 +14,7 @@ struct HMutableLogicalMatrix: MutableLogicalMatrix {
     private(set) var lastAvailableIndex: Int = 0
     
     private var twoDArray: [[Bool]] = []
+    private var filledCount: [Int] = []
     
     @inlinable init(height: Int) {
         self.height = height
@@ -46,9 +47,29 @@ struct HMutableLogicalMatrix: MutableLogicalMatrix {
                     [Bool].init(repeating: false, count: height)
                 }
                 twoDArray.append(contentsOf: newArrays)
+                filledCount.append(contentsOf: [Int](repeating: 0, count: numberOfArrayNeeded))
             }
-            twoDArray[column][row] = newValue
-            lastAvailableIndex = calculateLastAvailableIndexAfter(set: newValue, at: column)
+            let oldValue = twoDArray[column][row]
+            if oldValue != newValue {
+                twoDArray[column][row] = newValue
+                filledCount[column] += newValue ? 1 : -1
+                lastAvailableIndex = calculateLastAvailableIndexAfter(set: newValue, at: column)
+            }
         }
     }
+    
+    @inlinable func calculateLastAvailableIndexAfter(set value: Bool, at updatedIndex: Int) -> Int {
+        if !value, lastAvailableIndex > updatedIndex {
+            return updatedIndex
+        } else if value, lastAvailableIndex == updatedIndex {
+            for index in (updatedIndex ..< width) {
+                if filledCount[index] < height {
+                    return index
+                }
+            }
+            return width
+        }
+        return lastAvailableIndex
+    }
 }
+
