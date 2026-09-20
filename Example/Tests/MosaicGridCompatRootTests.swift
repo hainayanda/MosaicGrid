@@ -64,6 +64,42 @@ final class MosaicGridCompatRootTests: XCTestCase {
         XCTAssertEqual(count, 1)
     }
 
+    func test_givenCrossAxisProposalAtOrBelowTotalSpacing_whenCalculatingAspectRatioSize_shouldReturnZeroForBothOrientations() {
+        for orientation in [GridOrientation.vertical, .horizontal] {
+            let root = MosaicGridCompatRoot(
+                orientation: orientation,
+                spacing: MosaicGridSpacing(spacings: 10),
+                gridSizing: .aspectRatio(2, crossGridCount: 5)
+            )
+
+            for crossAxisProposal in [39.0, 40.0] {
+                let proposal = orientation == .vertical
+                    ? CGSize(width: crossAxisProposal, height: 100)
+                    : CGSize(width: 100, height: crossAxisProposal)
+
+                XCTAssertEqual(root.calculateGridSize(basedOn: proposal), .zero)
+            }
+        }
+    }
+
+    func test_givenCrossAxisProposalAtOrBelowTotalSpacing_whenCalculatingConstantAxisSize_shouldReturnZeroForBothOrientations() {
+        for orientation in [GridOrientation.vertical, .horizontal] {
+            let root = MosaicGridCompatRoot(
+                orientation: orientation,
+                spacing: MosaicGridSpacing(spacings: 10),
+                gridSizing: .constantAxis(12, crossGridCount: 5)
+            )
+
+            for crossAxisProposal in [39.0, 40.0] {
+                let proposal = orientation == .vertical
+                    ? CGSize(width: crossAxisProposal, height: 100)
+                    : CGSize(width: 100, height: crossAxisProposal)
+
+                XCTAssertEqual(root.calculateGridSize(basedOn: proposal), .zero)
+            }
+        }
+    }
+
     func test_givenFlowVerticalCompat_whenWrapping_shouldAdvanceRow() {
         let sizes = [
             CGSize(width: 60, height: 10),

@@ -105,4 +105,25 @@ class MosaicRatioGridLayoutTests: XCTestCase {
         
         XCTAssertEqual(size, CGSize(width: 0, height: 0))
     }
+
+    func test_givenCrossAxisProposalAtOrBelowTotalSpacing_whenCalculateTileSize_shouldReturnZeroForBothOrientations() throws {
+        try requireLayoutAvailability()
+
+        for orientation in [GridOrientation.vertical, .horizontal] {
+            let grid = MosaicRatioGridLayout(
+                orientation: orientation,
+                crossGridCount: 5,
+                aspectRatio: 2,
+                spacing: MosaicGridSpacing(spacings: 10)
+            )
+
+            for crossAxisProposal in [39.0, 40.0] {
+                let proposal = orientation == .vertical
+                    ? ProposedViewSize(width: crossAxisProposal, height: 100)
+                    : ProposedViewSize(width: 100, height: crossAxisProposal)
+
+                XCTAssertEqual(grid.calculateGridSize(basedOn: proposal), .zero)
+            }
+        }
+    }
 }
