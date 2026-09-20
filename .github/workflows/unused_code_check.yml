@@ -14,10 +14,10 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
+    - name: Pick Xcode 16.4
+      run: sudo xcode-select -s '/Applications/Xcode_16.4.app/Contents/Developer'
     - name: Install Dependencies
       run: swift package resolve
-    - name: Pick xcode 16.2
-      run: sudo xcode-select -s '/Applications/Xcode_16.2.app/Contents/Developer'
     - name: Run Periphery on MacOS
       run: |
         brew install periphery
