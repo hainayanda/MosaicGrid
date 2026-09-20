@@ -57,6 +57,7 @@ struct MosaicGridCompatRoot: _VariadicView_MultiViewRoot {
         guard count > 0 else { return .zero }
 
         let usedDimension = axisDimension - (crossAxisSpacing * CGFloat(count - 1))
+        guard usedDimension > .zero else { return .zero }
         let calculatedGridDimension = usedDimension / CGFloat(count)
 
         return orientation == .vertical
@@ -71,6 +72,7 @@ struct MosaicGridCompatRoot: _VariadicView_MultiViewRoot {
         guard count > 0 else { return .zero }
 
         let usedDimension = axisDimension - (crossAxisSpacing * CGFloat(count - 1))
+        guard usedDimension > .zero else { return .zero }
         let calculatedGridDimension = usedDimension / CGFloat(count)
 
         switch orientation {

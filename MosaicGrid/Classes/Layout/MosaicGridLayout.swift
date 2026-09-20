@@ -65,6 +65,9 @@ extension MosaicGridLayout where Cache == MosaicGridLayoutCache {
     
     @inlinable func sizeThatFits(proposal: ProposedViewSize, subviews: Subviews, cache: inout MosaicGridLayoutCache) -> CGSize {
         let gridSize = calculateGridSize(basedOn: proposal)
+        guard gridSize != .zero else {
+            return .zero
+        }
         guard gridSize.width > .zero, gridSize.height > .zero else {
             log(.info, "Calculated grid size is invalid. Width is \(gridSize.width) and height is \(gridSize.height). Will use zero instead.")
             return .zero
